@@ -1,2 +1,1 @@
-# gogohangogo
-해커톤가즈아
+# 고고한고고 :rocket:
