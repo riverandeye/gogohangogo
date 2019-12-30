@@ -1,0 +1,118 @@
+-- MySQL Workbench Forward Engineering
+
+SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0;
+SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0;
+SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION';
+
+-- -----------------------------------------------------
+-- Schema TTL
+-- -----------------------------------------------------
+
+-- -----------------------------------------------------
+-- Schema TTL
+-- -----------------------------------------------------
+CREATE SCHEMA IF NOT EXISTS `TTL` DEFAULT CHARACTER SET utf8 ;
+USE `TTL` ;
+
+-- -----------------------------------------------------
+-- Table `TTL`.`Users`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `TTL`.`Users` (
+  `id` INT NOT NULL,
+  `name` VARCHAR(45) NULL,
+  `email` VARCHAR(2048) NULL,
+  `avatar` VARCHAR(2048) NULL,
+  `agreeAlarm` TINYINT NOT NULL DEFAULT 0,
+  `priority` INT NOT NULL DEFAULT 0,
+  `isValid` TINYINT NOT NULL DEFAULT 0,
+  PRIMARY KEY (`id`),
+  UNIQUE INDEX `username_UNIQUE` (`name` ASC) ,
+  UNIQUE INDEX `id_UNIQUE` (`id` ASC) )
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `TTL`.`Services`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `TTL`.`Services` (
+  `id` INT NOT NULL,
+  `name` VARCHAR(45) NULL,
+  `introduction` VARCHAR(2048) NULL,
+  `capacity` INT NULL,
+  PRIMARY KEY (`id`))
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `TTL`.`PartyStatus`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `TTL`.`PartyStatus` (
+  `status` INT NOT NULL,
+  `description` VARCHAR(2048) NULL,
+  PRIMARY KEY (`status`))
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `TTL`.`Parties`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `TTL`.`Parties` (
+  `id` INT NOT NULL,
+  `createdAt` VARCHAR(45) NULL,
+  `updatedAt` TIMESTAMP NULL,
+  `startAt` TIMESTAMP NULL,
+  `endAt` TIMESTAMP NULL,
+  `title` VARCHAR(45) NULL,
+  `personnel` INT NULL,
+  `capacity` INT NULL,
+  `accountId` VARCHAR(45) NULL,
+  `accountPW` VARCHAR(45) NULL,
+  `isAccountValid` TINYINT NULL,
+  `serviceId` INT NOT NULL,
+  `status` INT NOT NULL,
+  PRIMARY KEY (`id`),
+  INDEX `fk_Parties_Services1_idx` (`serviceId` ASC) ,
+  INDEX `fk_Parties_PartyStatus1_idx` (`status` ASC) ,
+  CONSTRAINT `fk_Parties_Services1`
+    FOREIGN KEY (`serviceId`)
+    REFERENCES `TTL`.`Services` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_Parties_PartyStatus1`
+    FOREIGN KEY (`status`)
+    REFERENCES `TTL`.`PartyStatus` (`status`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `TTL`.`UserParties`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `TTL`.`UserParties` (
+  `userId` INT NOT NULL,
+  `partyId` INT NOT NULL,
+  `createdAt` TIMESTAMP NULL,
+  `updatedAt` TIMESTAMP NULL,
+  `startedAt` TIMESTAMP NULL,
+  `endAt` TIMESTAMP NULL,
+  `isDeposited` TINYINT NULL,
+  `isAdmin` TINYINT NULL,
+  INDEX `fk_UserParties_Users_idx` (`userId` ASC) ,
+  INDEX `fk_UserParties_Parties1_idx` (`partyId` ASC) ,
+  CONSTRAINT `fk_UserParties_Users`
+    FOREIGN KEY (`userId`)
+    REFERENCES `TTL`.`Users` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_UserParties_Parties1`
+    FOREIGN KEY (`partyId`)
+    REFERENCES `TTL`.`Parties` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
+
+
+SET SQL_MODE=@OLD_SQL_MODE;
+SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
+SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
