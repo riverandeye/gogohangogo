@@ -1,14 +1,17 @@
-import express, { Request, Response, NextFunction } from "express";
-import dotenv from "dotenv";
+import express from 'express';
+import dotenv from 'dotenv';
 
 dotenv.config();
 
+import UserRouter from './routes/user';
+import { API_ROUTE } from './constants';
+import PartyRouter from './routes/party';
+
 const app = express();
 
-app.get("/", (request: Request, response: Response, next: NextFunction) => {
-  response.send("hello");
-});
+app.use(API_ROUTE.USERS, UserRouter);
+app.use(API_ROUTE.PARTIES, PartyRouter);
 
 app.listen(process.env.SERVER_PORT, () => {
-  console.log("start");
+  console.log('start');
 });
