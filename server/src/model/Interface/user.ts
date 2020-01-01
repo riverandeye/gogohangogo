@@ -1,5 +1,7 @@
 export interface User {
   readonly id: number;
+  readonly authKey: string;
+  password: string;
   name: string;
   email: string;
   avatar: string;
@@ -11,6 +13,7 @@ export interface User {
 export interface UpdatedUser {
   readonly name?: string;
   readonly email?: string;
+  readonly password?: string;
   readonly avatar?: string;
   readonly agreeAlarm?: boolean;
   readonly priority?: number;
@@ -20,6 +23,8 @@ export interface UpdatedUser {
 export interface CreatedUser {
   readonly name: string;
   readonly email: string;
+  readonly password: string;
+  readonly authKey: string;
   readonly avatar: string;
   readonly agreeAlarm: boolean;
 }
