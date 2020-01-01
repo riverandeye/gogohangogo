@@ -4,6 +4,7 @@ import { API_PARAM } from '../constants';
 import UserController from '../controller/user';
 import validateIdParam from '../middleware/validate-id-param';
 import validateUserBody from '../middleware/validate-user-body';
+import validateEmailBody from '../middleware/validate-email-body';
 
 const UserRouter = Router();
 
@@ -13,22 +14,21 @@ UserRouter.get(
   UserController.getUserWithId,
 );
 
-UserRouter.patch(
-  API_PARAM.USER.ID, 
-  validateIdParam, 
-  UserController.updateUser
-);
+UserRouter.patch(API_PARAM.USER.ID, validateIdParam, UserController.updateUser);
 
 UserRouter.post(
-  '/', 
-  validateUserBody, 
-  UserController.createUser
-);
-
-UserRouter.post(
-  API_PARAM.USER.VERIFY,
+  '/',
+  validateUserBody,
   UserController.checkDuplicateUserEmail,
-  UserController.sendVerificationMail,
+  UserController.createUser,
 );
+
+UserRouter.post(
+  API_PARAM.USER.REVERIFY,
+  validateEmailBody,
+  UserController.sendReVerificationMail,
+);
+
+UserRouter.get(API_PARAM.USER.VERIFY, UserController.verifyUser);
 
 export default UserRouter;
