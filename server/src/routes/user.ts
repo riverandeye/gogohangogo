@@ -25,4 +25,10 @@ UserRouter.post(
   UserController.createUser
 );
 
+UserRouter.post(
+  API_PARAM.USER.VERIFY,
+  UserController.checkDuplicateUserEmail,
+  UserController.sendVerificationMail,
+);
+
 export default UserRouter;
