@@ -40,7 +40,6 @@ const UserController = {
       subscription,
       ALARM_MESSAGE.SUBSCRIBE_SUCCESS,
     );
-    console.log(result);
 
     res.json(User);
   },
@@ -58,7 +57,7 @@ const UserController = {
       JSON.stringify(await UserService.findUserWithId(Id)),
     );
 
-    pushAlarmService.sendPushAlarmOnce(
+    const result = await pushAlarmService.sendPushAlarmOnce(
       JSON.parse(User.alarmSubscription),
       ALARM_MESSAGE.CHECK_SUBSCRIBE,
     );
@@ -105,7 +104,6 @@ const UserController = {
   async verifyUser(req: Request, res: Response, next: NextFunction) {
     const authKey = String(req.params[AUTHKEY]);
     const users: User[] = await UserModel.getUserWithAuthKey(authKey);
-    console.log(users);
     if (users.length !== 1) {
       res.status(STATUS_CODE.BAD_REQUEST).send(ERROR_RESPONSE.INVALID_AUTH_KEY);
       return;

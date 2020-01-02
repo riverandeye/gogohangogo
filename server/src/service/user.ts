@@ -5,7 +5,7 @@ import UserModel from '../model/user';
 const UserService = {
   async findUserWithId(Id: number) {
     const User = await UserModel.getUserWithId(Id);
-    return User;
+    return User[0];
   },
 
   async updateUserSubscription(Id: number, subscription: PushSubscription) {
