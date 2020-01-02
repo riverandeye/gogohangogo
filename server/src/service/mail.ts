@@ -3,8 +3,6 @@ import smtpPool from 'nodemailer-smtp-transport';
 import { MAIL } from '../constants';
 import generateMailContent from '../utils/generate-mail-content';
 
-console.log(process.env.MAIL_ID);
-
 const stmpConfig = {
   mailer: {
     service: 'Gmail',
@@ -29,9 +27,6 @@ const EmailService = {
     };
 
     const info = await transporter.sendMail(mailOptions);
-
-    console.log('Message sent: %s', info.messageId);
-    console.log('Preview URL: %s', nodemailer.getTestMessageUrl(info));
 
     return info;
   },
