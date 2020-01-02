@@ -8,7 +8,7 @@ import { User } from '../model/Interface/user';
 const UserController = {
   async getUserWithId(req: Request, res: Response, next: NextFunction) {
     const Id = Number(req.params[ID]);
-    const user = await UserModel.getUserWithId(Id);
+    const user: User = await UserModel.getUserWithId(Id);
     res.send(user);
   },
 
