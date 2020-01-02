@@ -9,6 +9,9 @@ import PartyRouter from './routes/party';
 
 const app = express();
 
+app.use(express.json());
+app.use(express.urlencoded({extended: false}))
+
 app.use(API_ROUTE.USERS, UserRouter);
 app.use(API_ROUTE.PARTIES, PartyRouter);
 
