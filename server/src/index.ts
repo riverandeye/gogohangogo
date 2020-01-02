@@ -6,11 +6,14 @@ dotenv.config();
 import UserRouter from './routes/user';
 import { API_ROUTE } from './constants';
 import PartyRouter from './routes/party';
+import cors from 'cors';
 
 const app = express();
 
+app.use(cors());
 app.use(express.json());
-app.use(express.urlencoded({extended: false}))
+app.use(express.urlencoded({ extended: false }));
+app.use(express.static('static'));
 
 app.use(API_ROUTE.USERS, UserRouter);
 app.use(API_ROUTE.PARTIES, PartyRouter);

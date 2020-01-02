@@ -57,6 +57,9 @@ export const API_PARAM = {
     ID: `/:${ID}`,
     VERIFY: `/verify/:${AUTHKEY}`,
     REVERIFY: `/reverify/:${ID}`,
+    SUBSCRIBE: `/:${ID}/subscribe`,
+    UNSUBSCRIBE: `/:${ID}/unsubscribe`,
+    CHECK_ALARM: `/:${ID}/check`,
   },
 
   PARTIES: {
@@ -114,4 +117,18 @@ export const ERROR_RESPONSE = {
 
 export const MAIL = {
   MAIL_SUBJECT: `[NBread] 이메일 인증`,
+};
+
+export const ALARM_MESSAGE = {
+  SUBSCRIBE_SUCCESS: {
+    title: '푸시 알람 등록',
+    body: '푸시 알람 등록에 성공하셨습니다.',
+    icon: '/test.png',
+  },
+
+  CHECK_SUBSCRIBE: {
+    title: '푸시 알람 확인',
+    body: '푸시 알람 확인에 성공하셨습니다.',
+    icon: '/test.png',
+  },
 };

@@ -2,6 +2,7 @@ import db from './db';
 import { DB_TABLE, DB_COLUMN } from '../constants';
 import { UpdatedUser, CreatedUser } from './Interface/user';
 import { parsePacket } from '../utils/parse-packet';
+import { PushSubscription } from 'web-push';
 
 const UserModel = {
   async getUserWithId(Id: number) {
@@ -64,6 +65,28 @@ const UserModel = {
         `Update ${DB_TABLE.USERS} Set ${queryColumns} Where ${DB_COLUMN.USERS.ID}=?`,
         updatedUserColumn.map(key => updatedUser[key]).concat(Id),
       );
+  },
+
+  async updateUserSubscription(Id: number, subscription: PushSubscription) {
+    await db
+      .promise()
+      .query(`UPDATE Users SET alarmSubscription=?, agreeAlarm=1 WHERE id=?`, [
+        JSON.stringify(subscription),
+        Id,
+      ]);
+
+    return await this.getUserWithId(Id);
+  },
+
+  async deleteUserSubscription(Id: number) {
+    await db
+      .promise()
+      .query(
+        `UPDATE Users SET alarmSubscription=NULL, agreeAlarm=0 WHERE id=?`,
+        [Id],
+      );
+
+    return await this.getUserWithId(Id);
   },
 };
 
