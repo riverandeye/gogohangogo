@@ -8,6 +8,10 @@ import validateEmailBody from '../middleware/validate-email-body';
 
 const UserRouter = Router();
 
+UserRouter.post(API_PARAM.USER.SUBSCRIBE, UserController.subscribeAlarm);
+UserRouter.delete(API_PARAM.USER.UNSUBSCRIBE, UserController.unSubscribeAlarm);
+UserRouter.get(API_PARAM.USER.CHECK_ALARM, UserController.checkAlarm);
+
 UserRouter.get(
   API_PARAM.USER.ID,
   validateIdParam,

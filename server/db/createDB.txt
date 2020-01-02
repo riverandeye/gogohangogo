@@ -17,16 +17,17 @@ USE `OTT` ;
 -- -----------------------------------------------------
 -- Table `OTT`.`Users`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `OTT`.`Users` ;
-
 CREATE TABLE IF NOT EXISTS `OTT`.`Users` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `name` VARCHAR(45) NULL,
   `email` VARCHAR(2048) NULL,
   `avatar` VARCHAR(2048) NULL,
-  `agreeAlarm` TINYINT NOT NULL DEFAULT 0,
-  `priority` INT NOT NULL DEFAULT 0,
-  `isValid` TINYINT NOT NULL DEFAULT 0,
+  `password` VARCHAR(128) NOT NULL,
+  `authKey` VARCHAR(36) NOT NULL,
+  `agreeAlarm` TINYINT NULL DEFAULT 0,
+  `alarmSubscription` VARCHAR(1000) NULL,
+  `priority` INT NULL DEFAULT 0,
+  `isValid` TINYINT NULL DEFAULT 0,
   PRIMARY KEY (`id`),
   UNIQUE INDEX `id_UNIQUE` (`id` ASC) )
 ENGINE = InnoDB;
@@ -35,38 +36,30 @@ ENGINE = InnoDB;
 -- -----------------------------------------------------
 -- Table `OTT`.`Services`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `OTT`.`Services` ;
-
 CREATE TABLE IF NOT EXISTS `OTT`.`Services` (
-  `id` INT NOT NULL AUTO_INCREMENT,
+  `id` INT NOT NULL,
   `name` VARCHAR(45) NULL,
   `introduction` VARCHAR(2048) NULL,
   `capacity` INT NULL,
-  PRIMARY KEY (`id`),
-  UNIQUE INDEX `id_UNIQUE` (`id` ASC) )
+  PRIMARY KEY (`id`))
 ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
 -- Table `OTT`.`PartyStatus`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `OTT`.`PartyStatus` ;
-
 CREATE TABLE IF NOT EXISTS `OTT`.`PartyStatus` (
-  `status` INT NOT NULL AUTO_INCREMENT,
+  `status` INT NOT NULL,
   `description` VARCHAR(2048) NULL,
-  PRIMARY KEY (`status`),
-  UNIQUE INDEX `status_UNIQUE` (`status` ASC) )
+  PRIMARY KEY (`status`))
 ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
 -- Table `OTT`.`Parties`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `OTT`.`Parties` ;
-
 CREATE TABLE IF NOT EXISTS `OTT`.`Parties` (
-  `id` INT NOT NULL AUTO_INCREMENT,
+  `id` INT NOT NULL,
   `createdAt` VARCHAR(45) NULL,
   `updatedAt` TIMESTAMP NULL,
   `startAt` TIMESTAMP NULL,
@@ -76,13 +69,14 @@ CREATE TABLE IF NOT EXISTS `OTT`.`Parties` (
   `capacity` INT NULL,
   `accountId` VARCHAR(45) NULL,
   `accountPW` VARCHAR(45) NULL,
+  `authKey` VARCHAR(36) NULL,
   `isAccountValid` TINYINT NULL,
   `serviceId` INT NOT NULL,
   `status` INT NOT NULL,
   PRIMARY KEY (`id`),
   INDEX `fk_Parties_Services1_idx` (`serviceId` ASC) ,
   INDEX `fk_Parties_PartyStatus1_idx` (`status` ASC) ,
-  UNIQUE INDEX `id_UNIQUE` (`id` ASC) ,
+  UNIQUE INDEX `authKey_UNIQUE` (`authKey` ASC) ,
   CONSTRAINT `fk_Parties_Services1`
     FOREIGN KEY (`serviceId`)
     REFERENCES `OTT`.`Services` (`id`)
@@ -99,8 +93,6 @@ ENGINE = InnoDB;
 -- -----------------------------------------------------
 -- Table `OTT`.`UserParties`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `OTT`.`UserParties` ;
-
 CREATE TABLE IF NOT EXISTS `OTT`.`UserParties` (
   `userId` INT NOT NULL,
   `partyId` INT NOT NULL,

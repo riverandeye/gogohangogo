@@ -1,15 +1,68 @@
 import { Request, Response, NextFunction } from 'express';
+import webpush from 'web-push';
 import uuid from 'uuid';
+
 import UserModel from '../model/user';
-import { ID, AUTHKEY, ERROR_RESPONSE, STATUS_CODE } from '../constants';
+import {
+  ID,
+  AUTHKEY,
+  ERROR_RESPONSE,
+  STATUS_CODE,
+  ALARM_MESSAGE,
+} from '../constants';
 import EmailService from '../service/mail';
 import { User } from '../model/Interface/user';
+
+import UserService from '../service/user';
+import pushAlarmService from '../service/push-alarm';
+
+webpush.setGCMAPIKey(process.env.GOOGLE_API_KEY);
+webpush.setVapidDetails(
+  'mailto:nbbang04@gmail.com',
+  process.env.PUBLIC_VAPID_KEY,
+  process.env.PRIVATE_VAPID_KEY,
+);
 
 const UserController = {
   async getUserWithId(req: Request, res: Response, next: NextFunction) {
     const Id = Number(req.params[ID]);
-    const user = await UserModel.getUserWithId(Id);
-    res.send(user);
+    const user = await UserService.findUserWithId(Id);
+
+    res.json(user);
+  },
+
+  async subscribeAlarm(req: Request, res: Response, next: NextFunction) {
+    const Id = Number(req.params[ID]);
+    const subscription = req.body;
+
+    const User = await UserService.updateUserSubscription(Id, subscription);
+    const result = await pushAlarmService.sendPushAlarmOnce(
+      subscription,
+      ALARM_MESSAGE.SUBSCRIBE_SUCCESS,
+    );
+    console.log(result);
+
+    res.json(User);
+  },
+
+  async unSubscribeAlarm(req: Request, res: Response, next: NextFunction) {
+    const Id = Number(req.params[ID]);
+    const User = await UserService.deleteUserSubscription(Id);
+
+    res.json(User);
+  },
+
+  async checkAlarm(req: Request, res: Response, next: NextFunction) {
+    const Id = Number(req.params[ID]);
+    const User = JSON.parse(
+      JSON.stringify(await UserService.findUserWithId(Id)),
+    );
+
+    pushAlarmService.sendPushAlarmOnce(
+      JSON.parse(User.alarmSubscription),
+      ALARM_MESSAGE.CHECK_SUBSCRIBE,
+    );
+    res.status(200).send();
   },
 
   async updateUser(req: Request, res: Response, next: NextFunction) {
