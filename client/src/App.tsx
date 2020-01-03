@@ -1,8 +1,7 @@
 import React from 'react';
 import { Route, BrowserRouter } from 'react-router-dom';
-
-import Main from './page/main';
 import { ROUTE } from './constants';
+import Main from './page/main';
 import Subscribe from './page/subscribe';
 
 const App: React.FC = () => {
