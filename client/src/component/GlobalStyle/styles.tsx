@@ -16,7 +16,7 @@ const GlobalStyles = createGlobalStyle`
   body {
     font-family: 'NanumSquare', sans-serif;
     height: 100%;
-    font-size: 14px;
+    font-size: 16px;
     background-color: white;
     margin : 0;
   }
