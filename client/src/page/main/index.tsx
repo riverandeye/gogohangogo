@@ -7,7 +7,7 @@ const Main: React.FC = () => {
   return (
     <Layout>
       <S.main>
-        <S.title>제목</S.title>
+        <S.title>Nbread에 오신 것을 환영합니다</S.title>
       </S.main>
     </Layout>
   );

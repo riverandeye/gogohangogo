@@ -6,7 +6,11 @@ interface ContentProps {
 }
 
 const Content: React.FC<ContentProps> = ({ children }) => {
-  return <S.Content>{children}</S.Content>;
+  return (
+    <S.Content>
+      <S.Container>{children}</S.Container>
+    </S.Content>
+  );
 };
 
 export default Content;
