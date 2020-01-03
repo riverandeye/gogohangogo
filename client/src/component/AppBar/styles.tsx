@@ -1,13 +1,14 @@
 import MaterialAppBar from '@material-ui/core/AppBar';
 import styled from 'styled-components/macro';
-import COLORS from '../GlobalStyle/styleConstants';
+import COLORS from '../../styleConstants';
 
 const orderOfAppBar = 2;
 
 export const AppBar = styled(MaterialAppBar)`
   && {
     background-color: ${COLORS.primaryLight};
-    height: 4rem;
+    height: 6rem;
+    min-width: 48rem;
   }
 `;
 
@@ -24,12 +25,12 @@ export const Container = styled.div`
 
 export const Logo = styled.div`
   position: relative;
-  width: 3rem;
+  width: 4.5rem;
   margin: 0 auto;
 `;
 
 export const AppBarMenu = styled.ul`
-  order: orderOfAppBar;
+  order: ${orderOfAppBar};
   margin-left: auto;
 `;
 

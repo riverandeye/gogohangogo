@@ -3,13 +3,13 @@ import * as S from './styles';
 
 interface ButtonProps {
   children?: React.ReactNode;
-  colorType?: string;
-  hasBorder?: boolean;
+  colortype?: string;
+  hasborder?: string;
 }
 
-const Button: React.FC<ButtonProps> = ({ children, colorType, hasBorder }) => {
+const Button: React.FC<ButtonProps> = ({ children, colortype, hasborder }) => {
   return (
-    <S.Button colorType={colorType} hasBorder={hasBorder}>
+    <S.Button colortype={colortype} hasborder={hasborder}>
       {children}
     </S.Button>
   );
