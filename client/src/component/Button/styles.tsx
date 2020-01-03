@@ -1,10 +1,9 @@
 import MaterialButton from '@material-ui/core/Button';
 import styled from 'styled-components/macro';
-import { blue } from '@material-ui/core/colors';
-
+import COLORS from '../GlobalStyle/styleConstants';
 interface ButtonPropsType {
   colorType: string;
-  isBorder: string;
+  hasBorder: boolean;
 }
 
 export const Button = styled(MaterialButton)`
@@ -13,25 +12,17 @@ export const Button = styled(MaterialButton)`
     background-color: ${(p: ButtonPropsType) => {
       switch (p.colorType) {
         case 'primary':
-          return '#f94e36';
+          return COLORS.primary;
         case 'secondary':
-          return '#FFB82B';
+          return COLORS.secondary;
         default:
-          return '#f94e36';
+          return COLORS.primary;
       }
     }};
     font-weight: 700;
-    color: #ffffff;
-
+    color: ${COLORS.fontLight};
     border: ${(p: ButtonPropsType) => {
-      return p.isBorder == 'true' ? '1px solid white' : '';
+      return p.hasBorder === true ? '1px solid white' : '';
     }};
   }
-  /* && {
-    font-family: 'NanumSquare', sans-serif;
-    background-color: #f94e36;
-    font-weight: 700;
-    color: #ffffff;
-
-  } */
 `;
