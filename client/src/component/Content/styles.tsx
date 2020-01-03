@@ -4,7 +4,7 @@ export const Content = styled.div`
   margin-top: 6rem;
 `;
 export const Container = styled.div`
-  min-width: 48rem;
+  width: 100%;
   height: 20rem;
   margin: 0 auto;
   display: flex;
