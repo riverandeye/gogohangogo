@@ -1,6 +1,5 @@
 import React from 'react';
 import * as S from './styles';
-import AppBar from '../AppBar';
 import LandingBar from '../LandingBar';
 import Content from '../Content';
 

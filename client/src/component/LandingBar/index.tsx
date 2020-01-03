@@ -60,7 +60,7 @@ const LandingBar: React.FC = () => {
                 fontWeight: 'bold',
               }}
             >
-              만든 이들
+              만든 사람들
             </a>
           </S.AppBarItem>
         </S.AppBarMenu>
