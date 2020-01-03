@@ -13,12 +13,12 @@ const AppBar: React.FC = () => {
         </a>
         <S.AppBarMenu>
           <S.AppBarItem>
-            <Button>
+            <Button colorType="primary" isBorder="true">
               <a href="/users/sign_in">내 팟 관리</a>
             </Button>
           </S.AppBarItem>
           <S.AppBarItem>
-            <Button>
+            <Button colorType="primary" isBorder="true">
               <a href="/users/sign_in">내 계정 관리</a>
             </Button>
           </S.AppBarItem>

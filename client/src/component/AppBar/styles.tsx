@@ -4,7 +4,9 @@ import MaterialAppBar from '@material-ui/core/AppBar';
 
 export const AppBar = styled(MaterialAppBar)`
   && {
-    background-color: rgba(249, 78, 54, 0.1);
+    /* background-color: rgba(249, 78, 54, 0.1
+      ); */
+    background-color: #ff8262;
     height: 6rem;
   }
 `;
