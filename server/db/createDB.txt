@@ -20,6 +20,7 @@ USE `OTT` ;
 CREATE TABLE IF NOT EXISTS `OTT`.`Users` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `name` VARCHAR(45) NULL,
+  `introduction` TEXT NULL,
   `email` VARCHAR(2048) NULL,
   `avatar` VARCHAR(2048) NULL,
   `password` VARCHAR(128) NOT NULL,
@@ -28,6 +29,7 @@ CREATE TABLE IF NOT EXISTS `OTT`.`Users` (
   `alarmSubscription` VARCHAR(1000) NULL,
   `priority` INT NULL DEFAULT 0,
   `isValid` TINYINT NULL DEFAULT 0,
+  `status` INT NULL DEFAULT 1,
   PRIMARY KEY (`id`),
   UNIQUE INDEX `id_UNIQUE` (`id` ASC) )
 ENGINE = InnoDB;
@@ -57,6 +59,7 @@ CREATE TABLE IF NOT EXISTS `OTT`.`Parties` (
   `endAt` TIMESTAMP NULL,
   `status` INT NULL DEFAULT 0,
   `title` VARCHAR(45) NULL,
+  `introduction` TEXT NULL,
   `personnel` INT NULL,
   `capacity` INT NULL,
   `account` VARCHAR(2048) NULL,
@@ -86,6 +89,7 @@ CREATE TABLE IF NOT EXISTS `OTT`.`UserParties` (
   `endAt` TIMESTAMP NULL,
   `isDeposited` TINYINT NULL,
   `isAdmin` TINYINT NULL,
+  `status` INT NULL,
   INDEX `fk_UserParties_Users_idx` (`userId` ASC) ,
   INDEX `fk_UserParties_Parties1_idx` (`partyId` ASC) ,
   CONSTRAINT `fk_UserParties_Users`
