@@ -5,11 +5,17 @@ interface ButtonProps {
   children?: React.ReactNode;
   colortype?: string;
   hasborder?: string;
+  onClick?;
 }
 
-const Button: React.FC<ButtonProps> = ({ children, colortype, hasborder }) => {
+const Button: React.FC<ButtonProps> = ({
+  children,
+  colortype,
+  hasborder,
+  onClick,
+}) => {
   return (
-    <S.Button colortype={colortype} hasborder={hasborder}>
+    <S.Button onClick={onClick} colortype={colortype} hasborder={hasborder}>
       {children}
     </S.Button>
   );
