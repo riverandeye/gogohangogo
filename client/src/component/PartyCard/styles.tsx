@@ -2,6 +2,7 @@ import styled from 'styled-components/macro';
 import MaterialCard from '@material-ui/core/Card';
 import MaterialAvatar from '@material-ui/core/Avatar';
 import MaterialCardHeader from '@material-ui/core/CardHeader';
+import MaterialCardContent from '@material-ui/core/CardContent';
 
 import COLORS from '../../styleConstants';
 
@@ -13,7 +14,7 @@ export const Card = styled(MaterialCard)`
     &:hover {
     }
     margin-bottom: 2rem;
-    padding: 0 1rem;
+    /* padding: 0 1rem; */
   }
 `;
 export const CardHover = styled.div`
@@ -22,6 +23,10 @@ export const CardHover = styled.div`
 
 export const CardHeader = styled(MaterialCardHeader)`
   width: 100%;
+`;
+
+export const CardContent = styled(MaterialCardContent)`
+  height: 12rem;
 `;
 export const CardHeaderTitle = styled.span`
   font-size: 2rem;
