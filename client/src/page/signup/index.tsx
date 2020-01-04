@@ -8,7 +8,7 @@ const SignUp: React.FC = () => {
   const { handleChange, handleSubmit, values, errors } = formik;
 
   return (
-    <>
+    <S.Container>
       <div style={{ height: `6rem` }}></div>
       <S.SignUpForm>
         <S.SignUpFormLabel>회원가입</S.SignUpFormLabel>{' '}
@@ -70,7 +70,7 @@ const SignUp: React.FC = () => {
         <br></br>
         <Button onClick={handleSubmit}>회원가입</Button>
       </S.SignUpForm>
-    </>
+    </S.Container>
   );
 };
 
