@@ -3,7 +3,7 @@ import * as S from './styles';
 import { useSignUp } from './hooks';
 
 const SignUp: React.FC = () => {
-  const { formik } = useSignUp();
+  const { formik, duplicateEmailError } = useSignUp();
   const { handleChange, handleSubmit, values, errors } = formik;
 
   return (
@@ -27,7 +27,11 @@ const SignUp: React.FC = () => {
           onChange={handleChange}
           value={values.email}
         />
-        {errors.email ? errors.email : null}
+        {errors.email
+          ? errors.email
+          : duplicateEmailError
+          ? duplicateEmailError
+          : null}
         <br></br>
         <label htmlFor="password">비밀번호</label>
         <input

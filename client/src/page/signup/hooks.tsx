@@ -1,4 +1,5 @@
 import { useFormik } from 'formik';
+import { useState } from 'react';
 import * as Yup from 'yup';
 
 interface SignUpDto {
@@ -10,6 +11,7 @@ interface SignUpDto {
 
 export const useSignUp = () => {
   // formik logic
+  const [duplicateEmailError, setduplicateEmailError] = useState('');
   const validationSchema = Yup.object({
     name: Yup.string().required('이름을 입력해주세요.'),
     email: Yup.string()
@@ -21,18 +23,21 @@ export const useSignUp = () => {
   });
 
   const handleSignUp = async (values: SignUpDto) => {
-    console.log(
-      `${values.name} ${values.email} ${values.name} ${values.agreeAlarm}`,
-    );
-    console.log(JSON.stringify(values));
-    await fetch(`${process.env.REACT_APP_BACKEND_HOST}/users/`, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        // 'Content-Type': 'application/x-www-form-urlencoded',
+    const response = await fetch(
+      `${process.env.REACT_APP_BACKEND_HOST}/users/`,
+      {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          // 'Content-Type': 'application/x-www-form-urlencoded',
+        },
+        body: JSON.stringify(values),
       },
-      body: JSON.stringify(values),
-    });
+    );
+    if (!response.ok) {
+      const { message } = await response.json();
+      setduplicateEmailError(message);
+    }
   };
 
   const formik = useFormik({
@@ -43,5 +48,6 @@ export const useSignUp = () => {
 
   return {
     formik,
+    duplicateEmailError,
   };
 };
