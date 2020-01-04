@@ -53,12 +53,12 @@ ENGINE = InnoDB;
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `OTT`.`Parties` (
   `id` INT NOT NULL AUTO_INCREMENT,
-  `createdAt` VARCHAR(45) NULL,
+  `createdAt` TIMESTAMP NULL,
   `updatedAt` TIMESTAMP NULL,
   `startAt` TIMESTAMP NULL,
   `endAt` TIMESTAMP NULL,
   `status` INT NULL DEFAULT 0,
-  `title` VARCHAR(45) NULL,
+  `title` VARCHAR(100) NULL,
   `introduction` TEXT NULL,
   `personnel` INT NULL,
   `capacity` INT NULL,
