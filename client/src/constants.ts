@@ -7,6 +7,8 @@ export const ROUTE = {
   SIGNUP: '/signup',
   MYPARTIES: '/myparties',
   SIGNUPRESULT: '/signupresult',
+  NOTFOUND: '/notfound',
+  PARTYDETAIL: '/parties/:id',
 };
 
 export const SERVER_ENDPOINT = {
