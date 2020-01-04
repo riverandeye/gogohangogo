@@ -5,6 +5,7 @@ export const ROUTE = {
   MAIN: '/main',
   SUBSCRIBE: '/subscribe',
   SIGNUP: '/signup',
+  MYPARTIES: '/myparties',
 };
 
 export const SERVER_ENDPOINT = {
