@@ -1,8 +1,10 @@
 export const dummy = 'dummy';
 
 export const ROUTE = {
-  MAIN: '/',
+  LANDING: '/',
+  MAIN: '/main',
   SUBSCRIBE: '/subscribe',
+  SIGNUP: '/signup',
 };
 
 export const SERVER_ENDPOINT = {

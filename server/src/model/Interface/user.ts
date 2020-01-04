@@ -6,6 +6,7 @@ export interface User {
   email: string;
   avatar: string;
   agreeAlarm: boolean;
+  alarmSubscription: object;
   priority: number;
   isValid: boolean;
 }
@@ -16,6 +17,7 @@ export interface UpdatedUser {
   readonly password?: string;
   readonly avatar?: string;
   readonly agreeAlarm?: boolean;
+  readonly alarmSubscription?: object;
   readonly priority?: number;
   readonly isValid?: boolean;
 }
@@ -26,5 +28,6 @@ export interface CreatedUser {
   readonly password: string;
   readonly authKey: string;
   readonly avatar: string;
+  readonly alarmSubscription: object;
   readonly agreeAlarm: boolean;
 }

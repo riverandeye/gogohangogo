@@ -1,5 +1,6 @@
 import { createGlobalStyle } from 'styled-components';
 import reset from 'styled-reset';
+import 'animate.css/animate.min.css';
 
 const GlobalStyles = createGlobalStyle`
   ${reset};
@@ -20,6 +21,8 @@ const GlobalStyles = createGlobalStyle`
     height: 100%;
     background-color: white;
     margin : 0;
+  }::-webkit-scrollbar { 
+    display: none; 
   }
   a{
     text-decoration:none;

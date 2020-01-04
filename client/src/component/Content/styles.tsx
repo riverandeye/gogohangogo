@@ -4,9 +4,10 @@ export const Content = styled.div`
   margin-top: 6rem;
 `;
 export const Container = styled.div`
+  width: 100%;
+  margin: 0rem auto;
+  background-color: #eeeeee;
   min-width: 48rem;
-  height: 20rem;
-  margin: 0 auto;
   display: flex;
   justify-content: center;
   align-items: center;

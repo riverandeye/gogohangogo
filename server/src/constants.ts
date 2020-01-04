@@ -23,6 +23,15 @@ export const DB_COLUMN = {
     ISVALID: 'isValid',
   },
 
+  USERPARTIES: {
+    USERID: 'userId',
+    PARTYID: 'partyId',
+    CREATEDAT: 'createdAt',
+    UPDATEDAT: 'updatedAt',
+    ISDEPOSITED: 'isDeposited',
+    ISADMIN: 'isAdmin',
+  },
+
   PARTIES: {
     ID,
     CREATEDAT: 'createdAt',
@@ -70,6 +79,8 @@ export const API_PARAM = {
 export const API_ROUTE = {
   USERS: '/users',
   PARTIES: '/parties',
+  MY_PARTIES: './myparties',
+  MY_PARTY_DETAIL: `/myparties/:${ID}`,
 };
 
 export const REGEX = {
@@ -79,6 +90,7 @@ export const REGEX = {
 
 export const STATUS_CODE = {
   OK: 200,
+  CREATED: 201,
   NO_CONTENT: 204,
   BAD_REQUEST: 400,
   UNPROCESSIBLE_ENTITY: 422,
@@ -118,6 +130,9 @@ export const ERROR_RESPONSE = {
 export const MAIL = {
   MAIL_SUBJECT: `[NBread] 이메일 인증`,
 };
+
+export const AVATAR =
+  'https://publicdomainvectors.org/photos/abstract-user-flat-3.png';
 
 export const ALARM_MESSAGE = {
   SUBSCRIBE_SUCCESS: {
