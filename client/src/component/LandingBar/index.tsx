@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import * as S from './styles';
 import logo from '../../assets/logo/npang_simple.png';
-import Button from '../Button';
 
 const useScroll = () => {
   const [state, setState] = useState({
@@ -15,6 +14,20 @@ const useScroll = () => {
     return () => window.removeEventListener('scroll', onScroll);
   }, []);
   return state;
+};
+
+const scrollToS1 = () => {
+  window.scrollTo({
+    top: document.getElementById('section1').offsetTop - 150,
+    behavior: 'smooth',
+  });
+};
+
+const scrollToS2 = () => {
+  window.scrollTo({
+    top: document.getElementById('section2').offsetTop - 150,
+    behavior: 'smooth',
+  });
 };
 
 const LandingBar: React.FC = () => {
@@ -39,11 +52,11 @@ const LandingBar: React.FC = () => {
         <S.AppBarMenu>
           <S.AppBarItem>
             <a
-              href=""
+              onClick={scrollToS1}
               style={{
                 textDecoration: 'none',
-                color: 'black',
-                fontSize: '1.4rem',
+                color: 'white',
+                fontSize: '1.6rem',
                 fontWeight: 'bold',
               }}
             >
@@ -52,15 +65,15 @@ const LandingBar: React.FC = () => {
           </S.AppBarItem>
           <S.AppBarItem>
             <a
-              href=""
+              onClick={scrollToS2}
               style={{
                 textDecoration: 'none',
-                color: 'black',
-                fontSize: '1.4rem',
+                color: 'white',
+                fontSize: '1.6rem',
                 fontWeight: 'bold',
               }}
             >
-              만든 이들
+              만든 사람들
             </a>
           </S.AppBarItem>
         </S.AppBarMenu>

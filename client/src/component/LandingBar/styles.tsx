@@ -41,5 +41,4 @@ export const AppBarMenu = styled.ul`
 export const AppBarItem = styled.li`
   float: left;
   margin-right: 2rem;
-  font-weight: 500;
 `;
