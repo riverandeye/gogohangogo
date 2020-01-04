@@ -2,6 +2,8 @@ import { createGlobalStyle } from 'styled-components';
 import reset from 'styled-reset';
 import 'animate.css/animate.min.css';
 
+import COLORS from '../../styleConstants';
+
 const GlobalStyles = createGlobalStyle`
   ${reset};
   /* Font weight Regular(400), Bold(700), Extra Bold(800), Light(300) 지원 */
@@ -21,7 +23,7 @@ const GlobalStyles = createGlobalStyle`
   body {
     font-family: 'NanumSquare', sans-serif;
     height: 100%;
-    background-color: white;
+    background-color: ${COLORS.background} !important;
     margin : 0;
   }
   

@@ -6,7 +6,7 @@ export const MyParty = styled.div`
   padding: 10rem;
 
   background-color: ${COLORS.background};
-  height: 100vh;
+  height: 100%;
 `;
 
 export const Title = styled.div`
@@ -88,16 +88,36 @@ export const PartyMeta = styled.div`
   display: flex;
   flex-direction: column;
   width: 50rem;
+
+  .title {
+    font-size: 2rem;
+    font-weight: bold;
+  }
+
+  .count {
+    font-size: 1.5rem;
+  }
+
+  .email {
+    font-size: 1.5rem;
+  }
+
+  .emailVerified {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: green;
+  }
 `;
 
-export const PartyTitle = styled.div`
-  font-size: 2rem;
-  font-weight: bold;
-`;
-
-export const PartyUserStatus = styled.div`
+export const PartyUserList = styled.div`
+  display: flex;
+  flex-direction: column;
   width: 15rem;
   height: 15rem;
   border: 0.1rem solid black;
   border-radius: 0.5rem;
+`;
+
+export const PartyUser = styled.div`
+  background-color: whitesmoke;
 `;

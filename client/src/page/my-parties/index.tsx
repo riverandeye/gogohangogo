@@ -24,11 +24,19 @@ const MyParties: React.FC = () => {
               <S.Party>
                 <S.PartyImage src="https://images-na.ssl-images-amazon.com/images/I/41Ix1vMUK7L.png" />
                 <S.PartyMeta>
-                  <S.PartyTitle>
+                  <div className="title">
                     제목 : 저와 함께 넷플릭스 계정 공유하실 분을 찾습니다!
-                  </S.PartyTitle>
+                  </div>
+                  <div className="count">총원 : 1 / 4</div>
+                  <div className="email">계정 : riveandeye@hello.com</div>
+                  <div className="emailVerified">계정 인증 : 완료</div>
                 </S.PartyMeta>
-                <S.PartyUserStatus>안녕</S.PartyUserStatus>
+                <S.PartyUserList>
+                  <S.PartyUser>안녕</S.PartyUser>
+                  <S.PartyUser>안녕</S.PartyUser>
+                  <S.PartyUser>안녕</S.PartyUser>
+                  <S.PartyUser>안녕</S.PartyUser>
+                </S.PartyUserList>
               </S.Party>
             </S.PartyList>
             <S.PartyListTitle>내가 참여한 파티</S.PartyListTitle>
