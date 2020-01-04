@@ -20,18 +20,26 @@ const PartyModel = {
   },
 
   async getPartyList() {
-    const [data] = await db
-      .promise()
-      .query(`Select * from ${DB_TABLE.PARTIES} where status=1`);
+    const [data] = await db.promise().query(`
+      Select * from
+      (Select * from ${DB_TABLE.PARTIES} where status=1) P
+      Left outer join ${DB_TABLE.SERVICES} S
+      On P.serviceId=S.id
+      `);
     return parsePacket(data);
   },
 
   async getPartyListWithUserId(Id: number) {
     const [data] = await db.promise().query(
-      `Select * 
-        from (select * from ${DB_TABLE.USERPARTIES} where ${DB_COLUMN.USERPARTIES.USERID}=? Order by partyId) UP
+      `
+      Select * from
+      (Select * 
+        from (select userId, partyId from ${DB_TABLE.USERPARTIES} where ${DB_COLUMN.USERPARTIES.USERID}=? Order by partyId) UP
         Left outer join ${DB_TABLE.PARTIES} P
-        On UP.partyId = P.id`,
+        On UP.partyId = P.id) PP
+        Left outer join ${DB_TABLE.SERVICES} S
+        On PP.serviceId=S.id
+        `,
       [Id],
     );
 
