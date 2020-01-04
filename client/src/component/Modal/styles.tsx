@@ -20,7 +20,8 @@ export const Background = styled.div`
 export const PopupBackground = styled.div`
   position: fixed;
   left: 50%;
-  transform: translate(-50%, 0%);
+  top: 50%;
+  transform: translate(-50%, -50%);
   width: 50rem;
   height: 40rem;
   background: white;

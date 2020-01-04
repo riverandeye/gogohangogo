@@ -33,11 +33,11 @@ const Modal: React.FC<ModalProps> = ({
         <MDBAnimation
           type="bounceInUp"
           style={{
-            top: '30rem',
             position: 'fixed',
             zIndex: '100',
             left: '50%',
-            transform: 'translate(-50%, 0%)',
+            top: '50%',
+            transform: 'translate(-50%, -50%)',
           }}
         >
           <S.PopupBackground>
