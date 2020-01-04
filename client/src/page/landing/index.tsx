@@ -62,7 +62,7 @@ const Landing: React.FC = () => {
                   margin: '0rem auto',
                 }}
               >
-                Netflix, Watcha, Wave⋯
+                Netflix, Watcha, Wavve⋯
                 <br />
                 같이 볼 사람이 필요한가요?
                 <br />
@@ -240,9 +240,9 @@ const Landing: React.FC = () => {
                       Signup view
                     </h3>
                     <p style={{ fontSize: '1.4rem' }}>
-                      - 생년월일
+                      - 1997.03.12
                       <br />
-                      - 한양대학교 재학 (201?~)
+                      - 한양대학교 재학 (2016~)
                       <br />
                     </p>
                   </Grid>
@@ -281,9 +281,9 @@ const Landing: React.FC = () => {
                       detail view
                     </h3>
                     <p style={{ fontSize: '1.4rem' }}>
-                      - ㅁㄴㅇㄹ
+                      - 1995.04.13
                       <br />
-                      - 고려대학교 재학 (201?~)
+                      - 고려대학교 재학 (2014~)
                       <br />
                     </p>
                   </Grid>

@@ -4,7 +4,7 @@ import { MDBAnimation } from 'mdbreact';
 import AppBar from '../../component/AppBar';
 import COLORS from '../../styleConstants';
 
-import logo2 from '../../assets/logo/npang_sad.jpg';
+import logo from '../../assets/logo/npang_sad.png';
 
 const NotFound: React.FC = () => {
   return (
@@ -14,13 +14,12 @@ const NotFound: React.FC = () => {
         <S.Flex>
           <S.Content>
             <MDBAnimation type="rubberBand" duration={10} infinite>
-              <img src={logo2} width="250px" />
+              <img src={logo} width="250px" />
             </MDBAnimation>
             <h1
               style={{
-                fontSize: '5.0rem',
+                fontSize: '2.5rem',
                 fontWeight: 'bold',
-                color: COLORS.primary,
                 marginTop: '4.5rem',
               }}
             >
@@ -28,7 +27,7 @@ const NotFound: React.FC = () => {
             </h1>
             <h1
               style={{
-                fontSize: '7.0rem',
+                fontSize: '3.0rem',
                 fontWeight: 'bold',
                 color: COLORS.primary,
               }}
@@ -53,6 +52,20 @@ const NotFound: React.FC = () => {
                 style={{ display: 'inline' }}
               >
                 <span>요</span>
+              </MDBAnimation>
+              <MDBAnimation
+                type="fadeIn"
+                delay="2.0s"
+                style={{ display: 'inline' }}
+              >
+                <span>ㅠ</span>
+              </MDBAnimation>
+              <MDBAnimation
+                type="fadeIn"
+                delay="2.5s"
+                style={{ display: 'inline' }}
+              >
+                <span>ㅠ</span>
               </MDBAnimation>
             </h1>
           </S.Content>

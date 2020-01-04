@@ -6,6 +6,7 @@ export const ROUTE = {
   SUBSCRIBE: '/subscribe',
   SIGNUP: '/signup',
   MYPARTIES: '/myparties',
+  SIGNUPRESULT: '/signupresult',
   NOTFOUND: '/notfound',
   PARTYDETAIL: '/parties/:id',
 };

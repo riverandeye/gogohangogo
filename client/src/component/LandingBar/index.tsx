@@ -35,7 +35,7 @@ const LandingBar: React.FC = () => {
   return (
     <S.LandingBar
       style={{
-        background: 'rgba(255, 130, 98,' + (window.scrollY - 100) / 100 + ')',
+        background: 'rgba(255, 130, 98,' + (window.scrollY - 100) / 200 + ')',
         boxShadow:
           window.scrollY > 100
             ? '0 5px 5px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24)'
