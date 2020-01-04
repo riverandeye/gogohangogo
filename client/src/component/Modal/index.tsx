@@ -79,7 +79,7 @@ const Modal: React.FC<ModalProps> = ({
                   </PersonRoundedIcon>
                 ))}
                 <S.ModalMessage>
-                  {maxSlot}자리 중{' '}
+                  아직 {maxSlot}자리 중{' '}
                   <span style={{ color: '#f94e36', fontWeight: 700 }}>
                     {availableSlot}
                   </span>

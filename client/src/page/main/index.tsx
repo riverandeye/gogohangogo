@@ -7,13 +7,19 @@ import PartyCard from '../../component/PartyCard';
 import ExpansionPanel from '@material-ui/core/ExpansionPanel';
 import ExpansionPanelDetails from '@material-ui/core/ExpansionPanelDetails';
 import ExpansionPanelSummary from '@material-ui/core/ExpansionPanelSummary';
-import ExpansionPanelActions from '@material-ui/core/ExpansionPanelActions';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
-
-// 테스트용 필터
+import getOttIconUrl from '../../utils/ottIconMatcher';
+// 필터용
+import Radio from '@material-ui/core/Radio';
+import RadioGroup from '@material-ui/core/RadioGroup';
+import FormControlLabel from '@material-ui/core/FormControlLabel';
+import FormControl from '@material-ui/core/FormControl';
+import Divider from '@material-ui/core/Divider';
+import Typography from '@material-ui/core/Typography';
 
 const Main: React.FC = () => {
   const [parties, setParties] = useState([]);
+  // for modal
   const [isModalOpened, setIsModalOpened] = useState(false);
   const [modalInfo, setModalInfo] = useState({});
   let partyCardId = 0;
@@ -24,6 +30,7 @@ const Main: React.FC = () => {
     setIsModalOpened(false);
   };
   const [clickedCard, setClickedCard] = useState(null);
+  // for filter
   useEffect(() => {
     axios
       .get(`${process.env.REACT_APP_BACKEND_HOST}/parties`)
@@ -74,13 +81,162 @@ const Main: React.FC = () => {
               aria-controls="panel1c-content"
               id="panel1c-header"
             >
-              <div style={{ fontSize: '1.6rem', marginRight: '1rem' }}>
-                이것이 필-터다
+              <div
+                style={{
+                  fontSize: '1.6rem',
+                  fontWeight: 600,
+                  textAlign: 'right',
+                  color: '#808080',
+                }}
+              >
+                검색 조건 설정
               </div>
             </ExpansionPanelSummary>
             <ExpansionPanelDetails>
-              <div style={{ alignItems: 'center' }} />
-              <div style={{ flexBasis: '33.33%' }}>form</div>
+              <S.FilterContent>
+                <S.OttFilterSection>
+                  <FormControl component="fieldset">
+                    <S.FilterSectionLable>
+                      OTT 종류별로 검색하기
+                    </S.FilterSectionLable>
+                    <Divider />
+                    <RadioGroup aria-label="position" name="position" row>
+                      <form>
+                        <div className="cc-selector">
+                          <S.Group>
+                            <input
+                              id="watcha"
+                              type="radio"
+                              name="credit-card"
+                              value="watcha"
+                            />
+                            <div className="radioInfo">watcha</div>
+                            <label
+                              className="watcha"
+                              htmlFor="watcha"
+                              style={{
+                                backgroundImage: `url(${getOttIconUrl(
+                                  'watcha',
+                                )})`,
+                                backgroundSize: '5rem',
+                              }}
+                            ></label>
+                          </S.Group>
+                          <S.Group>
+                            <input
+                              id="netflix"
+                              type="radio"
+                              name="credit-card"
+                              value="netflix"
+                            />
+                            <div className="radioInfo">netflix</div>
+                            <label
+                              className="netflix"
+                              htmlFor="netflix"
+                              style={{
+                                backgroundImage: `url(${getOttIconUrl(
+                                  'Netflix',
+                                )})`,
+                                backgroundSize: '5rem',
+                              }}
+                            ></label>
+                          </S.Group>
+                          <S.Group>
+                            <input
+                              id="wavve"
+                              type="radio"
+                              name="credit-card"
+                              value="wavve"
+                            />
+                            <div className="radioInfo">wavve</div>
+                            <label
+                              className="wavve"
+                              htmlFor="wavve"
+                              style={{
+                                backgroundImage: `url(${getOttIconUrl(
+                                  'wavve',
+                                )})`,
+                                backgroundSize: '5rem',
+                              }}
+                            ></label>
+                          </S.Group>
+                          <S.Group>
+                            <input
+                              id="prime"
+                              type="radio"
+                              name="credit-card"
+                              value="prime"
+                            />
+                            <div className="radioInfo">amazon prime</div>
+                            <label
+                              className="prime"
+                              htmlFor="prime"
+                              style={{
+                                backgroundImage: `url(${getOttIconUrl(
+                                  'Amazon Prime',
+                                )})`,
+                                backgroundSize: '5rem',
+                              }}
+                            ></label>
+                          </S.Group>
+                        </div>
+                      </form>
+                    </RadioGroup>
+                  </FormControl>
+                </S.OttFilterSection>
+                <S.SortFilterSection>
+                  <S.FilterSectionLable>기준으로 정렬하기</S.FilterSectionLable>
+                  <Divider />
+                  <FormControl component="fieldset" className="somethin">
+                    <RadioGroup
+                      aria-label="sort"
+                      name="sort"
+                      // value={value}
+                      // onChange={handleChange}
+                    >
+                      <S.Group>
+                        <FormControlLabel
+                          value="female"
+                          control={<Radio color="primary" />}
+                          label={
+                            <Typography
+                              style={{
+                                fontFamily: 'NanumSquare',
+                                fontSize: '1.4rem',
+                              }}
+                            >
+                              신뢰도 순
+                            </Typography>
+                          }
+                          className="radioInfo"
+                        />
+                        <FormControlLabel
+                          value="male"
+                          control={<Radio color="primary" />}
+                          label={
+                            <Typography
+                              style={{
+                                fontFamily: 'NanumSquare',
+                                fontSize: '1.4rem',
+                              }}
+                            >
+                              등록일 순
+                            </Typography>
+                          }
+                          className="radioInfo"
+                        />
+                      </S.Group>
+                    </RadioGroup>
+                  </FormControl>
+                </S.SortFilterSection>
+                <S.FilterSubmitSection>
+                  <input
+                    className="filterSubmitInput"
+                    type="submit"
+                    value="선택한 필터 적용하기"
+                  />
+                </S.FilterSubmitSection>
+              </S.FilterContent>
             </ExpansionPanelDetails>
           </ExpansionPanel>
         </S.Filter>
