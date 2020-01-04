@@ -5,6 +5,7 @@ import * as S from './styles';
 import Layout from '../../component/Layout';
 import ParticipantCard from '../../component/ParticipantCard';
 import PartyStatus from '../../component/PartyStatus';
+import Spinner from '../../component/Spinner';
 
 interface PartyDetailProps {
   match: any;
@@ -12,7 +13,7 @@ interface PartyDetailProps {
 
 const PartyDetail: React.FC<PartyDetailProps> = ({ match }) => {
   const [state, setState] = useState({
-    party: { adminUserId: 0, status: 0 },
+    party: { adminUserId: 0, status: -1, avatar: '', title: '' },
     userList: [],
   });
   useEffect(() => {
@@ -32,18 +33,21 @@ const PartyDetail: React.FC<PartyDetailProps> = ({ match }) => {
       },
     );
   }, []);
-  console.log(state.party);
+  if (state.party.status === -1) return <Spinner visible />;
   return (
     <Layout>
       <S.PartyDetail>
         <S.PartyInformation>
-          <img
-            src="/static/media/netflix.46d91517.png"
-            alt="ott"
-            width="300rem"
-            height="300rem"
-          />
-          <PartyStatus status={state.party.status} />
+          <S.LogoAndState>
+            <img
+              src={state.party.avatar}
+              alt="ott"
+              width="100%"
+              height="100%"
+            />
+            <PartyStatus status={state.party.status} />
+          </S.LogoAndState>
+          <S.PartyInformationTexts>{state.party.title}</S.PartyInformationTexts>
         </S.PartyInformation>
         <S.ParticipantList>
           {state.userList.map(user => {
