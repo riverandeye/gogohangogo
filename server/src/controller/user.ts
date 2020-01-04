@@ -123,7 +123,12 @@ const UserController = {
       message: 'user created',
     });
   },
-
+  // delete user
+  async deleteUser(req: Request, res: Response, next: NextFunction) {
+    const Id = Number(req.params[ID]);
+    await UserService.deleteUser(Id);
+    res.status(STATUS_CODE.NO_CONTENT).send({});
+  },
   // auth - login
   async login(req: Request, res: Response, next: NextFunction) {
     const { email, password } = req.body;

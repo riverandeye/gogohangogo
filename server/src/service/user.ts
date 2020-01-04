@@ -29,6 +29,10 @@ const UserService = {
     user.password = encryptedPassword.toString();
     await UserModel.createUser(user);
   },
+
+  async deleteUser(Id: number) {
+    await UserModel.deleteUser(Id);
+  },
   // alarm part
   async updateUserSubscription(Id: number, subscription: PushSubscription) {
     const user = await UserModel.updateUserSubscription(Id, subscription);

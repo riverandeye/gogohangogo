@@ -46,13 +46,17 @@ UserRouter.post(
   doAsync(UserController.checkDuplicateUserEmail),
   doAsync(UserController.createUser),
 );
-
+UserRouter.delete(API_PARAM.USER.ID, doAsync(UserController.deleteUser));
 UserRouter.post(
   API_PARAM.USER.LOGIN,
   validateAuthBody,
   doAsync(UserController.login),
 );
 
+UserRouter.delete(
+  API_PARAM.USER.USER_PARTY,
+  doAsync(PartyController.leaveParty),
+);
 // MailService API
 UserRouter.get(
   API_PARAM.USER.REVERIFY,
