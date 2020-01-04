@@ -10,14 +10,9 @@ export const AppBar = styled(MaterialAppBar)`
     background-color: ${COLORS.primaryLight};
     height: 6rem;
     min-width: 48rem;
-  }
-`;
-
-export const AppBarButton = styled(Button)`
-  && {
     a {
       text-decoration: none;
-      color: white;
+      color: inherit;
     }
   }
 `;
@@ -49,4 +44,8 @@ export const AppBarItem = styled.li`
   float: left;
   margin-right: 1rem;
   font-weight: 500;
+`;
+
+export const AppBarButton = styled(Button)`
+  outline: none;
 `;

@@ -1,7 +1,6 @@
 import React from 'react';
 import * as S from './styles';
 import logo from '../../assets/logo/npang_simple.png';
-import Button from '../Button';
 const AppBar: React.FC = () => {
   return (
     <S.AppBar>
