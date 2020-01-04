@@ -1,6 +1,7 @@
 export const ID = 'id';
 export const NAME = 'name';
 export const AUTHKEY = 'authKey';
+export const MAXAGE = 60 * 60 * 1000;
 
 export const DB_TABLE = {
   USERS: 'Users',
@@ -71,6 +72,7 @@ export const API_PARAM = {
     UNSUBSCRIBE: `/:${ID}/unsubscribe`,
     CHECK_ALARM: `/:${ID}/check`,
     PARTY_LIST: `/:${ID}/parties`,
+    LOGIN: `/login`,
   },
 
   PARTIES: {
@@ -105,6 +107,8 @@ const ERROR_MESSAGE = {
   DUPLICATE_EMAIL: `이미 존재하는 이메일입니다.`,
   INVALID_AUTH_KEY: `유효하지 않은 인증 키입니다.`,
   NO_REQUIRED_FILED: `필요 필드가 존재하지 않습니다.`,
+  WRONG_PASSWORD: `잘못된 비밀번호를 입력하였습니다.`,
+  USER_NOT_EXIST: `해당 사용자가 존재하지 않습니다.`,
 };
 
 export const ERROR_RESPONSE = {
@@ -125,6 +129,12 @@ export const ERROR_RESPONSE = {
   },
   NO_REQUIRED_FILED: {
     message: ERROR_MESSAGE.NO_REQUIRED_FILED,
+  },
+  WRONG_PASSWORD: {
+    message: ERROR_MESSAGE.WRONG_PASSWORD,
+  },
+  USER_NOT_EXIST: {
+    message: ERROR_MESSAGE.USER_NOT_EXIST,
   },
 };
 
