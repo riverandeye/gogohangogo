@@ -21,8 +21,8 @@ const PartyModel = {
 
   async getPartyList() {
     const [data] = await db.promise().query(`
-      Select * from
-      (Select * from ${DB_TABLE.PARTIES} where status=1) P
+      Select P.title, P.introduction, P.createdAt, P.adminUserId, S.name as ottName, S.avatar as ottImage from
+      (Select title, introduction, createdAt, adminUserId, serviceId from ${DB_TABLE.PARTIES} where status=1) P
       Left outer join ${DB_TABLE.SERVICES} S
       On P.serviceId=S.id
       `);
@@ -32,13 +32,13 @@ const PartyModel = {
   async getPartyListWithUserId(Id: number) {
     const [data] = await db.promise().query(
       `
-      Select * from
+      Select P.title, P.introduction, P.createdAt, P.adminUserId, S.name as ottName, S.avatar as ottImage from
       (Select * 
         from (select userId, partyId from ${DB_TABLE.USERPARTIES} where ${DB_COLUMN.USERPARTIES.USERID}=? Order by partyId) UP
-        Left outer join ${DB_TABLE.PARTIES} P
-        On UP.partyId = P.id) PP
+        Left outer join ${DB_TABLE.PARTIES} PP
+        On UP.partyId = PP.id) P
         Left outer join ${DB_TABLE.SERVICES} S
-        On PP.serviceId=S.id
+        On P.serviceId=S.id
         `,
       [Id],
     );
