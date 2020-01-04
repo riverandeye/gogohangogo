@@ -21,7 +21,7 @@ export const GridContainer = styled.div`
   grid-template-columns: repeat(3, 1fr);
   grid-auto-columns: repeat(3, 1fr);
   row-gap: 1rem;
-  column-gap: 1rem;
+  column-gap: 2rem;
 `;
 
 export const GridLabel = styled.div`
