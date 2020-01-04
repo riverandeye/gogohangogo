@@ -13,13 +13,12 @@ const PartyController = {
     res.send(party);
   },
 
-  async findPartyList(
-    req: Request,
-    res: Response,
-    next: NextFunction,
-  ) {
+  async findPartyList(req: Request, res: Response, next: NextFunction) {
     const partyList = await PartyService.findPartyList(req);
-    res.send(partyList);
+    const partyListWithAdminUser = await PartyService.findAndAddAdminUser(
+      partyList,
+    );
+    res.send(partyListWithAdminUser);
   },
 
   async createParty(req: Request, res: Response, next: NextFunction) {

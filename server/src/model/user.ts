@@ -14,7 +14,7 @@ const UserModel = {
         Id,
       ]);
 
-    return parsePacket(data[0]);
+    return parsePacket(data);
   },
 
   async getUserWithEmail(email: string) {
