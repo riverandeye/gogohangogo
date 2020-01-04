@@ -23,6 +23,7 @@ import facebook from '../../assets/img/facebook.png';
 import instagram from '../../assets/img/instagram.png';
 
 import logo from '../../assets/logo/npang.png';
+import capture from '../../assets/img/capture.png';
 import LoginForm from '../../component/LoginForm/index';
 
 const Landing: React.FC = () => {
@@ -49,7 +50,6 @@ const Landing: React.FC = () => {
             <h1
               style={{
                 fontSize: '3.0rem',
-                fontWeight: 'bold',
                 margin: '10rem 15rem',
                 marginTop: '20rem',
               }}
@@ -69,7 +69,13 @@ const Landing: React.FC = () => {
                 Netflix, Watcha, Wavve⋯
                 <br />
                 같이 볼 사람이 필요한가요?
-                <br />
+              </p>
+              <p
+                style={{
+                  fontSize: '2.5rem',
+                  margin: '0rem auto',
+                }}
+              >
                 조금 더 쉽고 간편하게
                 <br />
                 <span>
@@ -86,7 +92,7 @@ const Landing: React.FC = () => {
                   '0 5px 5px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24)',
               }}
             >
-              <img src="https://us.123rf.com/450wm/terrry4/terrry41904/terrry4190402765/124945839-browser-window-web-browser-in-flat-style-window-concept-internet-browser-mockup-screen-design-vector.jpg?ver=6" />
+              <img src={capture} />
             </ScrollAnimation>
           </S.Flex>
           <S.Flex>
@@ -106,13 +112,23 @@ const Landing: React.FC = () => {
                 <span>
                   <img src={logo} width="24px" style={{ margin: '0.5rem' }} />
                 </span>
-                nBread는 어쩌구 웅앵...
+                nBread는 OTT서비스를 이용하는 학생들이 좀 더 쉽게 N인팟을 구인할
+                수 있는 서비스입니다.
                 <br />
-                이러저러해서 좋구요
-                <br />
-                대충 필요성에 의해서.. 만들엇구요..
-                <br />
-                암튼 조아요 써보셔요
+                다른 서비스에는 없는 '신뢰도' 시스템을 통해 파티를 모집하는
+                사람도, 참여하는 사람도 믿을만한 거래를 할 수 있습니다.
+              </p>
+              <br />
+              <br />
+              <p
+                style={{
+                  fontSize: '2.0rem',
+                  textAlign: 'center',
+                  fontWeight: 'bold',
+                  margin: '0rem auto',
+                }}
+              >
+                구인부터 참여까지, 간편하고 확실하게!
               </p>
             </ScrollAnimation>
           </S.Flex>
@@ -122,11 +138,14 @@ const Landing: React.FC = () => {
             <h1
               style={{
                 fontSize: '3.0rem',
-                fontWeight: 'bold',
                 margin: '10rem 15rem',
               }}
             >
-              만든 사람들 <span style={{ color: COLORS.primary }}>|</span>
+              <span>
+                <img src={logo} width="32px" style={{ margin: '0.5rem' }} />
+              </span>
+              nBread를 만든 사람들{' '}
+              <span style={{ color: COLORS.primary }}>|</span>
             </h1>
           </ScrollAnimation>
           <S.Flex>
@@ -323,8 +342,8 @@ const Landing: React.FC = () => {
                       <span style={{ color: COLORS.primary }}>|</span> Landing
                       view
                       <br />
-                      <span style={{ color: COLORS.primary }}>|</span> Modal
-                      view
+                      <span style={{ color: COLORS.primary }}>|</span> ETC.
+                      Front view
                     </h3>
                     <p style={{ fontSize: '1.4rem' }}>
                       - 2000.08.21

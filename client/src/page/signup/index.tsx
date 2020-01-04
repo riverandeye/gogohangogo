@@ -4,7 +4,7 @@ import { useSignUp } from './hooks';
 import Button from '../../component/Button';
 
 const SignUp: React.FC = () => {
-  const { formik, postEmailValidation } = useSignUp();
+  const { formik, postEmailValidation, setpostEmailValidation } = useSignUp();
   const { handleChange, handleSubmit, values, errors } = formik;
 
   return (
@@ -29,7 +29,10 @@ const SignUp: React.FC = () => {
           id="email"
           name="email"
           type="email"
-          onChange={handleChange}
+          onChange={e => {
+            handleChange(e);
+            setpostEmailValidation('');
+          }}
           value={values.email}
         />
         <S.ErrorMessage>

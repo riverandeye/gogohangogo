@@ -9,7 +9,6 @@ import logo from '../../assets/logo/npang.png';
 const SignUpResult: React.FC = () => {
   return (
     <>
-      <AppBar />
       <S.main>
         <S.Flex>
           <S.Content>
@@ -30,6 +29,7 @@ const SignUpResult: React.FC = () => {
               style={{
                 fontSize: '2.5rem',
                 fontWeight: 'bold',
+                marginTop: '1rem',
               }}
             >
               이제 이메일을 인증하고 서비스를 이용해보세요!
@@ -42,7 +42,7 @@ const SignUpResult: React.FC = () => {
           }}
         >
           <a
-            href="/main"
+            href="/"
             style={{
               textDecoration: 'none',
               color: 'white',

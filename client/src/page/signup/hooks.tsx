@@ -1,8 +1,7 @@
 import { useFormik } from 'formik';
 import { useState } from 'react';
 import * as Yup from 'yup';
-import { VALIDATION_ERROR_MESSAGE, REGEX } from '../../constants';
-
+import { VALIDATION_ERROR_MESSAGE, REGEX, ROUTE } from '../../constants';
 interface SignUpDTO {
   name: string;
   email: string;
@@ -38,7 +37,9 @@ export const useSignUp = () => {
     if (!response.ok) {
       const { message } = await response.json();
       setpostEmailValidation(message);
+      return;
     }
+    window.location.replace(ROUTE.SIGNUPRESULT);
   };
 
   const formik = useFormik({
@@ -50,5 +51,6 @@ export const useSignUp = () => {
   return {
     formik,
     postEmailValidation,
+    setpostEmailValidation,
   };
 };

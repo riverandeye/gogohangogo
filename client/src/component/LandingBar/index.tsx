@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import * as S from './styles';
 import logo from '../../assets/logo/npang_simple.png';
+import logo2 from '../../assets/logo/npang.png';
 
 const useScroll = () => {
   const [state, setState] = useState({
@@ -37,7 +38,7 @@ const LandingBar: React.FC = () => {
       style={{
         background: 'rgba(255, 130, 98,' + (window.scrollY - 100) / 200 + ')',
         boxShadow:
-          window.scrollY > 100
+          window.scrollY > 150
             ? '0 5px 5px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24)'
             : 'none',
         width: '100%',
@@ -49,15 +50,18 @@ const LandingBar: React.FC = () => {
             <img src={logo} width="100%" alt="logo" />
           </S.Logo>
         </a>
-        <S.AppBarMenu>
+        <S.AppBarMenu
+          style={{
+            marginTop: '1rem',
+          }}
+        >
           <S.AppBarItem>
             <a
               onClick={scrollToS1}
               style={{
                 textDecoration: 'none',
                 color: 'white',
-                fontSize: '1.6rem',
-                fontWeight: 'bold',
+                fontSize: '1.8rem',
                 cursor: 'pointer',
               }}
             >
@@ -65,17 +69,34 @@ const LandingBar: React.FC = () => {
             </a>
           </S.AppBarItem>
           <S.AppBarItem>
+            <h1
+              style={{
+                color: 'white',
+                fontSize: '1.8rem',
+                marginTop: '0.3rem',
+              }}
+            >
+              |
+            </h1>
+          </S.AppBarItem>
+          <S.AppBarItem>
             <a
               onClick={scrollToS2}
               style={{
                 textDecoration: 'none',
                 color: 'white',
-                fontSize: '1.6rem',
-                fontWeight: 'bold',
+                fontSize: '1.8rem',
                 cursor: 'pointer',
               }}
             >
-              만든 사람들
+              <span>
+                <img
+                  src={logo2}
+                  width="24px"
+                  style={{ marginTop: '-0.2rem', marginRight: '0.3rem' }}
+                />
+              </span>
+              nBread를 만든 사람들
             </a>
           </S.AppBarItem>
         </S.AppBarMenu>
