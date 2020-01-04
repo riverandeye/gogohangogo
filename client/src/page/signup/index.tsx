@@ -1,16 +1,19 @@
 import React from 'react';
 import * as S from './styles';
 import { useSignUp } from './hooks';
+import Button from '../../component/Button';
 
 const SignUp: React.FC = () => {
   const { formik, duplicateEmailError } = useSignUp();
   const { handleChange, handleSubmit, values, errors } = formik;
 
   return (
-    <S.signup>
-      <form onSubmit={handleSubmit}>
-        <label htmlFor="name">이름</label>
-        <input
+    <>
+      <S.SignUpFormLabel>회원가입</S.SignUpFormLabel>
+      <S.SignUpForm>
+        <S.SignUpInputLabel htmlFor="name"></S.SignUpInputLabel>
+        이름
+        <S.SignUpInput
           id="name"
           name="name"
           type="text"
@@ -19,8 +22,8 @@ const SignUp: React.FC = () => {
         />
         {errors.name ? errors.name : null}
         <br></br>
-        <label htmlFor="email">이메일</label>
-        <input
+        <S.SignUpInputLabel htmlFor="이메일">이메일</S.SignUpInputLabel>
+        <S.SignUpInput
           id="email"
           name="email"
           type="email"
@@ -33,8 +36,8 @@ const SignUp: React.FC = () => {
           ? duplicateEmailError
           : null}
         <br></br>
-        <label htmlFor="password">비밀번호</label>
-        <input
+        <S.SignUpInputLabel htmlFor="비밀번호">비밀번호</S.SignUpInputLabel>
+        <S.SignUpInput
           id="password"
           name="password"
           type="password"
@@ -46,20 +49,21 @@ const SignUp: React.FC = () => {
         />
         {errors.password ? errors.password : null}
         <br></br>
-        <input
-          id="agreeAlarm"
-          name="agreeAlarm"
-          checked={values.agreeAlarm}
-          type="checkbox"
-          onChange={handleChange}
-        />
-        <label htmlFor="agreeAlarm">
-          서비스와 관련된 푸쉬알람에 동의합니다.
-        </label>
+        <S.SignUpCheckboxLabel
+          control={
+            <S.SignUpCheckbox
+              id="agreeAlarm"
+              name="agreeAlarm"
+              checked={values.agreeAlarm}
+              onChange={handleChange}
+            />
+          }
+          label="서비스와 관련된 푸쉬 알람에 동의합니다."
+        ></S.SignUpCheckboxLabel>
         <br></br>
-        <button type="submit">Submit</button>
-      </form>
-    </S.signup>
+        <Button onClick={handleSubmit}>Submit</Button>
+      </S.SignUpForm>
+    </>
   );
 };
 
