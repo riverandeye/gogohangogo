@@ -1,7 +1,7 @@
 import styled from 'styled-components/macro';
 
 export const Content = styled.div`
-  margin-top: 6rem;
+  margin-top: 5rem;
   font-family: 'NanumSquare', sans-serif;
 `;
 export const Container = styled.div`
