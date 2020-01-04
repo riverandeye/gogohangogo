@@ -7,7 +7,7 @@ export default function getOttImgUrl(ottName) {
   switch (ottName) {
     case 'Amazon Prime':
       return primeImg;
-    case '왓챠':
+    case 'watcha':
       return watchaImg;
     case 'Netflix':
       return netflixImg;
