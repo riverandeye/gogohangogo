@@ -33,8 +33,8 @@ const UserModel = {
   async getUserListWithPartyId(partyId: number) {
     const [data] = await db.promise().query(
       `
-        Select * from  ${DB_TABLE.USERS} As U
-        Inner join ${DB_TABLE.USERPARTIES} where ${DB_COLUMN.USERPARTIES.PARTYID}=? As UP
+        Select * from  ${DB_TABLE.USERS} U
+        Inner join (Select * from ${DB_TABLE.USERPARTIES} where ${DB_COLUMN.USERPARTIES.PARTYID}=?) UP
         On U.${DB_COLUMN.USERS.ID} = UP.${DB_COLUMN.USERPARTIES.USERID}
          `,
       [partyId],
