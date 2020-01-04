@@ -130,6 +130,9 @@ export const MAIL = {
   MAIL_SUBJECT: `[NBread] 이메일 인증`,
 };
 
+export const AVATAR =
+  'https://publicdomainvectors.org/photos/abstract-user-flat-3.png';
+
 export const ALARM_MESSAGE = {
   SUBSCRIBE_SUCCESS: {
     title: '푸시 알람 등록',
