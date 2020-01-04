@@ -1,13 +1,14 @@
-import styled from 'styled-components/macro';
-
 import MaterialAppBar from '@material-ui/core/AppBar';
+import styled from 'styled-components/macro';
+import COLORS from '../../styleConstants';
+
+const orderOfAppBar = 2;
 
 export const AppBar = styled(MaterialAppBar)`
   && {
-    /* background-color: rgba(249, 78, 54, 0.1
-      ); */
-    background-color: #ff8262;
+    background-color: ${COLORS.primaryLight};
     height: 6rem;
+    min-width: 48rem;
   }
 `;
 
@@ -29,8 +30,7 @@ export const Logo = styled.div`
 `;
 
 export const AppBarMenu = styled.ul`
-  color: black;
-  order: 2;
+  order: ${orderOfAppBar};
   margin-left: auto;
 `;
 

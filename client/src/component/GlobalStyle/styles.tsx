@@ -12,11 +12,12 @@ const GlobalStyles = createGlobalStyle`
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
   }
-  html,
+  html {
+    font-size: 10px
+  }
   body {
     font-family: 'NanumSquare', sans-serif;
     height: 100%;
-    font-size: 14px;
     background-color: white;
     margin : 0;
   }
