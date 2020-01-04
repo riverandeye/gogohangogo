@@ -1,5 +1,6 @@
 import { observable, action, reaction } from 'mobx';
 import jwtDecode from 'jwt-decode';
+import cookies from 'react-cookies';
 
 interface Auth {
   email: string;
@@ -7,8 +8,8 @@ interface Auth {
   id: number;
 }
 
-export default class UserStore {
-  @observable token: string | null = document.cookie;
+class UserStore {
+  @observable token: string | null = cookies.load('token');
   @observable auth: Auth | undefined;
   @observable id: number = null;
   @observable name: string = '';
@@ -16,11 +17,13 @@ export default class UserStore {
 
   constructor() {
     if (this.token) {
+      console.log(this.token);
       this.auth = jwtDecode(this.token) as Auth;
     }
   }
 
   isLoggedIn() {
+    console.log(this.token);
     return this.token != null;
   }
 
@@ -31,8 +34,10 @@ export default class UserStore {
 
   @action
   signOut() {
-    document.cookie = null;
+    cookies.remove('token');
     this.token = null;
     this.auth = undefined;
   }
 }
+
+export default UserStore;

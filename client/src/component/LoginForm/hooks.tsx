@@ -1,7 +1,7 @@
 import { useFormik } from 'formik';
 import { useState } from 'react';
 import * as Yup from 'yup';
-import { VALIDATION_ERROR_MESSAGE } from '../../constants';
+import { VALIDATION_ERROR_MESSAGE, ROUTE } from '../../constants';
 import RootStore from '../../stores/root';
 
 interface LoginDTO {
@@ -9,13 +9,7 @@ interface LoginDTO {
   password: string;
 }
 
-interface AuthResponse {
-  token: string;
-}
-
 export const useLogin = () => {
-  const { user } = RootStore();
-
   const [postErrorMessage, setpostErrorMessage] = useState('');
   const validationSchema = Yup.object({
     email: Yup.string().required(VALIDATION_ERROR_MESSAGE.REQUIRED_EMAIL),
@@ -23,6 +17,7 @@ export const useLogin = () => {
   });
 
   const handleLogin = async (values: LoginDTO) => {
+    console.log(values);
     const response = await fetch(
       `${process.env.REACT_APP_BACKEND_HOST}/users/login`,
       {
@@ -37,7 +32,10 @@ export const useLogin = () => {
       const { message } = await response.json();
       // TODO: set error msg....
       setpostErrorMessage(message);
+      return;
     }
+
+    window.location.replace(ROUTE.MAIN);
   };
 
   const formik = useFormik({
