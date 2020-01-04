@@ -58,14 +58,7 @@ const NotFound: React.FC = () => {
                 delay="2.0s"
                 style={{ display: 'inline' }}
               >
-                <span>ㅠ</span>
-              </MDBAnimation>
-              <MDBAnimation
-                type="fadeIn"
-                delay="2.5s"
-                style={{ display: 'inline' }}
-              >
-                <span>ㅠ</span>
+                <span>ㅠㅠ</span>
               </MDBAnimation>
             </h1>
           </S.Content>
