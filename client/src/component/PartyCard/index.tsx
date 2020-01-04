@@ -3,16 +3,23 @@ import * as S from './styles';
 import AccessAlarmIcon from '@material-ui/icons/AccessAlarm';
 import FaceIcon from '@material-ui/icons/Face';
 import PersonAddIcon from '@material-ui/icons/PersonAdd';
-import ott from '../../assets/OTT_icons/netflix.png';
+
+// import netflixImg from '../../assets/OTT_icons/netflix.png';
+// import primeImg from '../../assets/OTT_icons/prime.png';
+// import watchaImg from '../../assets/OTT_icons/watcha.png';
+// import wavveImg from '../../assets/OTT_icons/wavve.png';
+
 import COLORS from '../../styleConstants';
 import { AdminUser } from './interface';
 import getDateDiffText from '../../utils/timeParser';
+import getOttImgUrl from '../../utils/ottImgMatcher';
 interface PartyCardProps {
   title: string;
   introduction: string;
   adminUser: AdminUser;
   createdAt: string;
   personnel: number;
+  ottName: string;
 }
 
 const sayHi = () => {
@@ -24,10 +31,14 @@ const PartyCard: React.FC<PartyCardProps> = ({
   adminUser,
   createdAt,
   personnel,
+  ottName,
 }) => {
+  // for timeParser util
   const fromDate = new Date(createdAt);
   const toDate = new Date();
   const cumulatedTime = getDateDiffText(fromDate, toDate);
+  // for ottBrandImgMatcher util
+  const ottImg = getOttImgUrl(ottName);
   return (
     <S.Card>
       <S.test className="test" onClick={sayHi}>
@@ -35,7 +46,7 @@ const PartyCard: React.FC<PartyCardProps> = ({
       </S.test>
       {/* <CardActionArea> */}
       <S.CardHeader
-        avatar={<img src={ott} alt="ott" width="35px" />}
+        avatar={<img src={ottImg} alt="ottBrandImg" width="35px" />}
         title={<S.CardHeaderTitle>{title}</S.CardHeaderTitle>}
         subheader={<S.CardSubHeader>{introduction}</S.CardSubHeader>}
       />
