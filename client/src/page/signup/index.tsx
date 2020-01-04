@@ -4,40 +4,45 @@ import { useSignUp } from './hooks';
 import Button from '../../component/Button';
 
 const SignUp: React.FC = () => {
-  const { formik, duplicateEmailError } = useSignUp();
+  const { formik, postEmailValidation } = useSignUp();
   const { handleChange, handleSubmit, values, errors } = formik;
 
   return (
     <>
-      <S.SignUpFormLabel>회원가입</S.SignUpFormLabel>
+      <div style={{ height: `6rem` }}></div>
       <S.SignUpForm>
-        <S.SignUpInputLabel htmlFor="name"></S.SignUpInputLabel>
-        이름
-        <S.SignUpInput
+        <S.SignUpFormLabel>회원가입</S.SignUpFormLabel>{' '}
+        <S.SignUpTextField
+          required
           id="name"
+          label="이름"
           name="name"
           type="text"
           onChange={handleChange}
           value={values.name}
         />
-        {errors.name ? errors.name : null}
+        <S.ErrorMessage>{errors.name ? errors.name : null}</S.ErrorMessage>
         <br></br>
-        <S.SignUpInputLabel htmlFor="이메일">이메일</S.SignUpInputLabel>
-        <S.SignUpInput
+        <S.SignUpTextField
+          required
+          label="이메일"
           id="email"
           name="email"
           type="email"
           onChange={handleChange}
           value={values.email}
         />
-        {errors.email
-          ? errors.email
-          : duplicateEmailError
-          ? duplicateEmailError
-          : null}
+        <S.ErrorMessage>
+          {errors.email
+            ? errors.email
+            : postEmailValidation
+            ? postEmailValidation
+            : null}
+        </S.ErrorMessage>
         <br></br>
-        <S.SignUpInputLabel htmlFor="비밀번호">비밀번호</S.SignUpInputLabel>
-        <S.SignUpInput
+        <S.SignUpTextField
+          required
+          label="비밀번호"
           id="password"
           name="password"
           type="password"
@@ -47,7 +52,9 @@ const SignUp: React.FC = () => {
           style={{ fontFamily: 'sans-serif' }}
           value={values.password}
         />
-        {errors.password ? errors.password : null}
+        <S.ErrorMessage>
+          {errors.password ? errors.password : null}
+        </S.ErrorMessage>
         <br></br>
         <S.SignUpCheckboxLabel
           control={
@@ -61,7 +68,7 @@ const SignUp: React.FC = () => {
           label="서비스와 관련된 푸쉬 알람에 동의합니다."
         ></S.SignUpCheckboxLabel>
         <br></br>
-        <Button onClick={handleSubmit}>Submit</Button>
+        <Button onClick={handleSubmit}>회원가입</Button>
       </S.SignUpForm>
     </>
   );
