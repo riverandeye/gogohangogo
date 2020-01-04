@@ -9,8 +9,8 @@ import { Link } from 'react-router-dom';
 
 const MyParties: React.FC = props => {
   // TODO : user ID를 현재 접속한 사용자의 ID를 전달해야한다.
-  const { userData } = useMyPartyUser(3);
-  const { usersParty, notUsersParty } = useMyParties(3);
+  const { userData } = useMyPartyUser(1);
+  const { usersParty, notUsersParty } = useMyParties(1);
 
   const handlePartyClick = e => {};
 

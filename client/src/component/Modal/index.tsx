@@ -1,11 +1,15 @@
-import React from 'react';
-import * as S from './styles';
+import React, { useState } from 'react';
 import { MDBAnimation } from 'mdbreact';
 import SendRoundedIcon from '@material-ui/icons/SendRounded';
 import CancelRoundedIcon from '@material-ui/icons/CancelRounded';
 import PersonRoundedIcon from '@material-ui/icons/PersonRounded';
 import PersonOutlineRoundedIcon from '@material-ui/icons/PersonOutlineRounded';
 import Axios from 'axios';
+import { Redirect } from 'react-router-dom';
+
+import * as S from './styles';
+import Spinner from '../Spinner';
+
 interface ModalProps {
   isOpened?: Boolean;
   modalInfo;
@@ -29,6 +33,10 @@ const Modal: React.FC<ModalProps> = ({
     partyCardId,
   } = modalInfo;
 
+  const [state, setState] = useState({
+    loading: false,
+    done: false,
+  });
   const maxSlot = capacity;
   const availableSlot = maxSlot - personnel;
   let slotArr = new Array();
@@ -41,8 +49,12 @@ const Modal: React.FC<ModalProps> = ({
   }
 
   const dummyMyUserId = 1;
-  console.log(partyCardId);
+
   const participatePartyHandler = () => {
+    setState({
+      loading: true,
+      done: false,
+    });
     const response1 = Axios.patch(
       `${process.env.REACT_APP_BACKEND_HOST}/parties/${partyCardId}`,
       {
@@ -58,12 +70,17 @@ const Modal: React.FC<ModalProps> = ({
       },
     );
     Promise.all([response1, response2]).then(values => {
+      setState({
+        loading: false,
+        done: true,
+      });
       console.log('팟 참가 완료');
     });
   };
 
   if (!isOpened) return null;
-
+  if (state.done) return <Redirect to="/myparties" />;
+  if (state.loading) return <Spinner visible />;
   return (
     <S.main>
       <S.Background onClick={closeModalHandler}></S.Background>
