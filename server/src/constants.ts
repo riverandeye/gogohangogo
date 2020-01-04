@@ -64,23 +64,24 @@ export const DB_COLUMN = {
 export const API_PARAM = {
   USER: {
     ID: `/:${ID}`,
+    DEFAULT: `/`,
     VERIFY: `/verify/:${AUTHKEY}`,
     REVERIFY: `/reverify/:${ID}`,
     SUBSCRIBE: `/:${ID}/subscribe`,
     UNSUBSCRIBE: `/:${ID}/unsubscribe`,
     CHECK_ALARM: `/:${ID}/check`,
+    PARTY_LIST: `/:${ID}/parties`,
   },
 
   PARTIES: {
     ID: `/:${ID}`,
+    DEFAULT: `/`,
   },
 };
 
 export const API_ROUTE = {
   USERS: '/users',
   PARTIES: '/parties',
-  MY_PARTIES: './myparties',
-  MY_PARTY_DETAIL: `/myparties/:${ID}`,
 };
 
 export const REGEX = {
