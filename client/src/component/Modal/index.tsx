@@ -41,7 +41,7 @@ const Modal: React.FC<ModalProps> = ({
   }
 
   const dummyMyUserId = 1;
-
+  console.log(partyCardId);
   const participatePartyHandler = () => {
     const response1 = Axios.patch(
       `${process.env.REACT_APP_BACKEND_HOST}/parties/${partyCardId}`,
@@ -51,7 +51,7 @@ const Modal: React.FC<ModalProps> = ({
     );
 
     const response2 = Axios.post(
-      `${process.env.REACT_APP_BACKEND_HOST}/users/${dummyMyUserId}/parties`,
+      `${process.env.REACT_APP_BACKEND_HOST}/userparties`,
       {
         userId: dummyMyUserId,
         partyId: partyCardId,
@@ -118,6 +118,7 @@ const Modal: React.FC<ModalProps> = ({
               className="success"
               style={{ border: '0', outline: '0' }}
               endIcon={<SendRoundedIcon />}
+              onClick={participatePartyHandler}
             >
               이 팟 가입 요청하기
             </S.Button>

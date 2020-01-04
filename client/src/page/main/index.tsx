@@ -50,7 +50,7 @@ const Main: React.FC = () => {
   useEffect(() => {
     if (clickedCard !== null) {
       const currentInfoObject = parties[clickedCard - 1];
-      // console.log(currentInfoObject);
+      console.log(currentInfoObject);
       setModalInfo({
         ...modalInfo,
         title: currentInfoObject.title,
@@ -61,7 +61,7 @@ const Main: React.FC = () => {
         createdAt: currentInfoObject.createdAt,
         ottName: currentInfoObject.ottName,
         setClickedCard: currentInfoObject.setClickedCard,
-        partyCardId: currentInfoObject.partyCardId,
+        partyCardId: currentInfoObject.id,
       });
       openModal();
     }
