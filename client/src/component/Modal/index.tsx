@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import * as S from './styles';
 import { MDBAnimation } from 'mdbreact';
 import SendRoundedIcon from '@material-ui/icons/SendRounded';
@@ -7,14 +7,12 @@ import PersonRoundedIcon from '@material-ui/icons/PersonRounded';
 import PersonOutlineRoundedIcon from '@material-ui/icons/PersonOutlineRounded';
 interface ModalProps {
   isOpened?: Boolean;
-  close?: any;
   modalInfo;
-  closeModalHandler;
+  closeModalHandler?;
 }
 
 const Modal: React.FC<ModalProps> = ({
   isOpened,
-  close,
   modalInfo,
   closeModalHandler,
 }) => {
@@ -24,16 +22,17 @@ const Modal: React.FC<ModalProps> = ({
     adminUserId,
     createdAt,
     personnel,
+    capacity,
     ottName,
     setClickedCard,
     partyCardId,
   } = modalInfo;
 
-  const maxSlot = 10;
+  const maxSlot = capacity;
   const availableSlot = maxSlot - personnel;
   let slotArr = new Array();
   let takenArr = new Array();
-  for (let i = 0; i < maxSlot; i++) {
+  for (let i = 0; i < availableSlot; i++) {
     slotArr.push({});
   }
   for (let i = 0; i < personnel; i++) {
@@ -47,7 +46,7 @@ const Modal: React.FC<ModalProps> = ({
           type="bounceInUp"
           style={{
             position: 'fixed',
-            zIndex: '100',
+            zIndex: '200',
             left: '50%',
             top: '50%',
             transform: 'translate(-50%, -50%)',
@@ -61,19 +60,31 @@ const Modal: React.FC<ModalProps> = ({
                 <br />
                 {title} 팟에 가입하시겠어요?
               </S.ModalTitle>
-              <S.ModalIntroduction>{introduction}</S.ModalIntroduction>
+              <S.ModalIntroduction></S.ModalIntroduction>
               <ul>
-                {/* <li>이 팟을 만든 팟장 id는 {adminUserId}</li>
-                <li>이 팟에 가입 신청한 사람들은 {personnel}명</li> */}
+                <li>이 팟을 만든 팟장 id는 {adminUserId}</li>
+                <li>이 팟에 가입 신청한 사람들은 {personnel}명</li>
                 {slotArr.map(ico => (
-                  <PersonRoundedIcon fontSize="large">{ico}</PersonRoundedIcon>
-                ))}
-                {takenArr.map(ico => (
-                  <PersonOutlineRoundedIcon fontSize="large">
+                  <PersonOutlineRoundedIcon
+                    style={{ color: '#f94e36', fontSize: '4rem' }}
+                  >
                     {ico}
                   </PersonOutlineRoundedIcon>
                 ))}
-                <S.ModalMessage>{availableSlot}자리 남았어요!</S.ModalMessage>
+                {takenArr.map(ico => (
+                  <PersonRoundedIcon
+                    style={{ color: '#808080', fontSize: '4rem' }}
+                  >
+                    {ico}
+                  </PersonRoundedIcon>
+                ))}
+                <S.ModalMessage>
+                  {maxSlot}자리 중{' '}
+                  <span style={{ color: '#f94e36', fontWeight: 700 }}>
+                    {availableSlot}
+                  </span>
+                  자리 남았어요!
+                </S.ModalMessage>
               </ul>
             </S.ModalContent>
             <S.ButtonContainer>

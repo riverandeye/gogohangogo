@@ -26,10 +26,11 @@ const Main: React.FC = () => {
   const [clickedCard, setClickedCard] = useState(null);
   useEffect(() => {
     axios
-      .get('http://127.0.0.1:4000/parties')
+      .get(`${process.env.REACT_APP_BACKEND_HOST}/parties`)
       .then(function(response) {
         const data = response.data;
         setParties(data);
+        console.log(data);
       })
       .catch(function(error) {
         // handle error
@@ -48,6 +49,7 @@ const Main: React.FC = () => {
         title: currentInfoObject.title,
         introduction: currentInfoObject.introduction,
         personnel: currentInfoObject.personnel,
+        capacity: currentInfoObject.capacity,
         adminUserId: currentInfoObject.adminUserId,
         createdAt: currentInfoObject.createdAt,
         ottName: currentInfoObject.ottName,
