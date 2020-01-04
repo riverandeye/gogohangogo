@@ -1,12 +1,10 @@
 import styled from 'styled-components/macro';
 
-export const Content = styled.div`
-  margin-top: 6rem;
-`;
+export const Content = styled.div``;
 export const Container = styled.div`
-  min-width: 48rem;
-  height: 20rem;
-  margin: 0 auto;
+  width: 100%;
+  margin: 0rem auto;
+  background-color: #eeeeee;
   display: flex;
   justify-content: center;
   align-items: center;

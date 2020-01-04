@@ -90,6 +90,7 @@ export const REGEX = {
 
 export const STATUS_CODE = {
   OK: 200,
+  CREATED: 201,
   NO_CONTENT: 204,
   BAD_REQUEST: 400,
   UNPROCESSIBLE_ENTITY: 422,
@@ -129,6 +130,9 @@ export const ERROR_RESPONSE = {
 export const MAIL = {
   MAIL_SUBJECT: `[NBread] 이메일 인증`,
 };
+
+export const AVATAR =
+  'https://publicdomainvectors.org/photos/abstract-user-flat-3.png';
 
 export const ALARM_MESSAGE = {
   SUBSCRIBE_SUCCESS: {
