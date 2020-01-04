@@ -13,11 +13,12 @@ import {
   MAXAGE,
 } from '../constants';
 import EmailService from '../service/mail';
-import { User } from '../service/Interface/user';
+import { User } from '../common/interface/user';
 
 import UserService from '../service/user';
 import pushAlarmService from '../service/push-alarm';
 import { isNull } from 'util';
+import { UserResponse } from './dto/user-response';
 
 webpush.setGCMAPIKey(process.env.GOOGLE_API_KEY);
 webpush.setVapidDetails(
@@ -29,9 +30,9 @@ webpush.setVapidDetails(
 const UserController = {
   async getUserWithId(req: Request, res: Response, next: NextFunction) {
     const Id = Number(req.params[ID]);
-    const user = await UserService.findUserWithId(Id);
+    const user: User = await UserService.findUserWithId(Id);
 
-    res.json(user);
+    res.json(new UserResponse(user));
   },
 
   async getUserListWithPartyId(
