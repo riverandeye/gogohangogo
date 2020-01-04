@@ -41,6 +41,9 @@ const Landing: React.FC = () => {
             <img src={carousel3} alt="Third slide" width="100%" />
           </Carousel.Item>
         </Carousel>
+        <S.LoginForm>
+          <LoginForm />
+        </S.LoginForm>
         <S.Section1 id="section1">
           <ScrollAnimation animateIn="fadeIn">
             <h1
