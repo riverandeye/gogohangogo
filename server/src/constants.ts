@@ -78,6 +78,7 @@ export const API_PARAM = {
   PARTIES: {
     ID: `/:${ID}`,
     DEFAULT: `/`,
+    USERS: `/:${ID}/users`,
   },
 };
 
