@@ -3,6 +3,8 @@ import * as S from './styles';
 import { MDBAnimation } from 'mdbreact';
 import SendRoundedIcon from '@material-ui/icons/SendRounded';
 import CancelRoundedIcon from '@material-ui/icons/CancelRounded';
+import PersonRoundedIcon from '@material-ui/icons/PersonRounded';
+import PersonOutlineRoundedIcon from '@material-ui/icons/PersonOutlineRounded';
 interface ModalProps {
   isOpened?: Boolean;
   close?: any;

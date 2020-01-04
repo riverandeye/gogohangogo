@@ -13,7 +13,7 @@ export const Background = styled.div`
   top: 0rem;
   left: 0rem;
   width: 100%;
-  height: 100%;
+  height: 100vh;
   z-index: 50;
 `;
 
