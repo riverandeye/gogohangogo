@@ -4,6 +4,7 @@ import axios from 'axios';
 import * as S from './styles';
 import Layout from '../../component/Layout';
 import ParticipantCard from '../../component/ParticipantCard';
+import PartyStatus from '../../component/PartyStatus';
 
 interface PartyDetailProps {
   match: any;
@@ -11,7 +12,7 @@ interface PartyDetailProps {
 
 const PartyDetail: React.FC<PartyDetailProps> = ({ match }) => {
   const [state, setState] = useState({
-    party: { adminUserId: 0 },
+    party: { adminUserId: 0, status: 0 },
     userList: [],
   });
   useEffect(() => {
@@ -31,6 +32,7 @@ const PartyDetail: React.FC<PartyDetailProps> = ({ match }) => {
       },
     );
   }, []);
+  console.log(state.party);
   return (
     <Layout>
       <S.PartyDetail>
@@ -41,6 +43,7 @@ const PartyDetail: React.FC<PartyDetailProps> = ({ match }) => {
             width="300rem"
             height="300rem"
           />
+          <PartyStatus status={state.party.status} />
         </S.PartyInformation>
         <S.ParticipantList>
           {state.userList.map(user => {
