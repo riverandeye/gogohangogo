@@ -53,10 +53,7 @@ const UserController = {
 
   async checkAlarm(req: Request, res: Response, next: NextFunction) {
     const Id = Number(req.params[ID]);
-    const User = JSON.parse(
-      JSON.stringify(await UserService.findUserWithId(Id)),
-    );
-
+    const User = await UserService.findUserWithId(Id);
     const result = await pushAlarmService.sendPushAlarmOnce(
       JSON.parse(User.alarmSubscription),
       ALARM_MESSAGE.CHECK_SUBSCRIBE,
