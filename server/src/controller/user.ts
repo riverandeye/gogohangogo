@@ -9,6 +9,7 @@ import {
   ERROR_RESPONSE,
   STATUS_CODE,
   ALARM_MESSAGE,
+  AVATAR,
 } from '../constants';
 import EmailService from '../service/mail';
 import { User } from '../model/Interface/user';
@@ -89,7 +90,11 @@ const UserController = {
 
   async createUser(req: Request, res: Response, next: NextFunction) {
     const createdUser = req.body;
+    // set default value
+    createdUser.avatar = AVATAR;
     createdUser.authKey = uuid();
+    createdUser.alarmSubscription = {};
+
     await UserModel.createUser(createdUser);
 
     // send verification email
