@@ -318,6 +318,9 @@ const Landing: React.FC = () => {
                     <h3>
                       <span style={{ color: COLORS.primary }}>|</span> Landing
                       view
+                      <br />
+                      <span style={{ color: COLORS.primary }}>|</span> Modal
+                      view
                     </h3>
                     <p style={{ fontSize: '1.4rem' }}>
                       - 2000.08.21

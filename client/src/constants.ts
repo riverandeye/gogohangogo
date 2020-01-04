@@ -6,6 +6,7 @@ export const ROUTE = {
   SUBSCRIBE: '/subscribe',
   SIGNUP: '/signup',
   MYPARTIES: '/myparties',
+  NOTFOUND: '/notfound',
 };
 
 export const SERVER_ENDPOINT = {
