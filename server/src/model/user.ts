@@ -45,7 +45,6 @@ const UserModel = {
 
   async createUser(user: CreatedUser) {
     const { name, email, avatar, password, authKey, agreeAlarm } = user;
-    console.log(name, email);
     await db
       .promise()
       .query(

@@ -1,1 +1,0 @@
-insert into Users (id, name, email, avatar, password, authKey, agreeAlarm, alarmSubscription, priority, isValid) values(NULL, '강관훈', 'riverandeye@gmail.com', 'https://avatars2.githubusercontent.com/u/41494099?s=400&u=a35f30bae3d4b988cc4ebd5923b2c79f657e77d7&v=4', 'DEFAULT', '123', NULL, NULL, NULL, NULL);

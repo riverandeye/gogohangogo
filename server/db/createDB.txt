@@ -37,21 +37,12 @@ ENGINE = InnoDB;
 -- Table `OTT`.`Services`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `OTT`.`Services` (
-  `id` INT NOT NULL,
+  `id` INT NOT NULL AUTO_INCREMENT,
   `name` VARCHAR(45) NULL,
   `introduction` VARCHAR(2048) NULL,
   `capacity` INT NULL,
+  `avatar` VARCHAR(2048) NULL,
   PRIMARY KEY (`id`))
-ENGINE = InnoDB;
-
-
--- -----------------------------------------------------
--- Table `OTT`.`PartyStatus`
--- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `OTT`.`PartyStatus` (
-  `status` INT NOT NULL,
-  `description` VARCHAR(2048) NULL,
-  PRIMARY KEY (`status`))
 ENGINE = InnoDB;
 
 
@@ -59,32 +50,25 @@ ENGINE = InnoDB;
 -- Table `OTT`.`Parties`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `OTT`.`Parties` (
-  `id` INT NOT NULL,
+  `id` INT NOT NULL AUTO_INCREMENT,
   `createdAt` VARCHAR(45) NULL,
   `updatedAt` TIMESTAMP NULL,
   `startAt` TIMESTAMP NULL,
   `endAt` TIMESTAMP NULL,
+  `status` INT NULL DEFAULT 0,
   `title` VARCHAR(45) NULL,
   `personnel` INT NULL,
   `capacity` INT NULL,
-  `accountId` VARCHAR(45) NULL,
-  `accountPW` VARCHAR(45) NULL,
+  `account` VARCHAR(2048) NULL,
   `authKey` VARCHAR(36) NULL,
   `isAccountValid` TINYINT NULL,
   `serviceId` INT NOT NULL,
-  `status` INT NOT NULL,
   PRIMARY KEY (`id`),
   INDEX `fk_Parties_Services1_idx` (`serviceId` ASC) ,
-  INDEX `fk_Parties_PartyStatus1_idx` (`status` ASC) ,
   UNIQUE INDEX `authKey_UNIQUE` (`authKey` ASC) ,
   CONSTRAINT `fk_Parties_Services1`
     FOREIGN KEY (`serviceId`)
     REFERENCES `OTT`.`Services` (`id`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
-  CONSTRAINT `fk_Parties_PartyStatus1`
-    FOREIGN KEY (`status`)
-    REFERENCES `OTT`.`PartyStatus` (`status`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
