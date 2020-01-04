@@ -20,7 +20,7 @@ export const Filter = styled.div`
 `;
 
 export const Expansion = styled.div`
-  background-color: ${COLORS.secondaryLight};
+  background-color: ${COLORS.primaryLight};
   height: 5rem;
 `;
 
