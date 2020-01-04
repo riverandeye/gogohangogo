@@ -19,6 +19,13 @@ const PartyModel = {
     return parsePacket(data[0]);
   },
 
+  async getPartyList() {
+    const [data] = await db
+      .promise()
+      .query(`Select * from ${DB_TABLE.PARTIES} where status=1`);
+    return parsePacket(data);
+  },
+
   async getPartyListWithUserId(Id: number) {
     const [data] = await db.promise().query(
       `Select * 
