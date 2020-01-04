@@ -13,11 +13,12 @@ import {
   MAXAGE,
 } from '../constants';
 import EmailService from '../service/mail';
-import { User } from '../service/Interface/user';
+import { User } from '../common/interface/user';
 
 import UserService from '../service/user';
 import pushAlarmService from '../service/push-alarm';
 import { isNull } from 'util';
+import { UserResponseDTO } from './dto/user-response';
 
 webpush.setGCMAPIKey(process.env.GOOGLE_API_KEY);
 webpush.setVapidDetails(
@@ -29,9 +30,9 @@ webpush.setVapidDetails(
 const UserController = {
   async getUserWithId(req: Request, res: Response, next: NextFunction) {
     const Id = Number(req.params[ID]);
-    const user = await UserService.findUserWithId(Id);
+    const user: User = await UserService.findUserWithId(Id);
 
-    res.json(user);
+    res.json(new UserResponseDTO(user));
   },
 
   async getUserListWithPartyId(
@@ -39,10 +40,10 @@ const UserController = {
     res: Response,
     next: NextFunction,
   ) {
-    const Id = Number(req.query['partyid']);
-    const userList = await UserModel.getUserListWithPartyId(Id);
+    const partyId = Number(req.params[ID]);
+    const userList = await UserModel.getUserListWithPartyId(partyId);
 
-    res.json(userList);
+    res.json(userList.map((user: User) => new UserResponseDTO(user)));
   },
 
   async subscribeAlarm(req: Request, res: Response, next: NextFunction) {
@@ -67,10 +68,10 @@ const UserController = {
 
   async checkAlarm(req: Request, res: Response, next: NextFunction) {
     const Id = Number(req.params[ID]);
-    const user = await UserService.findUserWithId(Id);
+    const user: User = await UserService.findUserWithId(Id);
 
     const result = await pushAlarmService.sendPushAlarmOnce(
-      JSON.parse(user.alarmSubscription),
+      JSON.parse(JSON.stringify(user.alarmSubscription)),
       ALARM_MESSAGE.CHECK_SUBSCRIBE,
     );
     res.status(200).send();
@@ -171,7 +172,7 @@ const UserController = {
     const Id = Number(req.params[ID]);
     const user: User = await UserService.findUserWithId(Id);
 
-    res.send(await EmailService.sendVerificationMail(user.email, user.authKey));
+    res.status(STATUS_CODE.OK).send({ message: 'Mail is sent' });
   },
 };
 

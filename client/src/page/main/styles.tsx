@@ -1,6 +1,6 @@
 import styled from 'styled-components/macro';
 import COLORS from '../../styleConstants';
-
+import PartyCard from '../../component/PartyCard';
 export const Main = styled.div`
   width: 100%;
   background-color: beige;
@@ -39,11 +39,16 @@ export const GridLabel = styled.div`
   font-size: 3rem;
   color: #3c4146;
   height: 100%;
-  padding-top: 1rem;
+  padding-top: 2rem;
+  line-height: 1.4;
 `;
 
 export const GridItem = styled.div`
   height: 100%;
   display: flex;
   align-items: center;
+`;
+
+export const MainPartyCard = styled(PartyCard)`
+  outline: none;
 `;

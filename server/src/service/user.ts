@@ -3,13 +3,13 @@ import crypto from 'crypto';
 import UserModel from '../model/user';
 import { ERRORS } from '../errors';
 import jwt from 'jsonwebtoken';
-import { User } from './interface/user';
+import { User } from '../common/interface/user';
 import { CreatedUser } from '../model/Interface/user';
 
 const salt = '19qieu3ur7g';
 const UserService = {
   async findUserWithId(Id: number) {
-    const user = await UserModel.getUserWithId(Id);
+    const user: User[] = await UserModel.getUserWithId(Id);
     return user[0];
   },
   async checkDuplicateEmail(email: string) {

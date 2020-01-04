@@ -22,8 +22,8 @@ const PartyController = {
   },
 
   async findMyPartyList(req: Request, res: Response, next: NextFunction) {
-    const userid = Number(req.params[ID]);
-    const partyList = await PartyModel.getPartyListWithUserId(userid);
+    const userId = Number(req.params[ID]);
+    const partyList = await PartyModel.getPartyListWithUserId(userId);
     res.send(partyList);
   },
 

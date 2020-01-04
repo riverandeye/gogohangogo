@@ -34,11 +34,6 @@ UserRouter.get(
   doAsync(PartyController.findMyPartyList),
 );
 
-UserRouter.get(
-  API_PARAM.USER.DEFAULT,
-  doAsync(UserController.getUserListWithPartyId),
-);
-
 UserRouter.patch(
   API_PARAM.USER.ID,
   validateIdParam,
@@ -59,9 +54,8 @@ UserRouter.post(
 );
 
 // MailService API
-UserRouter.post(
+UserRouter.get(
   API_PARAM.USER.REVERIFY,
-  validateEmailBody,
   doAsync(UserController.sendReVerificationMail),
 );
 

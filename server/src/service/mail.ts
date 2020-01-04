@@ -27,8 +27,6 @@ const EmailService = {
     };
 
     const info = await transporter.sendMail(mailOptions);
-
-    return info;
   },
 };
 
