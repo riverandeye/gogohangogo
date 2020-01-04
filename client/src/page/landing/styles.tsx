@@ -1,7 +1,10 @@
 import styled from 'styled-components/macro';
 
-export const main = styled.div`
-  margin-top: 40rem;
+export const main = styled.div``;
+
+export const Layout = styled.div`
+  display: flex;
+  flex-direction: column;
 `;
 
 export const title = styled.div`
