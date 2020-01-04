@@ -15,7 +15,7 @@ export const Card = styled(MaterialCard)`
     transition: all 0.3s ease;
     &:hover {
       transform: translateY(-4%) scale(1.01);
-      & > .test {
+      & > .cardHover {
         cursor: pointer;
         background-color: rgba(0, 0, 0, 0.7);
         opacity: 1;
@@ -23,7 +23,7 @@ export const Card = styled(MaterialCard)`
     }
   }
 `;
-export const test = styled.div`
+export const CardHover = styled.div`
   position: absolute;
   opacity: 0;
   background-color: black;
