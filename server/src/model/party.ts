@@ -55,14 +55,15 @@ const PartyModel = {
       capacity,
       account,
       authKey,
+      adminUserId,
       isAccountValid,
       serviceId,
     } = party;
 
     await db.promise().query(
       `
-        Insert Into ${DB_TABLE.PARTIES} (status, title, personnel, introduction, capacity, account, authKey, isAccountValid, serviceId)
-         Value(?,?,?,?,?,?,?,?,?)`,
+        Insert Into ${DB_TABLE.PARTIES} (status, title, personnel, introduction, capacity, account, authKey, isAccountValid, serviceId, adminUserId, createdAt, updatedAt)
+         Value(?,?,?,?,?,?,?,?,?,?, NOW(), NOW())`,
       [
         status,
         title,
@@ -73,8 +74,17 @@ const PartyModel = {
         authKey,
         isAccountValid,
         serviceId,
+        adminUserId,
       ],
     );
+
+    const [
+      createdParty,
+    ] = await db
+      .promise()
+      .query(`select * from Parties where authKey=?`, [authKey]);
+
+    return createdParty[0];
   },
 };
 

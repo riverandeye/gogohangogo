@@ -8,6 +8,7 @@ export interface CreateParty {
   readonly introduction: string;
   readonly account: string;
   readonly authKey: string;
+  readonly adminUserId: number;
   readonly isAccountValid: boolean;
   readonly serviceId: number;
 }
