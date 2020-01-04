@@ -21,8 +21,8 @@ const PartyModel = {
 
   async getPartyList() {
     const [data] = await db.promise().query(`
-      Select P.title, P.introduction, P.personnel, P.createdAt, P.adminUserId, P.priority, S.name as ottName, S.avatar as ottImage from
-      (Select title, introduction, personnel, priority, createdAt, adminUserId, serviceId from ${DB_TABLE.PARTIES} where status=1) P
+      Select P.title, P.introduction, P.personnel, P.capacity, P.createdAt, P.adminUserId, S.name as ottName, S.avatar as ottImage from
+      (Select title, introduction, personnel, capacity, createdAt, adminUserId, serviceId from ${DB_TABLE.PARTIES} where status=1) P
       Left outer join ${DB_TABLE.SERVICES} S
       On P.serviceId=S.id
       `);
