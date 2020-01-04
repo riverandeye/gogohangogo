@@ -8,6 +8,7 @@ import Subscribe from './page/subscribe';
 import SignUp from './page/signup';
 import MyParties from './page/my-parties';
 import NotFound from './page/not-found';
+import PartyDetail from './page/party-detail';
 
 const App: React.FC = () => {
   return (
@@ -18,6 +19,7 @@ const App: React.FC = () => {
         <Route exact path={ROUTE.SUBSCRIBE} component={Subscribe} />
         <Route exact path={ROUTE.SIGNUP} component={SignUp} />
         <Route exact path={ROUTE.MYPARTIES} component={MyParties} />
+        <Route exact path={ROUTE.PARTYDETAIL} component={PartyDetail} />
         <Route component={NotFound} />
       </Switch>
     </BrowserRouter>
