@@ -57,6 +57,7 @@ CREATE TABLE IF NOT EXISTS `OTT`.`Parties` (
   `updatedAt` TIMESTAMP NULL,
   `startAt` TIMESTAMP NULL,
   `endAt` TIMESTAMP NULL,
+  `fulledAt` TIMESTAMP NULL,
   `status` INT NULL DEFAULT 0,
   `title` VARCHAR(100) NULL,
   `introduction` TEXT NULL,

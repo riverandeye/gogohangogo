@@ -37,8 +37,8 @@ const createDummyParty = () => {
 
     console.log(' ');
     console.log(
-      `insert into Parties (id, createdAt, updatedAt, startAt, endAt, status, title, introduction, personnel, capacity, account, authKey, isAccountValid, serviceId, adminUserId) values('${val +
-        1}', NOW(), NOW(), NULL, NULL, '${partyStatus}', '${val +
+      `insert into Parties (id, createdAt, updatedAt, startAt, endAt, fulledAt, status, title, introduction, personnel, capacity, account, authKey, isAccountValid, serviceId, adminUserId) values('${val +
+        1}', NOW(), NOW(), NULL, NULL, NULL, '${partyStatus}', '${val +
         1} hello', 'Party ${val +
         1}', '${currentPersonnel}', '${serviceCapacity}', 'dummy@naver.com', 'thisisAuthKey${val}', '1', '${serviceId}', '${userIdx}');`,
     );
