@@ -85,6 +85,7 @@ export const API_PARAM = {
 export const API_ROUTE = {
   USERS: '/users',
   PARTIES: '/parties',
+  SERVICES: '/services',
 };
 
 export const REGEX = {
