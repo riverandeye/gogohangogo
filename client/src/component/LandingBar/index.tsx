@@ -58,6 +58,7 @@ const LandingBar: React.FC = () => {
                 color: 'white',
                 fontSize: '1.6rem',
                 fontWeight: 'bold',
+                cursor: 'pointer',
               }}
             >
               서비스 소개
@@ -71,6 +72,7 @@ const LandingBar: React.FC = () => {
                 color: 'white',
                 fontSize: '1.6rem',
                 fontWeight: 'bold',
+                cursor: 'pointer',
               }}
             >
               만든 사람들
