@@ -68,6 +68,7 @@ const UserModel = {
       alarmSubscription,
       status,
     } = user;
+
     await db
       .promise()
       .query(

@@ -20,6 +20,7 @@ USE `OTT` ;
 CREATE TABLE IF NOT EXISTS `OTT`.`Users` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `name` VARCHAR(45) NULL,
+  `introduction` TEXT NULL,
   `email` VARCHAR(2048) NULL,
   `avatar` VARCHAR(2048) NULL,
   `password` VARCHAR(128) NOT NULL,
@@ -28,6 +29,7 @@ CREATE TABLE IF NOT EXISTS `OTT`.`Users` (
   `alarmSubscription` VARCHAR(1000) NULL,
   `priority` INT NULL DEFAULT 0,
   `isValid` TINYINT NULL DEFAULT 0,
+  `status` INT NULL DEFAULT 1,
   PRIMARY KEY (`id`),
   UNIQUE INDEX `id_UNIQUE` (`id` ASC) )
 ENGINE = InnoDB;
@@ -37,21 +39,12 @@ ENGINE = InnoDB;
 -- Table `OTT`.`Services`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `OTT`.`Services` (
-  `id` INT NOT NULL,
+  `id` INT NOT NULL AUTO_INCREMENT,
   `name` VARCHAR(45) NULL,
   `introduction` VARCHAR(2048) NULL,
   `capacity` INT NULL,
+  `avatar` VARCHAR(2048) NULL,
   PRIMARY KEY (`id`))
-ENGINE = InnoDB;
-
-
--- -----------------------------------------------------
--- Table `OTT`.`PartyStatus`
--- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `OTT`.`PartyStatus` (
-  `status` INT NOT NULL,
-  `description` VARCHAR(2048) NULL,
-  PRIMARY KEY (`status`))
 ENGINE = InnoDB;
 
 
@@ -59,32 +52,35 @@ ENGINE = InnoDB;
 -- Table `OTT`.`Parties`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `OTT`.`Parties` (
-  `id` INT NOT NULL,
-  `createdAt` VARCHAR(45) NULL,
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `createdAt` TIMESTAMP NULL,
   `updatedAt` TIMESTAMP NULL,
   `startAt` TIMESTAMP NULL,
   `endAt` TIMESTAMP NULL,
-  `title` VARCHAR(45) NULL,
+  `fulledAt` TIMESTAMP NULL,
+  `status` INT NULL DEFAULT 0,
+  `title` VARCHAR(100) NULL,
+  `introduction` TEXT NULL,
   `personnel` INT NULL,
+  `priority` INT NULL,
   `capacity` INT NULL,
-  `accountId` VARCHAR(45) NULL,
-  `accountPW` VARCHAR(45) NULL,
+  `account` VARCHAR(2048) NULL,
   `authKey` VARCHAR(36) NULL,
   `isAccountValid` TINYINT NULL,
   `serviceId` INT NOT NULL,
-  `status` INT NOT NULL,
+  `adminUserId` INT NOT NULL,
   PRIMARY KEY (`id`),
   INDEX `fk_Parties_Services1_idx` (`serviceId` ASC) ,
-  INDEX `fk_Parties_PartyStatus1_idx` (`status` ASC) ,
   UNIQUE INDEX `authKey_UNIQUE` (`authKey` ASC) ,
+  INDEX `fk_Parties_Users1_idx` (`adminUserId` ASC) ,
   CONSTRAINT `fk_Parties_Services1`
     FOREIGN KEY (`serviceId`)
     REFERENCES `OTT`.`Services` (`id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
-  CONSTRAINT `fk_Parties_PartyStatus1`
-    FOREIGN KEY (`status`)
-    REFERENCES `OTT`.`PartyStatus` (`status`)
+  CONSTRAINT `fk_Parties_Users1`
+    FOREIGN KEY (`adminUserId`)
+    REFERENCES `OTT`.`Users` (`id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
@@ -101,7 +97,7 @@ CREATE TABLE IF NOT EXISTS `OTT`.`UserParties` (
   `startedAt` TIMESTAMP NULL,
   `endAt` TIMESTAMP NULL,
   `isDeposited` TINYINT NULL,
-  `isAdmin` TINYINT NULL,
+  `status` INT NULL,
   INDEX `fk_UserParties_Users_idx` (`userId` ASC) ,
   INDEX `fk_UserParties_Parties1_idx` (`partyId` ASC) ,
   CONSTRAINT `fk_UserParties_Users`
