@@ -1,6 +1,7 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import * as S from './styles';
 import Layout from '../../component/Layout';
+import axios from 'axios';
 
 import Modal from '../../component/Modal';
 import PartyCard from '../../component/PartyCard';
@@ -13,72 +14,33 @@ import ExpansionPanelActions from '@material-ui/core/ExpansionPanelActions';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 
 // 테스트용 parties 객체
-const parties = [
-  {
-    name: 'a',
-    number: 1,
-  },
-  {
-    name: 'b',
-    number: 2,
-  },
-  {
-    name: 'c',
-    number: 3,
-  },
-  {
-    name: 'd',
-    number: 4,
-  },
-  {
-    name: 'e',
-    number: 5,
-  },
-  {
-    name: 'a',
-    number: 1,
-  },
-  {
-    name: 'b',
-    number: 2,
-  },
-  {
-    name: 'c',
-    number: 3,
-  },
-  {
-    name: 'd',
-    number: 4,
-  },
-  {
-    name: 'e',
-    number: 5,
-  },
-  {
-    name: 'a',
-    number: 1,
-  },
-  {
-    name: 'b',
-    number: 2,
-  },
-  {
-    name: 'c',
-    number: 3,
-  },
-  {
-    name: 'd',
-    number: 4,
-  },
-  {
-    name: 'e',
-    number: 5,
-  },
-];
+// const parties = [
+//   {
+//     name: 'a',
+//     number: 1,
+//   },
+//   {
+//     name: 'b',
+//     number: 2,
+//   },
+//   {
+//     name: 'c',
+//     number: 3,
+//   },
+//   {
+//     name: 'd',
+//     number: 4,
+//   },
+//   {
+//     name: 'e',
+//     number: 5,
+//   },
+// ];
 
 // 테스트용 필터
 
 const Main: React.FC = () => {
+  const [parties, setParties] = useState([]);
   const [state, setState] = useState({
     isModalOpened: false,
   });
@@ -93,6 +55,22 @@ const Main: React.FC = () => {
     });
     console.log('asdf');
   };
+  useEffect(() => {
+    axios
+      .get('http://127.0.0.1:4000/parties')
+      .then(function(response) {
+        const data = response.data;
+        setParties(data);
+        console.log(data);
+      })
+      .catch(function(error) {
+        // handle error
+        console.log(error);
+      })
+      .finally(function() {
+        // always executed
+      });
+  }, []);
   return (
     <Layout>
       <S.Main>
@@ -120,8 +98,7 @@ const Main: React.FC = () => {
           {parties.length > 0 &&
             parties.map(party => (
               <S.GridItem>
-                {/* <PartyCard {...party} /> */}
-                <PartyCard>{party.name}</PartyCard>
+                <PartyCard {...party} />
               </S.GridItem>
             ))}
         </S.GridContainer>
