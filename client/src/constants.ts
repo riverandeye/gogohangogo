@@ -27,3 +27,12 @@ export const VALIDATION_ERROR_MESSAGE = {
 export const REGEX = {
   UNIV_EMAIL: /ac.kr$/,
 };
+
+export const PARTY_STATUS_MESSAGE = [
+  '파티 인증 전',
+  '모집 중',
+  '입금 대기 중',
+  '입금 완료',
+  '파티 개시',
+  '파티 삭제',
+];
