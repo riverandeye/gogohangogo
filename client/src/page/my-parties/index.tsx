@@ -8,15 +8,34 @@ const MyParties: React.FC = () => {
   return (
     <Layout>
       <S.MyParty>
-        <S.Title>강관훈의 페이지</S.Title>
         <S.Container>
           <S.UserProfile>
             <S.ProfileImage src={dummyImage} />
             <S.ProfileUsername>강관훈</S.ProfileUsername>
+            <S.ProfileIntroduction>
+              넷플릭스를 좋아하는 학생입니다. 잘 부탁드립니다.
+            </S.ProfileIntroduction>
             <S.ProfilePriority>점수 : 100점</S.ProfilePriority>
             <S.ProfileEmail>Email : riverandeye@gmail.com</S.ProfileEmail>
           </S.UserProfile>
-          <S.PartyContainer>파티 컨테이너</S.PartyContainer>
+          <S.PartyContainer>
+            <S.PartyListTitle>내가 만든 파티</S.PartyListTitle>
+            <S.PartyList>
+              <S.Party>
+                <S.PartyImage src="https://images-na.ssl-images-amazon.com/images/I/41Ix1vMUK7L.png" />
+                <S.PartyMeta>
+                  <S.PartyTitle>
+                    제목 : 저와 함께 넷플릭스 계정 공유하실 분을 찾습니다!
+                  </S.PartyTitle>
+                </S.PartyMeta>
+                <S.PartyUserStatus>안녕</S.PartyUserStatus>
+              </S.Party>
+            </S.PartyList>
+            <S.PartyListTitle>내가 참여한 파티</S.PartyListTitle>
+            <S.PartyList>
+              <S.Party></S.Party>
+            </S.PartyList>
+          </S.PartyContainer>
         </S.Container>
       </S.MyParty>
     </Layout>
