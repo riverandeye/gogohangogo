@@ -62,6 +62,7 @@ CREATE TABLE IF NOT EXISTS `OTT`.`Parties` (
   `title` VARCHAR(100) NULL,
   `introduction` TEXT NULL,
   `personnel` INT NULL,
+  `priority` INT NULL,
   `capacity` INT NULL,
   `account` VARCHAR(2048) NULL,
   `authKey` VARCHAR(36) NULL,

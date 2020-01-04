@@ -1,7 +1,7 @@
 insert into Services (id, name, introduction, capacity, avatar) values(NULL, 'Netflix', '넷플릭스입니다.', '4', 'https://images-na.ssl-images-amazon.com/images/I/41Ix1vMUK7L._SY355_.png');
 
-insert into Services (id, name, introduction, capacity, avatar) values(NULL, 'Amazon Prime', '아마존 프라임 입니다.', '10', 'https://scontent-gmp1-1.xx.fbcdn.net/v/t1.0-9/70615754_2378171165731471_4583162736887726080_n.png?_nc_cat=1&_nc_ohc=Y8Ii2Lp8TdoAQnfubw-gUI3CR98rRVkyYaFD_ftZXr69BaN1eVDiQlzcQ&_nc_ht=scontent-gmp1-1.xx&oh=6cfdd4ab554584267b83536398c61b2e&oe=5E6AF943');
-
 insert into Services (id, name, introduction, capacity, avatar) values(NULL, '왓챠', '왓챠입니다.', '4', 'https://w.namu.la/s/60fbd2743e2425d18e1f3c1f2605637acb79baf2cd226358fe556be5c1231761e711f9d66be0bdbe2f995add8455b84b0d8565c0c59588724950febe775ebda8b7158147312785bf289aec8b2d48e553c694e1beb09c52cfebccd4bb19869ff9');
+
+insert into Services (id, name, introduction, capacity, avatar) values(NULL, 'Amazon Prime', '아마존 프라임 입니다.', '10', 'https://scontent-gmp1-1.xx.fbcdn.net/v/t1.0-9/70615754_2378171165731471_4583162736887726080_n.png?_nc_cat=1&_nc_ohc=Y8Ii2Lp8TdoAQnfubw-gUI3CR98rRVkyYaFD_ftZXr69BaN1eVDiQlzcQ&_nc_ht=scontent-gmp1-1.xx&oh=6cfdd4ab554584267b83536398c61b2e&oe=5E6AF943');
 
 insert into Services (id, name, introduction, capacity, avatar) values(NULL, 'wave', '웨이브입니다.', '4', 'https://yt3.ggpht.com/a/AGF-l79E39viPi8HpdiWVAMd9mHAfnW-yOkSAfkcug=s900-c-k-c0xffffffff-no-rj-mo');

@@ -37,10 +37,11 @@ const createDummyParty = () => {
 
     console.log(' ');
     console.log(
-      `insert into Parties (id, createdAt, updatedAt, startAt, endAt, fulledAt, status, title, introduction, personnel, capacity, account, authKey, isAccountValid, serviceId, adminUserId) values('${val +
+      `insert into Parties (id, createdAt, updatedAt, startAt, endAt, fulledAt, status, title, introduction, personnel, priority, capacity, account, authKey, isAccountValid, serviceId, adminUserId) values('${val +
         1}', NOW(), NOW(), NULL, NULL, NULL, '${partyStatus}', '${val +
-        1} hello', 'Party ${val +
-        1}', '${currentPersonnel}', '${serviceCapacity}', 'dummy@naver.com', 'thisisAuthKey${val}', '1', '${serviceId}', '${userIdx}');`,
+        1} hello', 'Party ${val + 1}', '${currentPersonnel}', '${Math.floor(
+        Math.random() * 100 + 1,
+      )}','${serviceCapacity}', 'dummy@naver.com', 'thisisAuthKey${val}', '1', '${serviceId}', '${userIdx}');`,
     );
 
     const members = range2(userIdx, currentPersonnel);
