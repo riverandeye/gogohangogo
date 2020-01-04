@@ -13,7 +13,13 @@ interface PartyDetailProps {
 
 const PartyDetail: React.FC<PartyDetailProps> = ({ match }) => {
   const [state, setState] = useState({
-    party: { adminUserId: 0, status: -1, avatar: '', title: '' },
+    party: {
+      adminUserId: 0,
+      status: -1,
+      avatar: '',
+      title: '',
+      introduction: '',
+    },
     userList: [],
   });
   useEffect(() => {
@@ -34,6 +40,7 @@ const PartyDetail: React.FC<PartyDetailProps> = ({ match }) => {
     );
   }, []);
   if (state.party.status === -1) return <Spinner visible />;
+  console.log(state.party);
   return (
     <Layout>
       <S.PartyDetail>
@@ -47,12 +54,19 @@ const PartyDetail: React.FC<PartyDetailProps> = ({ match }) => {
             />
             <PartyStatus status={state.party.status} />
           </S.LogoAndState>
-          <S.PartyInformationTexts>{state.party.title}</S.PartyInformationTexts>
+          <S.PartyInformationTexts>
+            <S.PartyInformationTitle>
+              {state.party.title}
+            </S.PartyInformationTitle>
+            <S.PartyInformationIntroduction>
+              {state.party.introduction}
+            </S.PartyInformationIntroduction>
+          </S.PartyInformationTexts>
         </S.PartyInformation>
         <S.ParticipantList>
           {state.userList.map(user => {
             user.isAdmin = user.id === state.party.adminUserId;
-            return <ParticipantCard {...user} />;
+            return <ParticipantCard {...user} key={user.id} />;
           })}
         </S.ParticipantList>
       </S.PartyDetail>
