@@ -6,12 +6,13 @@ import PersonAddIcon from '@material-ui/icons/PersonAdd';
 import ott from '../../assets/OTT_icons/netflix.png';
 import COLORS from '../../styleConstants';
 import { AdminUser } from './interface';
-
+import getDateDiffText from '../../utils/timeParser';
 interface PartyCardProps {
   title: string;
   introduction: string;
   adminUser: AdminUser;
   createdAt: string;
+  personnel: number;
 }
 
 const sayHi = () => {
@@ -22,8 +23,11 @@ const PartyCard: React.FC<PartyCardProps> = ({
   introduction,
   adminUser,
   createdAt,
+  personnel,
 }) => {
-  console.log(Date.parse(createdAt));
+  const fromDate = new Date(createdAt);
+  const toDate = new Date();
+  const cumulatedTime = getDateDiffText(fromDate, toDate);
   return (
     <S.Card>
       <S.test className="test" onClick={sayHi}>
@@ -37,16 +41,16 @@ const PartyCard: React.FC<PartyCardProps> = ({
       />
       <S.CardContent>
         <S.PartyInfo>
-          <FaceIcon style={{ color: COLORS.primaryLight }} /> 팟장:
-          {adminUser.name}
+          <FaceIcon style={{ color: COLORS.primaryLight }} /> 팟장:{' '}
+          <b>{adminUser.name}</b>
         </S.PartyInfo>
         <S.PartyInfo>
           <AccessAlarmIcon style={{ color: COLORS.primaryLight }} /> 팟 개설
-          일자: {createdAt}
+          시점: <b>{cumulatedTime}</b>
         </S.PartyInfo>
         <S.PartyInfo>
-          <PersonAddIcon style={{ color: COLORS.primaryLight }} /> 남은 인원 수:
-          2명
+          <PersonAddIcon style={{ color: COLORS.primaryLight }} /> 남은 인원 수:{' '}
+          <b>{personnel}명</b>
         </S.PartyInfo>
         {/* <p>{children}</p> */}
       </S.CardContent>
