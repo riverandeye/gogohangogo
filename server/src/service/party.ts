@@ -4,12 +4,6 @@ import { Party } from './interface/party';
 import UserService from './user';
 
 const PartyService = {
-  async findPartyList(req: Request) {
-    const userid = req.query['userid'];
-    if (userid) return await PartyModel.getPartyListWithUserId(Number(userid));
-    return await PartyModel.getPartyList();
-  },
-
   async findAndAddAdminUser(partyList: Party[]) {
     const partyListWithAdminUserPromise = partyList.map(async party => {
       const adminUserId = party.adminUserId;

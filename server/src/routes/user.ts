@@ -2,6 +2,7 @@ import { Router } from 'express';
 
 import { API_PARAM } from '../constants';
 import UserController from '../controller/user';
+import PartyController from '../controller/party';
 import validateIdParam from '../middleware/validate-id-param';
 import validateUserBody from '../middleware/validate-user-body';
 import validateEmailBody from '../middleware/validate-email-body';
@@ -26,6 +27,11 @@ UserRouter.get(
   API_PARAM.USER.ID,
   validateIdParam,
   doAsync(UserController.getUserWithId),
+);
+
+UserRouter.get(
+  API_PARAM.USER.PARTY_LIST,
+  doAsync(PartyController.findMyPartyList),
 );
 
 UserRouter.get(
