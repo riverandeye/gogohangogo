@@ -5,7 +5,7 @@ const AppBar: React.FC = () => {
   return (
     <S.AppBar>
       <S.Container>
-        <a href="/">
+        <a href="/main">
           <S.Logo>
             <img src={logo} width="100%" alt="logo" />
           </S.Logo>
