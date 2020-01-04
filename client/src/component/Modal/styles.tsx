@@ -14,7 +14,7 @@ export const Background = styled.div`
   left: 0rem;
   width: 100%;
   height: 100%;
-  z-index: 50;
+  z-index: 150;
 `;
 
 export const PopupBackground = styled.div`
@@ -28,7 +28,7 @@ export const PopupBackground = styled.div`
   border-radius: 5rem;
   box-shadow: 0 5px 5px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
   text-align: center;
-  z-index: 100;
+  z-index: 200;
 `;
 
 export const ModalContent = styled.div`

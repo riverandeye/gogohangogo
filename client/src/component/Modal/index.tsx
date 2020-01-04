@@ -34,7 +34,7 @@ const Modal: React.FC<ModalProps> = ({
           type="bounceInUp"
           style={{
             position: 'fixed',
-            zIndex: '100',
+            zIndex: '200',
             left: '50%',
             top: '50%',
             transform: 'translate(-50%, -50%)',

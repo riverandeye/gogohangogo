@@ -6,6 +6,7 @@ import { useMyPartyUser, useMyParties } from './hooks';
 import getDateDiffText from '../../utils/timeParser';
 import { PARTY_STATUS_MESSAGE } from '../../constants';
 import { Link } from 'react-router-dom';
+import COLORS from '../../styleConstants';
 
 const MyParties: React.FC = props => {
   // TODO : user ID를 현재 접속한 사용자의 ID를 전달해야한다.
@@ -29,7 +30,9 @@ const MyParties: React.FC = props => {
           </S.UserProfile>
           <S.PartyContainer>
             {usersParty.length && (
-              <S.PartyListTitle>내가 만든 파티</S.PartyListTitle>
+              <S.PartyListTitle>
+                <span style={{ color: COLORS.primary }}>| </span>내가 만든 파티
+              </S.PartyListTitle>
             )}
             <S.PartyList>
               {usersParty.map((party, idx) => {
@@ -68,8 +71,12 @@ const MyParties: React.FC = props => {
                 );
               })}
             </S.PartyList>
+            <div style={{ height: '5rem' }}></div>>
             {notUsersParty.length && (
-              <S.PartyListTitle>내가 참여한 파티</S.PartyListTitle>
+              <S.PartyListTitle>
+                <span style={{ color: COLORS.primary }}>| </span>내가 참여한
+                파티
+              </S.PartyListTitle>
             )}
             <S.PartyList>
               {notUsersParty.map((party, idx) => {

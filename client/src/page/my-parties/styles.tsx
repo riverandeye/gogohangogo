@@ -28,7 +28,6 @@ export const UserProfile = styled.div`
   width: 28rem;
   margin-right: 3rem;
   padding-right: 3rem;
-  border-right: 0.1rem solid black;
 `;
 
 export const ProfileImage = styled.img`
@@ -58,8 +57,6 @@ export const ProfileEmail = styled.div`
 
 export const PartyList = styled.div`
   padding-top: 2rem;
-  border-top: 0.1rem solid black;
-  border-bottom: 0.1rem solid black;
   margin-bottom: 2rem;
 `;
 
