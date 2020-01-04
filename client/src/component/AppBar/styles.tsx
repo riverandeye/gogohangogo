@@ -1,6 +1,7 @@
 import MaterialAppBar from '@material-ui/core/AppBar';
 import styled from 'styled-components/macro';
 import COLORS from '../../styleConstants';
+import Button from '../Button';
 
 const orderOfAppBar = 2;
 
@@ -9,6 +10,15 @@ export const AppBar = styled(MaterialAppBar)`
     background-color: ${COLORS.primaryLight};
     height: 6rem;
     min-width: 48rem;
+  }
+`;
+
+export const AppBarButton = styled(Button)`
+  && {
+    a {
+      text-decoration: none;
+      color: white;
+    }
   }
 `;
 
@@ -32,6 +42,7 @@ export const Logo = styled.div`
 export const AppBarMenu = styled.ul`
   order: ${orderOfAppBar};
   margin-left: auto;
+  margin-bottom: 0;
 `;
 
 export const AppBarItem = styled.li`
