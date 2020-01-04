@@ -10,16 +10,26 @@ interface PartyDetailProps {
 }
 
 const PartyDetail: React.FC<PartyDetailProps> = ({ match }) => {
-  const [userList, setUserList] = useState([]);
+  const [state, setState] = useState({
+    party: { adminUserId: 0 },
+    userList: [],
+  });
   useEffect(() => {
-    axios
-      .get(
-        `${process.env.REACT_APP_BACKEND_HOST}/parties/${match.params.id}/users`,
-      )
-      .then(function(response) {
-        const data = response.data;
-        setUserList(data);
-      });
+    const userListPromise = axios.get(
+      `${process.env.REACT_APP_BACKEND_HOST}/parties/${match.params.id}/users`,
+    );
+    const partyPromise = axios.get(
+      `${process.env.REACT_APP_BACKEND_HOST}/parties/${match.params.id}`,
+    );
+
+    Promise.all([partyPromise, userListPromise]).then(
+      ([partyResponse, userListResponse]) => {
+        setState({
+          party: partyResponse.data,
+          userList: userListResponse.data,
+        });
+      },
+    );
   }, []);
   return (
     <Layout>
@@ -33,9 +43,10 @@ const PartyDetail: React.FC<PartyDetailProps> = ({ match }) => {
           />
         </S.PartyInformation>
         <S.ParticipantList>
-          {userList.map(user => (
-            <ParticipantCard {...user} />
-          ))}
+          {state.userList.map(user => {
+            user.isAdmin = user.id === state.party.adminUserId;
+            return <ParticipantCard {...user} />;
+          })}
         </S.ParticipantList>
       </S.PartyDetail>
     </Layout>

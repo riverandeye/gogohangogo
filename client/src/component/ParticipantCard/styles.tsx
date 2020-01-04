@@ -9,4 +9,24 @@ export const Card = styled(MaterialCard)`
 
 export const CardHeader = styled(MaterialCardHeader)``;
 
-export const CardContent = styled(MaterialCardContent)``;
+export const CardContent = styled(MaterialCardContent)`
+  && {
+    padding: 0 1.6rem !important;
+    font-size: 1.5rem;
+  }
+`;
+
+export const CardHeaderTitle = styled.span`
+  font-family: 'NanumSquare', sans-serif;
+  font-size: 2rem;
+`;
+
+export const CardSubHeader = styled.span`
+  display: flex;
+  flex-direction: column;
+`;
+
+export const Email = styled.span`
+  font-family: 'NanumSquare', sans-serif;
+  font-size: 1rem;
+`;
