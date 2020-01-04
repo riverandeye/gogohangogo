@@ -3,6 +3,7 @@ import styled from 'styled-components/macro';
 export const main = styled.div`
   font-family: 'NanumSquare', sans-serif;
   color: #3c4146;
+  background: beige;
 `;
 
 export const Layout = styled.div`
@@ -45,6 +46,8 @@ export const Footer = styled.div`
   align-items: center;
   height: 10rem;
   background: white;
+  margin: 0rem auto;
+  justify-content: center;
 `;
 
 export const FooterItem = styled.div`

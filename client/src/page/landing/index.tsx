@@ -1,7 +1,7 @@
 import React from 'react';
 
 import * as S from './styles';
-import Layout from '../../component/Layout';
+import LandingBar from '../../component/LandingBar';
 import Carousel from 'react-bootstrap/Carousel';
 import 'bootstrap/dist/css/bootstrap.css';
 import ScrollAnimation from 'react-animate-on-scroll';
@@ -12,7 +12,7 @@ import carousel1 from '../../assets/img/carousel1.jpg';
 import carousel2 from '../../assets/img/carousel2.jpg';
 import carousel3 from '../../assets/img/carousel3.jpg';
 
-import member1 from '../../assets/img/member1.jpg';
+import member1 from '../../assets/img/member1.png';
 import member2 from '../../assets/img/member2.jpg';
 import member3 from '../../assets/img/member3.jpg';
 import member4 from '../../assets/img/member4.jpg';
@@ -24,7 +24,8 @@ import instagram from '../../assets/img/instagram.png';
 
 const Landing: React.FC = () => {
   return (
-    <Layout>
+    <>
+      <LandingBar />
       <S.main>
         <Carousel style={{ width: '100%' }}>
           <Carousel.Item>
@@ -118,55 +119,40 @@ const Landing: React.FC = () => {
             <ScrollAnimation animateIn="bounceInLeft">
               <S.Card>
                 <Grid container spacing={2}>
-                  <Grid item xs style={{ margin: '2rem' }}>
-                    <img src={member1} />
+                  <Grid
+                    item
+                    xs
+                    style={{
+                      margin: '2rem',
+                      marginRight: '-8rem',
+                    }}
+                  >
+                    <img src={member1} style={{ borderRadius: '50%' }} />
                   </Grid>
-                  <Grid item xs style={{ margin: '2rem' }}>
-                    <h1>성이름</h1>
-                    <h2>역할</h2>
-                    <p>웅앵웅ㅇ햐ㅕㅂ ㄷ개ㅑㅎㄷ쟈ㅕㅈㄷㅎㅎㅈ댣걓ㄷ쟣ㅗ</p>
-                  </Grid>
-                </Grid>
-              </S.Card>
-            </ScrollAnimation>
-            <ScrollAnimation animateIn="bounceInLeft">
-              <S.Card>
-                <Grid container spacing={2}>
-                  <Grid item xs style={{ margin: '2rem' }}>
-                    <img src={member2} />
-                  </Grid>
-                  <Grid item xs style={{ margin: '2rem' }}>
-                    <h1>성이름</h1>
-                    <h2>역할</h2>
-                    <p>웅앵웅ㅇ햐ㅕㅂ ㄷ개ㅑㅎㄷ쟈ㅕㅈㄷㅎㅎㅈ댣걓ㄷ쟣ㅗ</p>
-                  </Grid>
-                </Grid>
-              </S.Card>
-            </ScrollAnimation>
-            <ScrollAnimation animateIn="bounceInLeft">
-              <S.Card>
-                <Grid container spacing={2}>
-                  <Grid item xs style={{ margin: '2rem' }}>
-                    <img src={member3} />
-                  </Grid>
-                  <Grid item xs style={{ margin: '2rem' }}>
-                    <h1>성이름</h1>
-                    <h2>역할</h2>
-                    <p>웅앵웅ㅇ햐ㅕㅂ ㄷ개ㅑㅎㄷ쟈ㅕㅈㄷㅎㅎㅈ댣걓ㄷ쟣ㅗ</p>
-                  </Grid>
-                </Grid>
-              </S.Card>
-            </ScrollAnimation>
-            <ScrollAnimation animateIn="bounceInLeft">
-              <S.Card>
-                <Grid container spacing={2}>
-                  <Grid item xs style={{ margin: '2rem' }}>
-                    <img src={member4} />
-                  </Grid>
-                  <Grid item xs style={{ margin: '2rem' }}>
-                    <h1>성이름</h1>
-                    <h2>역할</h2>
-                    <p>웅앵웅ㅇ햐ㅕㅂ ㄷ개ㅑㅎㄷ쟈ㅕㅈㄷㅎㅎㅈ댣걓ㄷ쟣ㅗ</p>
+                  <Grid
+                    item
+                    xs
+                    style={{
+                      margin: '2rem',
+                      marginLeft: '0rem',
+                    }}
+                  >
+                    <h1>
+                      남정호
+                      <span style={{ fontSize: '1.5rem' }}> Jeongho Nam</span>
+                    </h1>
+                    <h3>
+                      <span style={{ color: COLORS.primary }}>|</span> party API
+                      <br />
+                      <span style={{ color: COLORS.primary }}>|</span> party
+                      detail view
+                    </h3>
+                    <p style={{ fontSize: '1.4rem' }}>
+                      - 1994.11.30
+                      <br />
+                      - 고려대학교 재학 (2013~)
+                      <br />
+                    </p>
                   </Grid>
                 </Grid>
               </S.Card>
@@ -174,13 +160,159 @@ const Landing: React.FC = () => {
             <ScrollAnimation animateIn="bounceInLeft">
               <S.Card>
                 <Grid container spacing={2}>
-                  <Grid item xs style={{ margin: '2rem' }}>
-                    <img src={member5} />
+                  <Grid
+                    item
+                    xs
+                    style={{
+                      margin: '2rem',
+                      marginRight: '-8rem',
+                    }}
+                  >
+                    <img src={member2} style={{ borderRadius: '50%' }} />
                   </Grid>
-                  <Grid item xs style={{ margin: '2rem' }}>
-                    <h1>성이름</h1>
-                    <h2>역할</h2>
-                    <p>웅앵웅ㅇ햐ㅕㅂ ㄷ개ㅑㅎㄷ쟈ㅕㅈㄷㅎㅎㅈ댣걓ㄷ쟣ㅗ</p>
+                  <Grid
+                    item
+                    xs
+                    style={{
+                      margin: '2rem',
+                      marginLeft: '0rem',
+                    }}
+                  >
+                    <h1>
+                      이해나
+                      <span style={{ fontSize: '1.5rem' }}> Haena Lee</span>
+                    </h1>
+                    <h3>
+                      <span style={{ color: COLORS.primary }}>|</span> Main view
+                      <br />
+                      <span style={{ color: COLORS.primary }}>|</span> Party
+                      view
+                    </h3>
+                    <p style={{ fontSize: '1.4rem' }}>
+                      - 1995.12.08
+                      <br />
+                      - 고려대학교 재학 (2015~)
+                      <br />
+                    </p>
+                  </Grid>
+                </Grid>
+              </S.Card>
+            </ScrollAnimation>
+            <ScrollAnimation animateIn="bounceInLeft">
+              <S.Card>
+                <Grid container spacing={2}>
+                  <Grid
+                    item
+                    xs
+                    style={{
+                      margin: '2rem',
+                      marginRight: '-8rem',
+                    }}
+                  >
+                    <img src={member3} style={{ borderRadius: '50%' }} />
+                  </Grid>
+                  <Grid
+                    item
+                    xs
+                    style={{
+                      margin: '2rem',
+                      marginLeft: '0rem',
+                    }}
+                  >
+                    <h1>
+                      강민주
+                      <span style={{ fontSize: '1.5rem' }}> Minju Kang</span>
+                    </h1>
+                    <h3>
+                      <span style={{ color: COLORS.primary }}>|</span> User API
+                      <br />
+                      <span style={{ color: COLORS.primary }}>|</span> Login,
+                      Signup view
+                    </h3>
+                    <p style={{ fontSize: '1.4rem' }}>
+                      - 생년월일
+                      <br />
+                      - 한양대학교 재학 (201?~)
+                      <br />
+                    </p>
+                  </Grid>
+                </Grid>
+              </S.Card>
+            </ScrollAnimation>
+            <ScrollAnimation animateIn="bounceInLeft">
+              <S.Card>
+                <Grid container spacing={2}>
+                  <Grid
+                    item
+                    xs
+                    style={{
+                      margin: '2rem',
+                      marginRight: '-8rem',
+                    }}
+                  >
+                    <img src={member4} style={{ borderRadius: '50%' }} />
+                  </Grid>
+                  <Grid
+                    item
+                    xs
+                    style={{
+                      margin: '2rem',
+                      marginLeft: '0rem',
+                    }}
+                  >
+                    <h1>
+                      강관훈
+                      <span style={{ fontSize: '1.5rem' }}> Kwanhun Kang</span>
+                    </h1>
+                    <h3>
+                      <span style={{ color: COLORS.primary }}>|</span> Party API
+                      <br />
+                      <span style={{ color: COLORS.primary }}>|</span> Party
+                      detail view
+                    </h3>
+                    <p style={{ fontSize: '1.4rem' }}>
+                      - ㅁㄴㅇㄹ
+                      <br />
+                      - 고려대학교 재학 (201?~)
+                      <br />
+                    </p>
+                  </Grid>
+                </Grid>
+              </S.Card>
+            </ScrollAnimation>
+            <ScrollAnimation animateIn="bounceInLeft">
+              <S.Card>
+                <Grid container spacing={2}>
+                  <Grid
+                    item
+                    xs
+                    style={{
+                      margin: '2rem',
+                      marginRight: '-8rem',
+                    }}
+                  >
+                    <img src={member5} style={{ borderRadius: '50%' }} />
+                  </Grid>
+                  <Grid
+                    item
+                    xs
+                    style={{
+                      margin: '2rem',
+                      marginLeft: '0rem',
+                    }}
+                  >
+                    <h1>
+                      김현채
+                      <span style={{ fontSize: '1.5rem' }}> Hyeonchae Kim</span>
+                    </h1>
+                    <h3>
+                      <span style={{ color: COLORS.primary }}>|</span> Landing
+                      view
+                    </h3>
+                    <p style={{ fontSize: '1.4rem' }}>
+                      - 2000.08.21
+                      <br />- 고려대학교 재학 (2019~)
+                    </p>
                   </Grid>
                 </Grid>
               </S.Card>
@@ -205,7 +337,7 @@ const Landing: React.FC = () => {
           </S.FooterItem>
         </S.Footer>
       </S.main>
-    </Layout>
+    </>
   );
 };
 
