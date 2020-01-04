@@ -49,7 +49,6 @@ const Landing: React.FC = () => {
             <h1
               style={{
                 fontSize: '3.0rem',
-                fontWeight: 'bold',
                 margin: '10rem 15rem',
                 marginTop: '20rem',
               }}
@@ -69,7 +68,13 @@ const Landing: React.FC = () => {
                 Netflix, Watcha, Wavve⋯
                 <br />
                 같이 볼 사람이 필요한가요?
-                <br />
+              </p>
+              <p
+                style={{
+                  fontSize: '2.5rem',
+                  margin: '0rem auto',
+                }}
+              >
                 조금 더 쉽고 간편하게
                 <br />
                 <span>
@@ -122,7 +127,6 @@ const Landing: React.FC = () => {
             <h1
               style={{
                 fontSize: '3.0rem',
-                fontWeight: 'bold',
                 margin: '10rem 15rem',
               }}
             >
@@ -323,8 +327,8 @@ const Landing: React.FC = () => {
                       <span style={{ color: COLORS.primary }}>|</span> Landing
                       view
                       <br />
-                      <span style={{ color: COLORS.primary }}>|</span> Modal
-                      view
+                      <span style={{ color: COLORS.primary }}>|</span> ETC.
+                      Front view
                     </h3>
                     <p style={{ fontSize: '1.4rem' }}>
                       - 2000.08.21
