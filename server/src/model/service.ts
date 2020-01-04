@@ -3,15 +3,23 @@ import { DB_TABLE, DB_COLUMN } from '../constants';
 import { parsePacket } from '../utils/parse-packet';
 
 const ServiceModel = {
-  async getServiceWithId(name: string) {
+  async getServiceWithId(Id: number) {
     const [data] = await db.promise().query(
       `
-      Select * from ${DB_TABLE.SERVICES} where ${DB_COLUMN.SERVICES.NAME}=?
+      Select * from ${DB_TABLE.SERVICES} where ${DB_COLUMN.SERVICES.ID}=?
         `,
-      [name],
+      [Id],
     );
 
     return parsePacket(data[0]);
+  },
+
+  async getAllService() {
+    const [data] = await db
+      .promise()
+      .query(`Select * from ${DB_TABLE.SERVICES}`);
+
+    return parsePacket(data);
   },
 };
 

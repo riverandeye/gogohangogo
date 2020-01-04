@@ -5,6 +5,7 @@ export interface CreateParty {
   readonly title: string;
   readonly personnel: number;
   readonly capacity: number;
+  readonly introduction: string;
   readonly account: string;
   readonly authKey: string;
   readonly isAccountValid: boolean;
