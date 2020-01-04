@@ -6,7 +6,7 @@ export const MyParty = styled.div`
   padding: 10rem;
 
   background-color: ${COLORS.background};
-  height: 100vh;
+  height: 100%;
 `;
 
 export const Title = styled.div`
@@ -58,7 +58,6 @@ export const ProfileEmail = styled.div`
 
 export const PartyList = styled.div`
   padding-top: 2rem;
-  padding-bottom: 2rem;
   border-top: 0.1rem solid black;
   border-bottom: 0.1rem solid black;
   margin-bottom: 2rem;
@@ -75,6 +74,7 @@ export const Party = styled.div`
   flex-direction: row;
   width: 100%;
   border-radius: 0.5rem;
+  margin-bottom: 2rem;
 `;
 
 export const PartyImage = styled.img`
@@ -87,17 +87,107 @@ export const PartyImage = styled.img`
 export const PartyMeta = styled.div`
   display: flex;
   flex-direction: column;
-  width: 50rem;
+  justify-content: space-between;
+
+  width: 48rem;
+  margin-right: 2rem;
+
+  .title {
+    font-size: 2rem;
+    font-weight: bold;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    margin-bottom: 1.5rem;
+  }
+
+  .count {
+    font-size: 1.5rem;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  .email {
+    font-size: 1.5rem;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  .emailVerified {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: green;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  .createdAt {
+    font-size: 1.5rem;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
 `;
 
 export const PartyTitle = styled.div`
   font-size: 2rem;
   font-weight: bold;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  margin-bottom: 1.5rem;
 `;
 
-export const PartyUserStatus = styled.div`
+export const PartyDetail = styled.div`
+  .count {
+    font-size: 1.5rem;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  .email {
+    font-size: 1.5rem;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  .emailVerified {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: green;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  .createdAt {
+    font-size: 1.5rem;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+`;
+
+export const PartyUserList = styled.div`
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: repeat(2, 1fr);
   width: 15rem;
   height: 15rem;
-  border: 0.1rem solid black;
+`;
+
+export const PartyUser = styled.div`
+  background-color: whitesmoke;
+`;
+
+export const PartyUserImage = styled.img`
+  width: 7.5rem;
+  height: 7.5rem;
+
   border-radius: 0.5rem;
 `;

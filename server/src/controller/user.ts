@@ -10,17 +10,18 @@ import {
   STATUS_CODE,
   ALARM_MESSAGE,
   AVATAR,
+  MAXAGE,
 } from '../constants';
 import EmailService from '../service/mail';
-import { User } from '../model/Interface/user';
+import { User } from '../service/Interface/user';
 
 import UserService from '../service/user';
 import pushAlarmService from '../service/push-alarm';
-import { ERRORS } from '../errors';
+import { isNull } from 'util';
 
 webpush.setGCMAPIKey(process.env.GOOGLE_API_KEY);
 webpush.setVapidDetails(
-  'mailto:nbbang04@gmail.com',
+  `mailto:${process.env.MAIL_ID}'`,
   process.env.PUBLIC_VAPID_KEY,
   process.env.PRIVATE_VAPID_KEY,
 );
@@ -66,10 +67,10 @@ const UserController = {
 
   async checkAlarm(req: Request, res: Response, next: NextFunction) {
     const Id = Number(req.params[ID]);
-    const user = await UserService.findUserWithId(Id);
+    const user: User = await UserService.findUserWithId(Id);
 
     const result = await pushAlarmService.sendPushAlarmOnce(
-      JSON.parse(user.alarmSubscription),
+      JSON.parse(JSON.stringify(user.alarmSubscription)),
       ALARM_MESSAGE.CHECK_SUBSCRIBE,
     );
     res.status(200).send();
@@ -91,8 +92,8 @@ const UserController = {
     next: NextFunction,
   ) {
     const email = req.body.email;
-    const users: User[] = await UserModel.getUserWithEmail(email);
-    if (users.length > 0) {
+    const isDuplicate = await UserService.checkDuplicateEmail(email);
+    if (isDuplicate) {
       res.status(STATUS_CODE.BAD_REQUEST).send(ERROR_RESPONSE.DUPLICATE_EMAIL);
       return;
     }
@@ -103,9 +104,11 @@ const UserController = {
   async createUser(req: Request, res: Response, next: NextFunction) {
     const createdUser = req.body;
     // set default value
+    createdUser.introduction = '';
     createdUser.avatar = AVATAR;
     createdUser.authKey = uuid();
     createdUser.alarmSubscription = {};
+    createdUser.status = 1;
 
     await UserService.createUser(createdUser);
 
@@ -115,7 +118,29 @@ const UserController = {
       createdUser.authKey,
     );
 
-    res.status(STATUS_CODE.CREATED);
+    res.status(STATUS_CODE.CREATED).send({
+      message: 'user created',
+    });
+  },
+
+  // auth - login
+  async login(req: Request, res: Response, next: NextFunction) {
+    const { email, password } = req.body;
+    const { isMatched, user } = await UserService.checkUserPassword(
+      email,
+      password,
+    );
+
+    if (isNull(user)) {
+      res.status(STATUS_CODE.BAD_REQUEST).send(ERROR_RESPONSE.USER_NOT_EXIST);
+    } else if (!isMatched) {
+      res.status(STATUS_CODE.BAD_REQUEST).send(ERROR_RESPONSE.WRONG_PASSWORD);
+    }
+
+    const token = UserService.createJWTToken(user);
+    // set cookie with httponly
+    res.cookie('token', token, { maxAge: MAXAGE, httpOnly: true });
+    res.status(STATUS_CODE.OK).send({ message: 'logged in' });
   },
 
   // verify
@@ -146,7 +171,7 @@ const UserController = {
     const Id = Number(req.params[ID]);
     const user: User = await UserService.findUserWithId(Id);
 
-    res.send(await EmailService.sendVerificationMail(user.email, user.authKey));
+    res.status(STATUS_CODE.OK).send({ message: 'Mail is sent' });
   },
 };
 

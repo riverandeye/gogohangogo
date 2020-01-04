@@ -3,3 +3,5 @@ yarn.lock
 
 .env
 node_modules
+
+yarn-error.log

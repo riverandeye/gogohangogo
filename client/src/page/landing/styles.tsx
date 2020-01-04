@@ -54,3 +54,9 @@ export const FooterItem = styled.div`
   text-align: center;
   margin: 1rem;
 `;
+
+export const LoginForm = styled.div`
+  position: absolute;
+  top: 15rem;
+  right: 30rem;
+`;

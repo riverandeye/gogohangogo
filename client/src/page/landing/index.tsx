@@ -23,6 +23,7 @@ import facebook from '../../assets/img/facebook.png';
 import instagram from '../../assets/img/instagram.png';
 
 import logo from '../../assets/logo/npang.png';
+import LoginForm from '../../component/LoginForm/index';
 
 const Landing: React.FC = () => {
   return (
@@ -40,6 +41,9 @@ const Landing: React.FC = () => {
             <img src={carousel3} alt="Third slide" width="100%" />
           </Carousel.Item>
         </Carousel>
+        <S.LoginForm>
+          <LoginForm />
+        </S.LoginForm>
         <S.Section1 id="section1">
           <ScrollAnimation animateIn="fadeIn">
             <h1
@@ -62,7 +66,7 @@ const Landing: React.FC = () => {
                   margin: '0rem auto',
                 }}
               >
-                Netflix, Watcha, Wave⋯
+                Netflix, Watcha, Wavve⋯
                 <br />
                 같이 볼 사람이 필요한가요?
                 <br />
@@ -240,9 +244,9 @@ const Landing: React.FC = () => {
                       Signup view
                     </h3>
                     <p style={{ fontSize: '1.4rem' }}>
-                      - 생년월일
+                      - 1997.03.12
                       <br />
-                      - 한양대학교 재학 (201?~)
+                      - 한양대학교 재학 (2016~)
                       <br />
                     </p>
                   </Grid>
@@ -281,9 +285,9 @@ const Landing: React.FC = () => {
                       detail view
                     </h3>
                     <p style={{ fontSize: '1.4rem' }}>
-                      - ㅁㄴㅇㄹ
+                      - 1995.04.13
                       <br />
-                      - 고려대학교 재학 (201?~)
+                      - 고려대학교 재학 (2014~)
                       <br />
                     </p>
                   </Grid>
@@ -317,6 +321,9 @@ const Landing: React.FC = () => {
                     </h1>
                     <h3>
                       <span style={{ color: COLORS.primary }}>|</span> Landing
+                      view
+                      <br />
+                      <span style={{ color: COLORS.primary }}>|</span> Modal
                       view
                     </h3>
                     <p style={{ fontSize: '1.4rem' }}>

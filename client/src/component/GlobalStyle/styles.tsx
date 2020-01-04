@@ -2,6 +2,8 @@ import { createGlobalStyle } from 'styled-components';
 import reset from 'styled-reset';
 import 'animate.css/animate.min.css';
 
+import COLORS from '../../styleConstants';
+
 const GlobalStyles = createGlobalStyle`
   ${reset};
   /* Font weight Regular(400), Bold(700), Extra Bold(800), Light(300) 지원 */
@@ -11,7 +13,7 @@ const GlobalStyles = createGlobalStyle`
     font-display: 'block';
     box-sizing: border-box;
     -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
+    -moz-osx-font-smoothing: grayscale;  
   }
   
   html {
@@ -21,7 +23,7 @@ const GlobalStyles = createGlobalStyle`
   body {
     font-family: 'NanumSquare', sans-serif;
     height: 100%;
-    background-color: white;
+    background-color: ${COLORS.background} !important;
     margin : 0;
   }
   
@@ -37,6 +39,10 @@ const GlobalStyles = createGlobalStyle`
   button {
     cursor: pointer;
   }
+  a{
+    text-decoration: none;
+    color: inherit;
+    }
 `;
 
 export default GlobalStyles;

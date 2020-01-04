@@ -14,7 +14,7 @@ const UserModel = {
         Id,
       ]);
 
-    return parsePacket(data[0]);
+    return parsePacket(data);
   },
 
   async getUserWithEmail(email: string) {
@@ -53,32 +53,36 @@ const UserModel = {
         [authKey],
       );
 
-    return parsePacket(data[0]);
+    return parsePacket(data);
   },
 
   async createUser(user: CreatedUser) {
     const {
       name,
+      introduction,
       email,
       avatar,
       password,
       authKey,
       agreeAlarm,
       alarmSubscription,
+      status,
     } = user;
 
     await db
       .promise()
       .query(
-        `Insert Into ${DB_TABLE.USERS} Value(NULL, ?, ?, ?, ?, ?, ?, ?, 0, 0)`,
+        `Insert Into ${DB_TABLE.USERS} Value(NULL, ?, ?, ?, ?, ?, ?, ?, ?, NULL, NULL, ?)`,
         [
           name,
+          introduction,
           email,
           avatar,
           password,
           authKey,
           agreeAlarm,
           JSON.stringify(alarmSubscription),
+          status,
         ],
       );
   },
