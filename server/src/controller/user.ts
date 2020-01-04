@@ -127,20 +127,24 @@ const UserController = {
   // auth - login
   async login(req: Request, res: Response, next: NextFunction) {
     const { email, password } = req.body;
-    const { isMatched, user } = await UserService.checkUserPassword(
-      email,
-      password,
-    );
-
+    const user = await UserService.checkUserExist(email);
     if (isNull(user)) {
       res.status(STATUS_CODE.BAD_REQUEST).send(ERROR_RESPONSE.USER_NOT_EXIST);
+    }
+    const isMatched = await UserService.checkUserPassword(user, password);
+
+    if (isNull(user)) {
     } else if (!isMatched) {
       res.status(STATUS_CODE.BAD_REQUEST).send(ERROR_RESPONSE.WRONG_PASSWORD);
     }
 
     const token = UserService.createJWTToken(user);
     // set cookie with httponly
-    res.cookie('token', token, { maxAge: MAXAGE, httpOnly: true });
+    res.cookie('token', token, {
+      maxAge: MAXAGE,
+      httpOnly: true,
+    });
+    console.log(token);
     res.status(STATUS_CODE.OK).send({ message: 'logged in' });
   },
 

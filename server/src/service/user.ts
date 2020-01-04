@@ -51,20 +51,18 @@ const UserService = {
   },
 
   // login part
-  async checkUserPassword(email: string, password: string) {
+  async checkUserExist(email: string) {
     const users: User[] = await UserModel.getUserWithEmail(email);
-    let user: User = null;
     if (users.length >= 1) {
-      user = users[0];
-    }
+      return users[0];
+    } else return null;
+  },
+
+  async checkUserPassword(user: User, password: string) {
     const encryptedPassword = crypto
       .pbkdf2Sync(password, salt, 100000, 64, 'sha512')
       .toString();
-    const isMatched = encryptedPassword === user.password ? true : false;
-    return {
-      isMatched,
-      user: user,
-    };
+    return encryptedPassword === user.password ? true : false;
   },
 
   createJWTToken(user: User) {
