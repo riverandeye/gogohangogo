@@ -13,7 +13,7 @@ const GlobalStyles = createGlobalStyle`
     font-display: 'block';
     box-sizing: border-box;
     -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
+    -moz-osx-font-smoothing: grayscale;  
   }
   
   html {
@@ -39,6 +39,10 @@ const GlobalStyles = createGlobalStyle`
   button {
     cursor: pointer;
   }
+  a{
+    text-decoration: none;
+    color: inherit;
+    }
 `;
 
 export default GlobalStyles;

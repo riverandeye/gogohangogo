@@ -12,15 +12,25 @@ export const Title = styled.div`
 export const Filter = styled.div`
   background-color: ${COLORS.secondaryLight};
   height: 5rem;
+  & > div {
+    position: fixed;
+    width: 100%;
+    z-index: 99;
+  }
+`;
+
+export const Expansion = styled.div`
+  background-color: ${COLORS.secondaryLight};
+  height: 5rem;
 `;
 
 export const GridContainer = styled.div`
   display: grid;
   min-width: 48rem;
-  padding: 0 10rem;
+  padding: 0 20rem;
   grid-template-columns: repeat(3, 1fr);
   grid-auto-columns: repeat(3, 1fr);
-  row-gap: 1rem;
+  row-gap: 2rem;
   column-gap: 2rem;
 `;
 
