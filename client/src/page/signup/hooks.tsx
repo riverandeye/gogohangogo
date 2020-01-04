@@ -3,7 +3,7 @@ import { useState } from 'react';
 import * as Yup from 'yup';
 import { VALIDATION_ERROR_MESSAGE, REGEX } from '../../constants';
 
-interface SignUpDto {
+interface SignUpDTO {
   name: string;
   email: string;
   password: string;
@@ -24,7 +24,7 @@ export const useSignUp = () => {
       .required(VALIDATION_ERROR_MESSAGE.REQUIRED_PW),
   });
 
-  const handleSignUp = async (values: SignUpDto) => {
+  const handleSignUp = async (values: SignUpDTO) => {
     const response = await fetch(
       `${process.env.REACT_APP_BACKEND_HOST}/users/`,
       {
