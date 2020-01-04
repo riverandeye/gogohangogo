@@ -3,7 +3,7 @@ import styled from 'styled-components/macro';
 export const main = styled.div`
   font-family: 'NanumSquare', sans-serif;
   color: #3c4146;
-  background: beige;
+  background: #f7ebeb;
 `;
 
 export const Layout = styled.div`
