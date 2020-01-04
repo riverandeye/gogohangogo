@@ -1,6 +1,8 @@
-import React from 'react';
+import React, { useState } from 'react';
 import * as S from './styles';
 import Layout from '../../component/Layout';
+
+import Modal from '../../component/Modal';
 import PartyCard from '../../component/PartyCard';
 // 테스트용 parties 객체
 const parties = [
@@ -27,6 +29,20 @@ const parties = [
 ];
 
 const Main: React.FC = () => {
+  const [state, setState] = useState({
+    isModalOpened: false,
+  });
+  const ButtonClick = () => {
+    setState({
+      isModalOpened: true,
+    });
+  };
+  const closeModal = () => {
+    setState({
+      isModalOpened: false,
+    });
+    console.log('asdf');
+  };
   return (
     <Layout>
       <S.Main>
