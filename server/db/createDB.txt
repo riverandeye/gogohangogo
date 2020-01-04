@@ -66,12 +66,19 @@ CREATE TABLE IF NOT EXISTS `OTT`.`Parties` (
   `authKey` VARCHAR(36) NULL,
   `isAccountValid` TINYINT NULL,
   `serviceId` INT NOT NULL,
+  `adminUserId` INT NOT NULL,
   PRIMARY KEY (`id`),
   INDEX `fk_Parties_Services1_idx` (`serviceId` ASC) ,
   UNIQUE INDEX `authKey_UNIQUE` (`authKey` ASC) ,
+  INDEX `fk_Parties_Users1_idx` (`adminUserId` ASC) ,
   CONSTRAINT `fk_Parties_Services1`
     FOREIGN KEY (`serviceId`)
     REFERENCES `OTT`.`Services` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_Parties_Users1`
+    FOREIGN KEY (`adminUserId`)
+    REFERENCES `OTT`.`Users` (`id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
@@ -88,7 +95,6 @@ CREATE TABLE IF NOT EXISTS `OTT`.`UserParties` (
   `startedAt` TIMESTAMP NULL,
   `endAt` TIMESTAMP NULL,
   `isDeposited` TINYINT NULL,
-  `isAdmin` TINYINT NULL,
   `status` INT NULL,
   INDEX `fk_UserParties_Users_idx` (`userId` ASC) ,
   INDEX `fk_UserParties_Parties1_idx` (`partyId` ASC) ,
