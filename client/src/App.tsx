@@ -4,7 +4,6 @@ import { Route, BrowserRouter } from 'react-router-dom';
 import Landing from './page/landing';
 import Main from './page/main';
 import { ROUTE } from './constants';
-import Main from './page/main';
 import Subscribe from './page/subscribe';
 import SignUp from './page/signup';
 
