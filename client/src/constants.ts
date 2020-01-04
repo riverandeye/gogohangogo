@@ -4,6 +4,7 @@ export const ROUTE = {
   LANDING: '/',
   MAIN: '/main',
   SUBSCRIBE: '/subscribe',
+  SIGNUP: '/signup',
 };
 
 export const SERVER_ENDPOINT = {
