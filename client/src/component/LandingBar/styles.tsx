@@ -7,6 +7,7 @@ export const LandingBar = styled(MaterialAppBar)`
     /* background-color: rgba(249, 78, 54, 0.1
       ); */
     background-color: #ff8262;
+    font-family: 'NanumSquare', sans-serif;
     height: 6rem;
   }
 `;
@@ -32,6 +33,7 @@ export const Logo = styled.div`
 export const AppBarMenu = styled.ul`
   color: black;
   order: 2;
+  margin-top: 0.7rem;
   margin-left: auto;
   margin-right: 20rem;
 `;
