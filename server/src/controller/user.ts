@@ -33,6 +33,17 @@ const UserController = {
     res.json(user);
   },
 
+  async getUserListWithPartyId(
+    req: Request,
+    res: Response,
+    next: NextFunction,
+  ) {
+    const Id = Number(req.query['partyid']);
+    const userList = await UserModel.getUserListWithPartyId(Id);
+
+    res.json(userList);
+  },
+
   async subscribeAlarm(req: Request, res: Response, next: NextFunction) {
     const Id = Number(req.params[ID]);
     const subscription = req.body;

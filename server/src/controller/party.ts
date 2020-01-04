@@ -17,7 +17,7 @@ const PartyController = {
     res: Response,
     next: NextFunction,
   ) {
-    const Id = Number(req.params[ID]);
+    const Id = Number(req.query['userid']);
     const partyList = await PartyModel.getPartyListWithUserId(Id);
     res.send(partyList);
   },

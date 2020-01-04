@@ -13,4 +13,14 @@ PartyRouter.get(
   doAsync(PartyController.getPartyWithId),
 );
 
+PartyRouter.get(
+  API_PARAM.PARTIES.DEFAULT,
+  doAsync(PartyController.getPartyListWithUserId),
+);
+
+PartyRouter.post(
+  API_PARAM.PARTIES.DEFAULT,
+  doAsync(PartyController.createParty),
+);
+
 export default PartyRouter;
