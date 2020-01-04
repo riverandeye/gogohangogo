@@ -8,8 +8,8 @@ import COLORS from '../../styleConstants';
 export const SignUpForm = styled(MaterialFormControl)`
   && {
     background-color: #ffffff;
-    padding: 2rem;
-    border-radius: 2rem;
+    padding: 3rem;
+    border-radius: 1rem;
     display: flex;
     width: 70%;
     max-width: 45rem;
@@ -21,7 +21,7 @@ export const SignUpForm = styled(MaterialFormControl)`
 
 export const SignUpTextField = styled(MaterialTextField)`
   && .MuiInputBase-input {
-    font-size: 2rem;
+    font-size: 1.8rem;
   }
   && .MuiFormLabel-root {
     font-size: 1.5rem;
@@ -47,6 +47,7 @@ export const SignUpCheckboxLabel = styled(MaterialFormControlLabel)`
 
 export const ErrorMessage = styled.div`
   font-size: 1.2rem;
+  margin-top: 0.2rem;
 `;
 
 export const SignUpFormLabel = styled.div`
