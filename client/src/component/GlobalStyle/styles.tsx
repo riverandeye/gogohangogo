@@ -13,21 +13,27 @@ const GlobalStyles = createGlobalStyle`
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
   }
+  
   html {
     font-size: 10px
   }
+
   body {
     font-family: 'NanumSquare', sans-serif;
     height: 100%;
     background-color: white;
     margin : 0;
-  }::-webkit-scrollbar { 
+  }
+  
+  ::-webkit-scrollbar { 
     display: none; 
   }
-  a{
-    text-decoration:none;
-    color:inherit;
-    }
+
+  a {
+    text-decoration:none ;
+    color:inherit ;
+  }
+
   button {
     cursor: pointer;
   }
