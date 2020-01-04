@@ -6,9 +6,11 @@ import validateIdParam from '../middleware/validate-id-param';
 import validateUserBody from '../middleware/validate-user-body';
 import validateEmailBody from '../middleware/validate-email-body';
 import { doAsync } from '../utils/do-async';
+import validateAuthBody from '../middleware/validate-auth-body';
 
 const UserRouter = Router();
 
+// Alarm Service API
 UserRouter.post(
   API_PARAM.USER.SUBSCRIBE,
   doAsync(UserController.subscribeAlarm),
@@ -19,6 +21,7 @@ UserRouter.delete(
 );
 UserRouter.get(API_PARAM.USER.CHECK_ALARM, doAsync(UserController.checkAlarm));
 
+// User Service API
 UserRouter.get(
   API_PARAM.USER.ID,
   validateIdParam,
@@ -37,12 +40,19 @@ UserRouter.patch(
 );
 
 UserRouter.post(
-  '/',
+  API_PARAM.USER.DEFAULT,
   validateUserBody,
   doAsync(UserController.checkDuplicateUserEmail),
   doAsync(UserController.createUser),
 );
 
+UserRouter.post(
+  API_PARAM.USER.LOGIN,
+  validateAuthBody,
+  doAsync(UserController.login),
+);
+
+// MailService API
 UserRouter.post(
   API_PARAM.USER.REVERIFY,
   validateEmailBody,
