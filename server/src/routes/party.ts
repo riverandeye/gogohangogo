@@ -15,7 +15,7 @@ PartyRouter.get(
 
 PartyRouter.get(
   API_PARAM.PARTIES.DEFAULT,
-  doAsync(PartyController.getPartyListWithUserId),
+  doAsync(PartyController.findPartyList),
 );
 
 PartyRouter.post(

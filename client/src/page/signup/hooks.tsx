@@ -1,6 +1,7 @@
 import { useFormik } from 'formik';
 import { useState } from 'react';
 import * as Yup from 'yup';
+import { VALIDATION_ERROR_MESSAGE, REGEX } from '../../constants';
 
 interface SignUpDto {
   name: string;
@@ -11,15 +12,16 @@ interface SignUpDto {
 
 export const useSignUp = () => {
   // formik logic
-  const [duplicateEmailError, setduplicateEmailError] = useState('');
+  const [postEmailValidation, setpostEmailValidation] = useState('');
   const validationSchema = Yup.object({
-    name: Yup.string().required('이름을 입력해주세요.'),
+    name: Yup.string().required(VALIDATION_ERROR_MESSAGE.REQUIRED_NAME),
     email: Yup.string()
-      .email('유효한 이메일이 아닙니다.')
-      .required('이메일을 입력해주세요.'),
+      .email(VALIDATION_ERROR_MESSAGE.INVALID_EMAIL)
+      .matches(REGEX.UNIV_EMAIL, VALIDATION_ERROR_MESSAGE.NON_UNIV_EMAIL)
+      .required(VALIDATION_ERROR_MESSAGE.REQUIRED_EMAIL),
     password: Yup.string()
-      .min(8, '8글자 이상으로 입력해주세요.')
-      .required('패스워드를 입력해주세요.'),
+      .min(8, VALIDATION_ERROR_MESSAGE.MIN_8)
+      .required(VALIDATION_ERROR_MESSAGE.REQUIRED_PW),
   });
 
   const handleSignUp = async (values: SignUpDto) => {
@@ -29,14 +31,13 @@ export const useSignUp = () => {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
-          // 'Content-Type': 'application/x-www-form-urlencoded',
         },
         body: JSON.stringify(values),
       },
     );
     if (!response.ok) {
       const { message } = await response.json();
-      setduplicateEmailError(message);
+      setpostEmailValidation(message);
     }
   };
 
@@ -48,6 +49,6 @@ export const useSignUp = () => {
 
   return {
     formik,
-    duplicateEmailError,
+    postEmailValidation,
   };
 };
