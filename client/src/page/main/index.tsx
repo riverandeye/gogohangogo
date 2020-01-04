@@ -84,7 +84,9 @@ const Main: React.FC = () => {
         </S.Filter>
         <S.GridContainer>
           <S.GridLabel>
-            내 상황에 <br />딱 맞는 팟을 찾아보세요!
+            내 상황에 <br />
+            <span style={{ color: '#f94e36', fontWeight: 700 }}>딱</span> 맞는
+            팟을 찾아보세요!
             <span role="img"> 😊</span>
           </S.GridLabel>
           {parties.length > 0 &&

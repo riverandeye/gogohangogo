@@ -3,7 +3,8 @@ import COLORS from '../../styleConstants';
 import PartyCard from '../../component/PartyCard';
 export const Main = styled.div`
   width: 100%;
-  background-color: beige;
+  /* background-color: beige; */
+  background-color: #f7ebeb;
 `;
 export const Title = styled.div`
   font-size: 3rem;

@@ -48,7 +48,12 @@ const PartyCard: React.FC<PartyCardProps> = ({
       <S.CardHeader
         avatar={<img src={ottImg} alt="ottBrandImg" width="35px" />}
         title={<S.CardHeaderTitle>{title}</S.CardHeaderTitle>}
-        subheader={<S.CardSubHeader>{introduction}</S.CardSubHeader>}
+        subheader={
+          <S.CardSubHeader>
+            <span style={{ color: '#f94e36', fontWeight: 700 }}>| </span>
+            {introduction}
+          </S.CardSubHeader>
+        }
       />
       <S.CardContent>
         <S.PartyInfo>

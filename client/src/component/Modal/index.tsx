@@ -28,6 +28,17 @@ const Modal: React.FC<ModalProps> = ({
     setClickedCard,
     partyCardId,
   } = modalInfo;
+
+  const maxSlot = 10;
+  const availableSlot = maxSlot - personnel;
+  let slotArr = new Array();
+  let takenArr = new Array();
+  for (let i = 0; i < maxSlot; i++) {
+    slotArr.push({});
+  }
+  for (let i = 0; i < personnel; i++) {
+    takenArr.push({});
+  }
   if (isOpened) {
     return (
       <S.main>
@@ -52,11 +63,17 @@ const Modal: React.FC<ModalProps> = ({
               </S.ModalTitle>
               <S.ModalIntroduction>{introduction}</S.ModalIntroduction>
               <ul>
-                <li>이 팟을 만든 팟장 id는 {adminUserId}</li>
-                <li>이 팟에 가입 신청한 사람들은 {personnel}명</li>
-                <S.ModalMessage>
-                  <div></div>
-                </S.ModalMessage>
+                {/* <li>이 팟을 만든 팟장 id는 {adminUserId}</li>
+                <li>이 팟에 가입 신청한 사람들은 {personnel}명</li> */}
+                {slotArr.map(ico => (
+                  <PersonRoundedIcon fontSize="large">{ico}</PersonRoundedIcon>
+                ))}
+                {takenArr.map(ico => (
+                  <PersonOutlineRoundedIcon fontSize="large">
+                    {ico}
+                  </PersonOutlineRoundedIcon>
+                ))}
+                <S.ModalMessage>{availableSlot}자리 남았어요!</S.ModalMessage>
               </ul>
             </S.ModalContent>
             <S.ButtonContainer>

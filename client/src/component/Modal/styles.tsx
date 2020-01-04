@@ -53,7 +53,7 @@ export const ModalIntroduction = styled.div`
 `;
 
 export const ModalMessage = styled.div`
-  margin-top: 1rem;
+  margin-top: 2rem;
   font-size: 2rem;
   line-height: 1.2;
 `;
