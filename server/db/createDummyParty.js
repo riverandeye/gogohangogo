@@ -18,7 +18,7 @@ const range2 = (a, b) => {
 let userIdx = 1;
 
 const createDummyParty = () => {
-  const allCase = range(100);
+  const allCase = range(5);
 
   allCase.map(val => {
     const serviceId = Math.floor(Math.random() * 4 + 1);
@@ -37,9 +37,10 @@ const createDummyParty = () => {
 
     console.log(' ');
     console.log(
-      `insert into Parties (id, createdAt, updatedAt, startAt, endAt, status, title, personnel, capacity, account, authKey, isAccountValid, serviceId) values('${val +
+      `insert into Parties (id, createdAt, updatedAt, startAt, endAt, status, title, introduction, personnel, capacity, account, authKey, isAccountValid, serviceId) values('${val +
         1}', NOW(), NOW(), NULL, NULL, '${partyStatus}', '${val +
-        1} hello', '${currentPersonnel}', '${serviceCapacity}', 'dummy@naver.com', 'thisisAuthKey${val}', '1', '${serviceId}');`,
+        1} hello', 'Party ${val +
+        1}', '${currentPersonnel}', '${serviceCapacity}', 'dummy@naver.com', 'thisisAuthKey${val}', '1', '${serviceId}');`,
     );
 
     const members = range2(userIdx, currentPersonnel);
@@ -48,10 +49,10 @@ const createDummyParty = () => {
     members.map((memberId, idx) => {
       const isAdmin = idx === 0 ? 1 : 0;
       console.log(
-        `insert into UserParties(userId, partyId, createdAt, updatedAt, startedAt, endAt, isDeposited, isAdmin) values('${memberId}', '${val +
+        `insert into UserParties(userId, partyId, createdAt, updatedAt, startedAt, endAt, isDeposited, isAdmin, status) values('${memberId}', '${val +
           1}', NOW(), NOW(), NULL, NULL, '${Math.floor(
           Math.random() * 2,
-        )}', '${isAdmin}');`,
+        )}', '${isAdmin}', '1');`,
       );
     });
   });
