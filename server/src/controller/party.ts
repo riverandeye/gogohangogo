@@ -2,6 +2,7 @@ import { Request, Response, NextFunction } from 'express';
 import uuid from 'uuid';
 
 import PartyModel from '../model/party';
+import PartyService from '../service/party';
 import ServiceModel from '../model/service';
 import { ID } from '../constants';
 
@@ -12,13 +13,12 @@ const PartyController = {
     res.send(party);
   },
 
-  async getPartyListWithUserId(
+  async findPartyList(
     req: Request,
     res: Response,
     next: NextFunction,
   ) {
-    const Id = Number(req.query['userid']);
-    const partyList = await PartyModel.getPartyListWithUserId(Id);
+    const partyList = await PartyService.findPartyList(req);
     res.send(partyList);
   },
 
