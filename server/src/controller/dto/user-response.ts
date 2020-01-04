@@ -1,6 +1,6 @@
 import { User } from '../../common/interface/user';
 
-export class UserResponse {
+export class UserResponseDTO {
   constructor(user: User) {
     this.id = user.id;
     this.name = user.name;

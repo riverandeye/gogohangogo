@@ -18,7 +18,7 @@ import { User } from '../common/interface/user';
 import UserService from '../service/user';
 import pushAlarmService from '../service/push-alarm';
 import { isNull } from 'util';
-import { UserResponse } from './dto/user-response';
+import { UserResponseDTO } from './dto/user-response';
 
 webpush.setGCMAPIKey(process.env.GOOGLE_API_KEY);
 webpush.setVapidDetails(
@@ -32,7 +32,7 @@ const UserController = {
     const Id = Number(req.params[ID]);
     const user: User = await UserService.findUserWithId(Id);
 
-    res.json(new UserResponse(user));
+    res.json(new UserResponseDTO(user));
   },
 
   async getUserListWithPartyId(
