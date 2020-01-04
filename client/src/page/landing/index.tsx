@@ -23,6 +23,7 @@ import facebook from '../../assets/img/facebook.png';
 import instagram from '../../assets/img/instagram.png';
 
 import logo from '../../assets/logo/npang.png';
+import LoginForm from '../../component/LoginForm/index';
 
 const Landing: React.FC = () => {
   return (
