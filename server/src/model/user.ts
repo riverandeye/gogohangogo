@@ -14,7 +14,7 @@ const UserModel = {
         Id,
       ]);
 
-    return parsePacket(data);
+    return parsePacket(data[0]);
   },
 
   async getUserWithEmail(email: string) {
@@ -26,6 +26,19 @@ const UserModel = {
         `Select * from  ${DB_TABLE.USERS} where ${DB_COLUMN.USERS.EMAIL}=?`,
         [email],
       );
+
+    return parsePacket(data[0]);
+  },
+
+  async getUserListWithPartyId(partyId: number) {
+    const [data] = await db.promise().query(
+      `
+        Select * from  ${DB_TABLE.USERS} As U
+        Inner join ${DB_TABLE.USERPARTIES} where ${DB_COLUMN.USERPARTIES.PARTYID}=? As UP
+        On U.${DB_COLUMN.USERS.ID} = UP.${DB_COLUMN.USERPARTIES.USERID}
+         `,
+      [partyId],
+    );
 
     return parsePacket(data);
   },
@@ -40,7 +53,7 @@ const UserModel = {
         [authKey],
       );
 
-    return parsePacket(data);
+    return parsePacket(data[0]);
   },
 
   async createUser(user: CreatedUser) {

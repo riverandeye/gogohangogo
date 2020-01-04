@@ -23,6 +23,15 @@ export const DB_COLUMN = {
     ISVALID: 'isValid',
   },
 
+  USERPARTIES: {
+    USERID: 'userId',
+    PARTYID: 'partyId',
+    CREATEDAT: 'createdAt',
+    UPDATEDAT: 'updatedAt',
+    ISDEPOSITED: 'isDeposited',
+    ISADMIN: 'isAdmin',
+  },
+
   PARTIES: {
     ID,
     CREATEDAT: 'createdAt',
@@ -70,6 +79,8 @@ export const API_PARAM = {
 export const API_ROUTE = {
   USERS: '/users',
   PARTIES: '/parties',
+  MY_PARTIES: './myparties',
+  MY_PARTY_DETAIL: `/myparties/:${ID}`,
 };
 
 export const REGEX = {
