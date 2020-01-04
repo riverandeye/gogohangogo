@@ -27,7 +27,7 @@ const UserModel = {
         [email],
       );
 
-    return parsePacket(data[0]);
+    return parsePacket(data);
   },
 
   async getUserListWithPartyId(partyId: number) {

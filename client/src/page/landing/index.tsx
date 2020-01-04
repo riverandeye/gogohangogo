@@ -22,6 +22,8 @@ import github from '../../assets/img/github.png';
 import facebook from '../../assets/img/facebook.png';
 import instagram from '../../assets/img/instagram.png';
 
+import logo from '../../assets/logo/npang.png';
+
 const Landing: React.FC = () => {
   return (
     <>
@@ -66,13 +68,18 @@ const Landing: React.FC = () => {
                 <br />
                 조금 더 쉽고 간편하게
                 <br />
-                NBread에서 구해보세요!
+                <span>
+                  <img src={logo} width="32px" style={{ margin: '0.5rem' }} />
+                </span>
+                nBread에서 모아보세요!
               </p>
             </ScrollAnimation>
             <ScrollAnimation
               animateIn="bounceInUp"
               style={{
                 margin: '0rem auto',
+                boxShadow:
+                  '0 5px 5px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24)',
               }}
             >
               <img src="https://us.123rf.com/450wm/terrry4/terrry41904/terrry4190402765/124945839-browser-window-web-browser-in-flat-style-window-concept-internet-browser-mockup-screen-design-vector.jpg?ver=6" />
@@ -92,7 +99,10 @@ const Landing: React.FC = () => {
                   margin: '0rem auto',
                 }}
               >
-                NBread는 어쩌구 웅앵...
+                <span>
+                  <img src={logo} width="24px" style={{ margin: '0.5rem' }} />
+                </span>
+                nBread는 어쩌구 웅앵...
                 <br />
                 이러저러해서 좋구요
                 <br />
@@ -142,9 +152,9 @@ const Landing: React.FC = () => {
                       <span style={{ fontSize: '1.5rem' }}> Jeongho Nam</span>
                     </h1>
                     <h3>
-                      <span style={{ color: COLORS.primary }}>|</span> party API
+                      <span style={{ color: COLORS.primary }}>|</span> Party API
                       <br />
-                      <span style={{ color: COLORS.primary }}>|</span> party
+                      <span style={{ color: COLORS.primary }}>|</span> Party
                       detail view
                     </h3>
                     <p style={{ fontSize: '1.4rem' }}>
@@ -331,7 +341,7 @@ const Landing: React.FC = () => {
             </a>
           </S.FooterItem>
           <S.FooterItem>
-            <a href="https://github.com">
+            <a href="https://github.com/riverandeye/gogohangogo">
               <img src={github} width={'32px'} />
             </a>
           </S.FooterItem>
