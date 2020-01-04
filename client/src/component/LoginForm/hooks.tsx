@@ -2,13 +2,20 @@ import { useFormik } from 'formik';
 import { useState } from 'react';
 import * as Yup from 'yup';
 import { VALIDATION_ERROR_MESSAGE } from '../../constants';
+import RootStore from '../../stores/root';
 
 interface LoginDTO {
   email: string;
   password: string;
 }
 
+interface AuthResponse {
+  token: string;
+}
+
 export const useLogin = () => {
+  const { user } = RootStore();
+
   const [postErrorMessage, setpostErrorMessage] = useState('');
   const validationSchema = Yup.object({
     email: Yup.string().required(VALIDATION_ERROR_MESSAGE.REQUIRED_EMAIL),
@@ -42,5 +49,6 @@ export const useLogin = () => {
   return {
     formik,
     postErrorMessage,
+    setpostErrorMessage,
   };
 };
