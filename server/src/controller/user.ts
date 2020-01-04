@@ -171,7 +171,7 @@ const UserController = {
     const Id = Number(req.params[ID]);
     const user: User = await UserService.findUserWithId(Id);
 
-    res.send(await EmailService.sendVerificationMail(user.email, user.authKey));
+    res.status(STATUS_CODE.OK).send({ message: 'Mail is sent' });
   },
 };
 
