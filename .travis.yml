@@ -6,5 +6,20 @@ git:
 branches:
   only:
     - master
-script:
-  - echo "skipping tests"
+jobs:
+  include:
+    - stage: client build
+      before_script:
+        - cd client
+        - npm install
+      script:
+        - npm run build
+        - cd ..
+
+    - stage: server build
+      before_script:
+        - cd server
+        - npm install
+      script:
+        - npm run build
+        - cd ..
