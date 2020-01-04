@@ -13,6 +13,14 @@ const ServiceModel = {
 
     return parsePacket(data[0]);
   },
+
+  async getAllService() {
+    const [data] = await db
+      .promise()
+      .query(`Select * from ${DB_TABLE.SERVICES}`);
+
+    return parsePacket(data);
+  },
 };
 
 export default ServiceModel;
