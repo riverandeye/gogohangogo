@@ -1,6 +1,6 @@
 import db from './db';
 import { DB_TABLE, DB_COLUMN } from '../constants';
-import { CreateParty } from './Interface/party';
+import { CreatedParty, UpdatedParty } from './Interface/party';
 import { parsePacket } from '../utils/parse-packet';
 
 const PartyModel = {
@@ -46,7 +46,7 @@ const PartyModel = {
     return parsePacket(data);
   },
 
-  async createParty(party: CreateParty) {
+  async createParty(party: CreatedParty) {
     const {
       status,
       title,
@@ -87,7 +87,20 @@ const PartyModel = {
     return createdParty[0];
   },
 
-  async leaveParty(partyId, userId) {
+  async updateParty(partyId: number, updatedParty: UpdatedParty) {
+    const updatedPartyColumn = Object.keys(updatedParty);
+    const queryColumns = updatedPartyColumn
+      .map(key => `${DB_COLUMN.PARTIES[key.toUpperCase()]}=?`)
+      .join(',');
+    await db
+      .promise()
+      .query(
+        `Update ${DB_TABLE.PARTIES} Set ${queryColumns} Where ${DB_COLUMN.PARTIES.ID}=?`,
+        updatedPartyColumn.map(key => updatedParty[key]).concat(partyId),
+      );
+  },
+
+  async leaveParty(partyId: number, userId: number) {
     await db
       .promise()
       .query(

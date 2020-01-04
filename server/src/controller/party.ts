@@ -3,7 +3,6 @@ import uuid from 'uuid';
 
 import PartyModel from '../model/party';
 import PartyService from '../service/party';
-import ServiceModel from '../model/service';
 import { ID, PARTY_ID, STATUS_CODE } from '../constants';
 
 const PartyController = {
@@ -37,6 +36,13 @@ const PartyController = {
 
     const party = await PartyModel.createParty(createParty);
     res.send(party);
+  },
+
+  async updateParty(req: Request, res: Response, next: NextFunction) {
+    const partyId = Number(req.params[ID]);
+    const updatedParty = req.body;
+    await PartyModel.updateParty(partyId, updatedParty);
+    res.send(await PartyModel.getPartyWithId(partyId));
   },
 
   async leaveParty(req: Request, res: Response, next: NextFunction) {
