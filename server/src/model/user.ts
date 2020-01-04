@@ -100,6 +100,12 @@ const UserModel = {
       );
   },
 
+  async deleteUser(Id: number) {
+    await db
+      .promise()
+      .query(`Update ${DB_TABLE.USERS} Set status=0 WHERE id=?`, [Id]);
+  },
+
   async updateUserSubscription(Id: number, subscription: PushSubscription) {
     await db
       .promise()
