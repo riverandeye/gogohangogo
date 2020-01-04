@@ -5,7 +5,7 @@ import CancelRoundedIcon from '@material-ui/icons/CancelRounded';
 import PersonRoundedIcon from '@material-ui/icons/PersonRounded';
 import PersonOutlineRoundedIcon from '@material-ui/icons/PersonOutlineRounded';
 import Axios from 'axios';
-import { Redirect } from 'react-router-dom';
+  import { Redirect } from 'react-router-dom';
 
 import * as S from './styles';
 import Spinner from '../Spinner';

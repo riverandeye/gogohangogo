@@ -1,4 +1,5 @@
 import styled from 'styled-components/macro';
+
 import COLORS from '../../styleConstants';
 
 export const PartyDetail = styled.div`
@@ -9,6 +10,7 @@ export const PartyDetail = styled.div`
 `;
 
 export const PartyInformation = styled.div`
+  position: relative;
   display: flex;
   align-items: flex-start;
   flex: 1 0 auto;
@@ -43,4 +45,10 @@ export const PartyInformationTitle = styled.div`
 export const PartyInformationIntroduction = styled.div`
   font-family: 'NanumSquare', sans-serif;
   font-size: 3rem;
+`;
+
+export const LeaveButton = styled.div`
+  position: absolute;
+  right: 2rem;
+  bottom: 2rem;
 `;
