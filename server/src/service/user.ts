@@ -9,7 +9,7 @@ import { CreatedUser } from '../model/Interface/user';
 const salt = '19qieu3ur7g';
 const UserService = {
   async findUserWithId(Id: number) {
-    const user = await UserModel.getUserWithId(Id);
+    const user: User[] = await UserModel.getUserWithId(Id);
     return user[0];
   },
   async checkDuplicateEmail(email: string) {

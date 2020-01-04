@@ -23,6 +23,7 @@ import facebook from '../../assets/img/facebook.png';
 import instagram from '../../assets/img/instagram.png';
 
 import logo from '../../assets/logo/npang.png';
+import LoginForm from '../../component/LoginForm/index';
 
 const Landing: React.FC = () => {
   return (
@@ -40,6 +41,9 @@ const Landing: React.FC = () => {
             <img src={carousel3} alt="Third slide" width="100%" />
           </Carousel.Item>
         </Carousel>
+        <S.LoginForm>
+          <LoginForm />
+        </S.LoginForm>
         <S.Section1 id="section1">
           <ScrollAnimation animateIn="fadeIn">
             <h1
