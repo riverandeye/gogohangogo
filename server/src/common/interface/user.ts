@@ -11,4 +11,5 @@ export interface User {
   priority?: number;
   isValid?: boolean;
   status?: boolean;
+  isDeposited?: boolean;
 }
