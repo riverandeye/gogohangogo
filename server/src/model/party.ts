@@ -86,6 +86,15 @@ const PartyModel = {
 
     return createdParty[0];
   },
+
+  async leaveParty(partyId, userId) {
+    await db
+      .promise()
+      .query(
+        `delete from ${DB_TABLE.USERPARTIES} where ${DB_COLUMN.USERPARTIES.USERID}=? and ${DB_COLUMN.USERPARTIES.PARTYID}=?`,
+        [userId, partyId],
+      );
+  },
 };
 
 export default PartyModel;
