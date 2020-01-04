@@ -1,4 +1,5 @@
 import styled from 'styled-components/macro';
+
 import COLORS from '../../styleConstants';
 
 export const PartyDetail = styled.div`
@@ -9,6 +10,9 @@ export const PartyDetail = styled.div`
 `;
 
 export const PartyInformation = styled.div`
+  position: relative;
+  display: flex;
+  align-items: flex-start;
   flex: 1 0 auto;
   padding: 3rem;
   border-radius: 1rem;
@@ -28,9 +32,23 @@ export const ParticipantList = styled.div`
 
 export const LogoAndState = styled.div`
   width: 30rem;
+  margin-right: 3rem;
 `;
 
-export const PartyInformationTexts = styled.div`
-  display: inline;
-  background-color: 'blue';
+export const PartyInformationTexts = styled.div``;
+
+export const PartyInformationTitle = styled.div`
+  font-family: 'NanumSquare', sans-serif;
+  font-size: 5rem;
+`;
+
+export const PartyInformationIntroduction = styled.div`
+  font-family: 'NanumSquare', sans-serif;
+  font-size: 3rem;
+`;
+
+export const LeaveButton = styled.div`
+  position: absolute;
+  right: 2rem;
+  bottom: 2rem;
 `;

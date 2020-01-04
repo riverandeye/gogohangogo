@@ -27,7 +27,6 @@ const ParticipantCard: React.FC<ParticipantCardProps> = ({
     isAdmin,
     isDeposited,
   };
-  console.log(depositProps);
   return (
     <S.Card>
       <S.CardHeader

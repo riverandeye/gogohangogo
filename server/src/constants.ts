@@ -88,6 +88,7 @@ export const API_ROUTE = {
   USERS: '/users',
   PARTIES: '/parties',
   SERVICES: '/services',
+  USERPARTIES: '/userparties',
 };
 
 export const REGEX = {
