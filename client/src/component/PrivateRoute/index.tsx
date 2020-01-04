@@ -3,16 +3,16 @@ import { Redirect, Route } from 'react-router-dom';
 import { observer } from 'mobx-react';
 import { useUserStore } from './hooks';
 
-interface PrivateRouterProps {
-  Component: React.ComponentType<any>;
+interface PrivateRouteProps {
+  component: React.ComponentType<any>;
   redirectTo: string;
   path: string;
   exact?: boolean;
 }
 
-const PrivateRouter = (props: PrivateRouterProps) => {
+const PrivateRoute = (props: PrivateRouteProps) => {
   const { user } = useUserStore();
-  const { Component, redirectTo, path, exact } = props;
+  const { component: Component, redirectTo, path, exact } = props;
 
   return (
     <Route
@@ -29,4 +29,4 @@ const PrivateRouter = (props: PrivateRouterProps) => {
   );
 };
 
-export default observer(PrivateRouter);
+export default observer(PrivateRoute);
