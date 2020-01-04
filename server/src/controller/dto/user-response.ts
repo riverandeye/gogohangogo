@@ -10,6 +10,7 @@ export class UserResponseDTO {
     this.priority = user.priority;
     this.isValid = user.isValid;
     this.status = user.status;
+    this.isDeposited = user.isDeposited;
   }
 
   public readonly id: number;
@@ -20,4 +21,5 @@ export class UserResponseDTO {
   public readonly priority: number;
   public readonly isValid: boolean;
   public readonly status: boolean;
+  public readonly isDeposited: boolean;
 }
