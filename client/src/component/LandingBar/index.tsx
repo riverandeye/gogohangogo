@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import * as S from './styles';
 import logo from '../../assets/logo/npang_simple.png';
+import logo2 from '../../assets/logo/npang.png';
 
 const useScroll = () => {
   const [state, setState] = useState({
@@ -88,7 +89,14 @@ const LandingBar: React.FC = () => {
                 cursor: 'pointer',
               }}
             >
-              만든 사람들
+              <span>
+                <img
+                  src={logo2}
+                  width="24px"
+                  style={{ marginTop: '-0.2rem', marginRight: '0.3rem' }}
+                />
+              </span>
+              nBread를 만든 사람들
             </a>
           </S.AppBarItem>
         </S.AppBarMenu>

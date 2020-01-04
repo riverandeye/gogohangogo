@@ -23,6 +23,7 @@ import facebook from '../../assets/img/facebook.png';
 import instagram from '../../assets/img/instagram.png';
 
 import logo from '../../assets/logo/npang.png';
+import capture from '../../assets/img/capture.png';
 import LoginForm from '../../component/LoginForm/index';
 
 const Landing: React.FC = () => {
@@ -91,7 +92,7 @@ const Landing: React.FC = () => {
                   '0 5px 5px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24)',
               }}
             >
-              <img src="https://us.123rf.com/450wm/terrry4/terrry41904/terrry4190402765/124945839-browser-window-web-browser-in-flat-style-window-concept-internet-browser-mockup-screen-design-vector.jpg?ver=6" />
+              <img src={capture} />
             </ScrollAnimation>
           </S.Flex>
           <S.Flex>
@@ -140,7 +141,11 @@ const Landing: React.FC = () => {
                 margin: '10rem 15rem',
               }}
             >
-              만든 사람들 <span style={{ color: COLORS.primary }}>|</span>
+              <span>
+                <img src={logo} width="32px" style={{ margin: '0.5rem' }} />
+              </span>
+              nBread를 만든 사람들{' '}
+              <span style={{ color: COLORS.primary }}>|</span>
             </h1>
           </ScrollAnimation>
           <S.Flex>
