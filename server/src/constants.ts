@@ -64,14 +64,14 @@ export const DB_COLUMN = {
 
 export const API_PARAM = {
   USER: {
-    ID: `/:${ID}`,
     DEFAULT: `/`,
-    VERIFY: `/verify/:${AUTHKEY}`,
-    REVERIFY: `/reverify/:${ID}`,
+    ID: `/:${ID}`,
+    PARTY_LIST: `/:${ID}/parties`,
     SUBSCRIBE: `/:${ID}/subscribe`,
     UNSUBSCRIBE: `/:${ID}/unsubscribe`,
     CHECK_ALARM: `/:${ID}/check`,
-    PARTY_LIST: `/:${ID}/parties`,
+    VERIFY: `/verify/:${AUTHKEY}`,
+    REVERIFY: `/reverify/:${ID}`,
     LOGIN: `/login`,
   },
 

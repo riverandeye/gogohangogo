@@ -59,9 +59,8 @@ UserRouter.post(
 );
 
 // MailService API
-UserRouter.post(
+UserRouter.get(
   API_PARAM.USER.REVERIFY,
-  validateEmailBody,
   doAsync(UserController.sendReVerificationMail),
 );
 
