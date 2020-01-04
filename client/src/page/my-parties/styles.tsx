@@ -87,25 +87,38 @@ export const PartyImage = styled.img`
 export const PartyMeta = styled.div`
   display: flex;
   flex-direction: column;
-  width: 50rem;
+  width: 48rem;
+  margin-right: 2rem;
 
   .title {
     font-size: 2rem;
     font-weight: bold;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
   }
 
   .count {
     font-size: 1.5rem;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
   }
 
   .email {
     font-size: 1.5rem;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
   }
 
   .emailVerified {
     font-size: 1.5rem;
     font-weight: bold;
     color: green;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
   }
 `;
 

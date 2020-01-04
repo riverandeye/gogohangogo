@@ -25,7 +25,8 @@ const MyParties: React.FC = () => {
                 <S.PartyImage src="https://images-na.ssl-images-amazon.com/images/I/41Ix1vMUK7L.png" />
                 <S.PartyMeta>
                   <div className="title">
-                    제목 : 저와 함께 넷플릭스 계정 공유하실 분을 찾습니다!
+                    제목 : 저와 함께 넷플릭스 계정 공유하실 분을
+                    찾습니다다다다다다다다다다다다다!
                   </div>
                   <div className="count">총원 : 1 / 4</div>
                   <div className="email">계정 : riveandeye@hello.com</div>
