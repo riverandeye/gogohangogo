@@ -9,9 +9,15 @@ import { doAsync } from '../utils/do-async';
 
 const UserRouter = Router();
 
-UserRouter.post(API_PARAM.USER.SUBSCRIBE, UserController.subscribeAlarm);
-UserRouter.delete(API_PARAM.USER.UNSUBSCRIBE, UserController.unSubscribeAlarm);
-UserRouter.get(API_PARAM.USER.CHECK_ALARM, UserController.checkAlarm);
+UserRouter.post(
+  API_PARAM.USER.SUBSCRIBE,
+  doAsync(UserController.subscribeAlarm),
+);
+UserRouter.delete(
+  API_PARAM.USER.UNSUBSCRIBE,
+  doAsync(UserController.unSubscribeAlarm),
+);
+UserRouter.get(API_PARAM.USER.CHECK_ALARM, doAsync(UserController.checkAlarm));
 
 UserRouter.get(
   API_PARAM.USER.ID,
