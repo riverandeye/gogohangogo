@@ -2,14 +2,15 @@ import db from './db';
 import { DB_TABLE, DB_COLUMN } from '../constants';
 import { CreateParty } from './Interface/party';
 import { parsePacket } from '../utils/parse-packet';
-import ServiceModel from './service';
 
 const PartyModel = {
   async getPartyWithId(Id: number) {
     const [data] = await db.promise().query(
       `
-      Select * from ${DB_TABLE.PARTIES} where ${DB_COLUMN.PARTIES.ID}=? As P
-      Inner join ${DB_TABLE.SERVICES} As S
+      Select * from 
+      (Select * from ${DB_TABLE.PARTIES} where ${DB_COLUMN.PARTIES.ID}=?) P
+      Inner join 
+      ${DB_TABLE.SERVICES} S
       On P.${DB_COLUMN.PARTIES.SERVICEID} = S.${DB_COLUMN.SERVICES.ID}
         `,
       [Id],
@@ -21,9 +22,10 @@ const PartyModel = {
   async getPartyListWithUserId(Id: number) {
     const [data] = await db.promise().query(
       `Select * 
-        from ${DB_TABLE.USERPARTIES} where ${DB_COLUMN.USERPARTIES.USERID}=? Order by partyId
-        Left outer join ${DB_TABLE.PARTIES}
-        On ${DB_TABLE.USERPARTIES}.partyId = ${DB_TABLE.PARTIES}.id`[Id],
+        from (select * from ${DB_TABLE.USERPARTIES} where ${DB_COLUMN.USERPARTIES.USERID}=? Order by partyId) UP
+        Left outer join ${DB_TABLE.PARTIES} P
+        On UP.partyId = P.id`,
+      [Id],
     );
 
     return parsePacket(data);

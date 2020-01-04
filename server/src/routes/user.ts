@@ -25,6 +25,11 @@ UserRouter.get(
   doAsync(UserController.getUserWithId),
 );
 
+UserRouter.get(
+  API_PARAM.USER.DEFAULT,
+  doAsync(UserController.getUserListWithPartyId),
+);
+
 UserRouter.patch(
   API_PARAM.USER.ID,
   validateIdParam,
