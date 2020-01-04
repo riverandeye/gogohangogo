@@ -18,7 +18,7 @@ const range2 = (a, b) => {
 let userIdx = 1;
 
 const createDummyParty = () => {
-  const allCase = range(9);
+  const allCase = range(200);
 
   allCase.map(val => {
     const serviceId = Math.floor(Math.random() * 4 + 1);
@@ -45,6 +45,9 @@ const createDummyParty = () => {
 
     const members = range2(userIdx, currentPersonnel);
     userIdx += currentPersonnel;
+    if (userIdx >= 30) {
+      userIdx = 1;
+    }
 
     members.map((memberId, idx) => {
       console.log(
