@@ -40,10 +40,10 @@ const UserController = {
     res: Response,
     next: NextFunction,
   ) {
-    const Id = Number(req.query['partyid']);
-    const userList = await UserModel.getUserListWithPartyId(Id);
+    const partyId = Number(req.params[ID]);
+    const userList = await UserModel.getUserListWithPartyId(partyId);
 
-    res.json(userList);
+    res.json(userList.map((user: User) => new UserResponseDTO(user)));
   },
 
   async subscribeAlarm(req: Request, res: Response, next: NextFunction) {
