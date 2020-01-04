@@ -8,7 +8,7 @@ const validateUserBody = (req: Request, res: Response, next: NextFunction) => {
   // required validate
   const bodyAttr = Object.keys(req.body);
   const isBodySatisfied = bodyAttr.every(attr =>
-    ['name', 'email', 'password', 'agreeAlarm', 'avatar'].includes(attr),
+    ['name', 'email', 'password', 'agreeAlarm'].includes(attr),
   );
 
   if (!isBodySatisfied) {

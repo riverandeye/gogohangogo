@@ -57,13 +57,28 @@ const UserModel = {
   },
 
   async createUser(user: CreatedUser) {
-    const { name, email, avatar, password, authKey, agreeAlarm } = user;
-    console.log(name, email);
+    const {
+      name,
+      email,
+      avatar,
+      password,
+      authKey,
+      agreeAlarm,
+      alarmSubscription,
+    } = user;
     await db
       .promise()
       .query(
-        `Insert Into ${DB_TABLE.USERS} Value(NULL, ?, ?, ?, ?, ?, ?, 0, 0)`,
-        [name, email, avatar, password, authKey, agreeAlarm],
+        `Insert Into ${DB_TABLE.USERS} Value(NULL, ?, ?, ?, ?, ?, ?, ?, 0, 0)`,
+        [
+          name,
+          email,
+          avatar,
+          password,
+          authKey,
+          agreeAlarm,
+          JSON.stringify(alarmSubscription),
+        ],
       );
   },
 
