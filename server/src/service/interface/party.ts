@@ -5,4 +5,5 @@ export interface Party {
   readonly adminUserId: number;
   readonly ottName: string;
   readonly ottImage: string;
+  readonly priority: number;
 }
