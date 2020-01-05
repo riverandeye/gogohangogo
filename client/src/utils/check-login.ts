@@ -1,7 +1,7 @@
-import { useState, useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import cookies from 'react-cookies';
 
-export const useCookieUser = () => {
+export const useCheckLogin = () => {
   const [user, setUser] = useState({
     id: 1,
   });
@@ -9,8 +9,8 @@ export const useCookieUser = () => {
   useEffect(() => {
     const userCookie = cookies.load('user');
 
-    if (userCookie && window.location.href === `http://localhost:3000/`) {
-      window.location.replace('/main');
+    if (!userCookie) {
+      window.location.replace('/');
     }
 
     setUser(userCookie);

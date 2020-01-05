@@ -20,10 +20,10 @@ import FormControlLabel from '@material-ui/core/FormControlLabel';
 import FormControl from '@material-ui/core/FormControl';
 import Divider from '@material-ui/core/Divider';
 import Typography from '@material-ui/core/Typography';
+import { useCheckLogin } from '../../utils/check-login';
 
 const Main: React.FC = () => {
-  const user = useCookieUser();
-  console.log(user);
+  const user = useCheckLogin();
 
   const [parties, setParties] = useState([]);
   // for modal
