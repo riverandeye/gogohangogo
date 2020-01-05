@@ -29,7 +29,6 @@ import { useCookieUser } from '../../utils/use-cookie-user';
 
 const Landing: React.FC = () => {
   const user = useCookieUser();
-  console.log(user);
 
   return (
     <>

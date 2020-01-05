@@ -6,11 +6,15 @@ import { useMyPartyUser, useMyParties } from './hooks';
 import getDateDiffText from '../../utils/timeParser';
 import { PARTY_STATUS_MESSAGE } from '../../constants';
 import { Link } from 'react-router-dom';
+import { useCookieUser } from '../../utils/use-cookie-user';
+import { useCheckLogin } from '../../utils/check-login';
 
 const MyParties: React.FC = props => {
   // TODO : user ID를 현재 접속한 사용자의 ID를 전달해야한다.
-  const { userData } = useMyPartyUser(1);
-  const { usersParty, notUsersParty } = useMyParties(1);
+  const user = useCheckLogin();
+  const { userData } = useMyPartyUser(user.id);
+  const { usersParty, notUsersParty } = useMyParties(user.id);
+  console.log(user);
 
   const handlePartyClick = e => {};
 
@@ -28,8 +32,10 @@ const MyParties: React.FC = props => {
             <S.ProfileEmail>Email : {userData.email}</S.ProfileEmail>
           </S.UserProfile>
           <S.PartyContainer>
-            {usersParty.length && (
+            {usersParty.length ? (
               <S.PartyListTitle>내가 만든 파티</S.PartyListTitle>
+            ) : (
+              ''
             )}
             <S.PartyList>
               {usersParty.map((party, idx) => {
@@ -68,8 +74,10 @@ const MyParties: React.FC = props => {
                 );
               })}
             </S.PartyList>
-            {notUsersParty.length && (
+            {notUsersParty.length ? (
               <S.PartyListTitle>내가 참여한 파티</S.PartyListTitle>
+            ) : (
+              ''
             )}
             <S.PartyList>
               {notUsersParty.map((party, idx) => {

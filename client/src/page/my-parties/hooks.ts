@@ -19,7 +19,7 @@ export const useMyPartyUser = (id: number) => {
     };
 
     getUser();
-  }, []);
+  }, [id]);
 
   return {
     userData,
@@ -48,7 +48,7 @@ export const useMyParties = (id: number) => {
     };
 
     getUserParties();
-  }, []);
+  }, [id]);
 
   const usersParty = userPartiesData.filter(party => isMyParty(id, party));
   const notUsersParty = userPartiesData.filter(party =>
