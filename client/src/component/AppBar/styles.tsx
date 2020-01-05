@@ -48,4 +48,10 @@ export const AppBarItem = styled.li`
 
 export const AppBarButton = styled(Button)`
   outline: none;
+  & > a {
+    outline: none;
+  }
+  &:active {
+    background-color: red;
+  }
 `;

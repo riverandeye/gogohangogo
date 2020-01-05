@@ -13,7 +13,7 @@ export const Background = styled.div`
   top: 0rem;
   left: 0rem;
   width: 100%;
-  height: 100%;
+  height: 100vh;
   z-index: 150;
 `;
 
@@ -32,7 +32,7 @@ export const PopupBackground = styled.div`
 `;
 
 export const ModalContent = styled.div`
-  margin-top: 5rem;
+  margin-top: 9rem;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -47,13 +47,13 @@ export const ModalTitle = styled.div`
 
 export const ModalIntroduction = styled.div`
   margin-top: 1rem;
-  font-size: 1.6rem;
+  font-size: 1.4rem;
   font-weight: 300;
   line-height: 1.2;
 `;
 
 export const ModalMessage = styled.div`
-  margin-top: 1rem;
+  margin-top: 2rem;
   font-size: 2rem;
   line-height: 1.2;
 `;
