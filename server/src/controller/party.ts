@@ -3,8 +3,7 @@ import uuid from 'uuid';
 
 import PartyModel from '../model/party';
 import PartyService from '../service/party';
-import ServiceModel from '../model/service';
-import { ID } from '../constants';
+import { ID, PARTY_ID, STATUS_CODE } from '../constants';
 
 const PartyController = {
   async getPartyWithId(req: Request, res: Response, next: NextFunction) {
@@ -29,20 +28,29 @@ const PartyController = {
 
   async createParty(req: Request, res: Response, next: NextFunction) {
     const createParty = req.body;
-    const service = await ServiceModel.getServiceWithId(
-      createParty.servicename,
-    );
-    const { id: serviceId, capacity } = service;
 
     createParty.status = 0;
     createParty.personnel = 1;
-    createParty.capacity = capacity;
     createParty.authKey = uuid();
     createParty.isAccountValid = false;
-    createParty.serviceId = serviceId;
 
     const party = await PartyModel.createParty(createParty);
     res.send(party);
+  },
+
+  async updateParty(req: Request, res: Response, next: NextFunction) {
+    const partyId = Number(req.params[ID]);
+    const updatedParty = req.body;
+    await PartyModel.updateParty(partyId, updatedParty);
+    res.send(await PartyModel.getPartyWithId(partyId));
+  },
+
+  async leaveParty(req: Request, res: Response, next: NextFunction) {
+    const partyId = Number(req.params[PARTY_ID]);
+    const userId = Number(req.params[ID]);
+
+    await PartyModel.leaveParty(partyId, userId);
+    res.status(STATUS_CODE.NO_CONTENT).send({});
   },
 };
 

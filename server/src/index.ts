@@ -3,11 +3,13 @@ import dotenv from 'dotenv';
 
 dotenv.config();
 
-import UserRouter from './routes/user';
-import { API_ROUTE } from './constants';
-import PartyRouter from './routes/party';
-import cookieParser from 'cookie-parser';
 import cors from 'cors';
+import cookieParser from 'cookie-parser';
+import { API_ROUTE } from './constants';
+import UserRouter from './routes/user';
+import PartyRouter from './routes/party';
+import ServiceRouter from './routes/service';
+import UserPartyRouter from './routes/userparty';
 
 const app = express();
 
@@ -19,6 +21,9 @@ app.use(cookieParser());
 
 app.use(API_ROUTE.USERS, UserRouter);
 app.use(API_ROUTE.PARTIES, PartyRouter);
+app.use(API_ROUTE.SERVICES, ServiceRouter);
+app.use(API_ROUTE.SERVICES, ServiceRouter);
+app.use(API_ROUTE.USERPARTIES, UserPartyRouter);
 
 app.listen(process.env.SERVER_PORT, () => {
   console.log('start');

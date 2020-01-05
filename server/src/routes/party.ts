@@ -29,4 +29,5 @@ PartyRouter.post(
   doAsync(PartyController.createParty),
 );
 
+PartyRouter.patch(API_PARAM.PARTIES.ID, doAsync(PartyController.updateParty));
 export default PartyRouter;

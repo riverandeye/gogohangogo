@@ -1,4 +1,5 @@
 export const ID = 'id';
+export const PARTY_ID = 'partyId';
 export const NAME = 'name';
 export const AUTHKEY = 'authKey';
 export const MAXAGE = 60 * 60 * 1000;
@@ -69,6 +70,7 @@ export const API_PARAM = {
     PARTY_LIST: `/:${ID}/parties`,
     SUBSCRIBE: `/:${ID}/subscribe`,
     UNSUBSCRIBE: `/:${ID}/unsubscribe`,
+    USER_PARTY: `/:${ID}/parties/:${PARTY_ID}`,
     CHECK_ALARM: `/:${ID}/check`,
     VERIFY: `/verify/:${AUTHKEY}`,
     REVERIFY: `/reverify/:${ID}`,
@@ -85,6 +87,8 @@ export const API_PARAM = {
 export const API_ROUTE = {
   USERS: '/users',
   PARTIES: '/parties',
+  SERVICES: '/services',
+  USERPARTIES: '/userparties',
 };
 
 export const REGEX = {
