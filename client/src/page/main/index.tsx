@@ -58,19 +58,16 @@ const Main: React.FC = () => {
   };
 
   const searchHandler = async () => {
-    const response = await fetch(
-      `${process.env.REACT_APP_BACKEND_HOST}/parties`,
-      {
-        method: 'GET',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(searchOption),
-      },
-    );
-
-    const data = await response.json();
-    setParties(data);
+    axios
+      .post(
+        `${process.env.REACT_APP_BACKEND_HOST}/parties/filter`,
+        searchOption,
+      )
+      .then(function(response) {
+        const data = response.data;
+        setParties(data);
+        console.log(data);
+      });
   };
 
   // for filter

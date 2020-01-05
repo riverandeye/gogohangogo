@@ -14,35 +14,35 @@ const PartyController = {
   },
 
   async findPartyList(req: Request, res: Response, next: NextFunction) {
-    if (Object.keys(req.body).length === null) {
-      const partyList = await PartyModel.getPartyList();
-      const partyListWithAdminUser = await PartyService.findAndAddAdminUser(
-        partyList,
-      );
-      res.send(partyListWithAdminUser);
-    }
+    const partyList = await PartyModel.getPartyList();
+    const partyListWithAdminUser = await PartyService.findAndAddAdminUser(
+      partyList,
+    );
+    res.send(partyListWithAdminUser);
+  },
+
+  async findFilteredPartyList(req: Request, res: Response, next: NextFunction) {
     const Types = req.body;
-    console.log(Types.sortType, Types.ottType);
-    const partyList: Party[] = await PartyModel.getPartyWithOTTType(
+    let partyList: Party[] = await PartyModel.getPartyWithOTTType(
       Types.ottType,
     );
-
-    let sortedPartyList;
+    console.log(partyList);
     switch (Types.sortType) {
       case 'latest':
         break;
       case 'priority':
-        sortedPartyList = partyList.sort((a, b) => {
+        partyList = partyList.sort((a, b) => {
           return b.priority - a.priority;
         });
-
-        res.send(sortedPartyList);
         break;
 
       default:
         break;
     }
-    res.send(partyList);
+    const partyListWithAdminUser = await PartyService.findAndAddAdminUser(
+      partyList,
+    );
+    res.send(partyListWithAdminUser);
   },
 
   async findMyPartyList(req: Request, res: Response, next: NextFunction) {

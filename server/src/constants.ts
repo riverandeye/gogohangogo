@@ -81,6 +81,7 @@ export const API_PARAM = {
     ID: `/:${ID}`,
     DEFAULT: `/`,
     USERS: `/:${ID}/users`,
+    FILTER: `/filter`,
   },
 };
 
