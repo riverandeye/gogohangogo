@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import * as S from './styles';
 import { MDBAnimation } from 'mdbreact';
 import SendRoundedIcon from '@material-ui/icons/SendRounded';
@@ -20,11 +20,11 @@ const Modal: React.FC<ModalProps> = ({
     title,
     introduction,
     adminUserId,
-    createdAt,
+    // createdAt,
     personnel,
     ottName,
-    setClickedCard,
-    partyCardId,
+    // setClickedCard,
+    // partyCardId,
   } = modalInfo;
   if (isOpened) {
     return (

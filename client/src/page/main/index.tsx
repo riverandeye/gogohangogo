@@ -7,12 +7,16 @@ import PartyCard from '../../component/PartyCard';
 import ExpansionPanel from '@material-ui/core/ExpansionPanel';
 import ExpansionPanelDetails from '@material-ui/core/ExpansionPanelDetails';
 import ExpansionPanelSummary from '@material-ui/core/ExpansionPanelSummary';
-import ExpansionPanelActions from '@material-ui/core/ExpansionPanelActions';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
+
+import { useCookieUser } from '../../utils/use-cookie-user';
 
 // 테스트용 필터
 
 const Main: React.FC = () => {
+  const user = useCookieUser();
+  console.log(user);
+
   const [parties, setParties] = useState([]);
   const [isModalOpened, setIsModalOpened] = useState(false);
   const [modalInfo, setModalInfo] = useState({});
@@ -24,6 +28,7 @@ const Main: React.FC = () => {
     setIsModalOpened(false);
   };
   const [clickedCard, setClickedCard] = useState(null);
+
   useEffect(() => {
     axios
       .get('http://127.0.0.1:4000/parties')
@@ -39,6 +44,7 @@ const Main: React.FC = () => {
         // always executed
       });
   }, []);
+
   useEffect(() => {
     if (clickedCard !== null) {
       const currentInfoObject = parties[clickedCard - 1];
@@ -88,8 +94,8 @@ const Main: React.FC = () => {
             <span role="img"> 😊</span>
           </S.GridLabel>
           {parties.length > 0 &&
-            parties.map(party => (
-              <S.GridItem>
+            parties.map((party, idx) => (
+              <S.GridItem key={idx}>
                 <PartyCard
                   {...party}
                   setClickedCard={setClickedCard}

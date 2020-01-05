@@ -14,7 +14,7 @@ const NotFound: React.FC = () => {
         <S.Flex>
           <S.Content>
             <MDBAnimation type="rubberBand" duration={10} infinite>
-              <img src={logo} width="250px" />
+              <img alt="logo" src={logo} width="250px" />
             </MDBAnimation>
             <h1
               style={{

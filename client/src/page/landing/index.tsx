@@ -25,8 +25,12 @@ import instagram from '../../assets/img/instagram.png';
 import logo from '../../assets/logo/npang.png';
 import capture from '../../assets/img/capture.png';
 import LoginForm from '../../component/LoginForm/index';
+import { useCookieUser } from '../../utils/use-cookie-user';
 
 const Landing: React.FC = () => {
+  const user = useCookieUser();
+  console.log(user);
+
   return (
     <>
       <LandingBar />
