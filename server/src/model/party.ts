@@ -29,6 +29,21 @@ const PartyModel = {
     return parsePacket(data);
   },
 
+  async getPartyWithOTTType(partyType: string) {
+    console.log(partyType);
+    const [data] = await db.promise().query(
+      `
+    Select P.id, P.title, P.introduction, P.personnel, P.capacity, P.createdAt, P.adminUserId, P.priority, S.name as ottName, S.avatar as ottImage from
+    (Select id, title, introduction, personnel, capacity, createdAt, adminUserId, serviceId, priority from ${DB_TABLE.PARTIES} where status=1) P
+    Left outer join ${DB_TABLE.SERVICES} S
+    On P.serviceId=S.id
+    where S.name=?
+    `,
+      [partyType],
+    );
+    return parsePacket(data);
+  },
+
   async getPartyListWithUserId(Id: number) {
     const [data] = await db.promise().query(
       `
