@@ -8,6 +8,10 @@ import ExpansionPanel from '@material-ui/core/ExpansionPanel';
 import ExpansionPanelDetails from '@material-ui/core/ExpansionPanelDetails';
 import ExpansionPanelSummary from '@material-ui/core/ExpansionPanelSummary';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
+
+import { useCookieUser } from '../../utils/use-cookie-user';
+
+// 테스트용 필터
 import getOttIconUrl from '../../utils/ottIconMatcher';
 // 필터용
 import Radio from '@material-ui/core/Radio';
@@ -18,6 +22,9 @@ import Divider from '@material-ui/core/Divider';
 import Typography from '@material-ui/core/Typography';
 
 const Main: React.FC = () => {
+  const user = useCookieUser();
+  console.log(user);
+
   const [parties, setParties] = useState([]);
   // for modal
   const [isModalOpened, setIsModalOpened] = useState(false);
@@ -30,6 +37,7 @@ const Main: React.FC = () => {
     setIsModalOpened(false);
   };
   const [clickedCard, setClickedCard] = useState(null);
+
   // for filter
   useEffect(() => {
     axios
@@ -47,6 +55,7 @@ const Main: React.FC = () => {
         // always executed
       });
   }, []);
+
   useEffect(() => {
     if (clickedCard !== null) {
       const currentInfoObject = parties[clickedCard - 1];
@@ -248,8 +257,8 @@ const Main: React.FC = () => {
             <span role="img"> 😊</span>
           </S.GridLabel>
           {parties.length > 0 &&
-            parties.map(party => (
-              <S.GridItem>
+            parties.map((party, idx) => (
+              <S.GridItem key={idx}>
                 <PartyCard
                   {...party}
                   setClickedCard={setClickedCard}

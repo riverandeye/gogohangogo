@@ -1,13 +1,13 @@
 import React, { useState } from 'react';
+import * as S from './styles';
 import { MDBAnimation } from 'mdbreact';
 import SendRoundedIcon from '@material-ui/icons/SendRounded';
 import CancelRoundedIcon from '@material-ui/icons/CancelRounded';
 import PersonRoundedIcon from '@material-ui/icons/PersonRounded';
 import PersonOutlineRoundedIcon from '@material-ui/icons/PersonOutlineRounded';
 import Axios from 'axios';
-  import { Redirect } from 'react-router-dom';
+import { Redirect } from 'react-router-dom';
 
-import * as S from './styles';
 import Spinner from '../Spinner';
 
 interface ModalProps {
@@ -25,11 +25,11 @@ const Modal: React.FC<ModalProps> = ({
     title,
     introduction,
     adminUserId,
-    createdAt,
+    // createdAt,
     personnel,
     capacity,
     ottName,
-    setClickedCard,
+    // setClickedCard,
     partyCardId,
   } = modalInfo;
 

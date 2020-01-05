@@ -145,12 +145,7 @@ const UserController = {
 
     const token = UserService.createJWTToken(user);
     // set cookie with httponly
-    res.cookie('token', token, {
-      maxAge: MAXAGE,
-      httpOnly: true,
-    });
-    console.log(token);
-    res.status(STATUS_CODE.OK).send({ message: 'logged in' });
+    res.status(STATUS_CODE.OK).send({ token });
   },
 
   // verify
