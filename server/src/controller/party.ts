@@ -4,6 +4,7 @@ import uuid from 'uuid';
 import PartyModel from '../model/party';
 import PartyService from '../service/party';
 import { ID, PARTY_ID, STATUS_CODE } from '../constants';
+import { Party } from '../service/interface/party';
 
 const PartyController = {
   async getPartyWithId(req: Request, res: Response, next: NextFunction) {
@@ -13,11 +14,35 @@ const PartyController = {
   },
 
   async findPartyList(req: Request, res: Response, next: NextFunction) {
-    const partyList = await PartyModel.getPartyList();
-    const partyListWithAdminUser = await PartyService.findAndAddAdminUser(
-      partyList,
+    if (Object.keys(req.body).length === null) {
+      const partyList = await PartyModel.getPartyList();
+      const partyListWithAdminUser = await PartyService.findAndAddAdminUser(
+        partyList,
+      );
+      res.send(partyListWithAdminUser);
+    }
+    const Types = req.body;
+    console.log(Types.sortType, Types.ottType);
+    const partyList: Party[] = await PartyModel.getPartyWithOTTType(
+      Types.ottType,
     );
-    res.send(partyListWithAdminUser);
+
+    let sortedPartyList;
+    switch (Types.sortType) {
+      case 'latest':
+        break;
+      case 'priority':
+        sortedPartyList = partyList.sort((a, b) => {
+          return b.priority - a.priority;
+        });
+
+        res.send(sortedPartyList);
+        break;
+
+      default:
+        break;
+    }
+    res.send(partyList);
   },
 
   async findMyPartyList(req: Request, res: Response, next: NextFunction) {
