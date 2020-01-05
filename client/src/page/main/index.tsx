@@ -38,6 +38,41 @@ const Main: React.FC = () => {
   };
   const [clickedCard, setClickedCard] = useState(null);
 
+  const [searchOption, setSearchOption] = useState({
+    sortType: '',
+    ottType: '',
+  });
+
+  const changeSortType = sortType => {
+    setSearchOption({
+      sortType: sortType,
+      ottType: searchOption.ottType,
+    });
+  };
+
+  const changeOttType = ottType => {
+    setSearchOption({
+      sortType: searchOption.sortType,
+      ottType: ottType,
+    });
+  };
+
+  const searchHandler = async () => {
+    const response = await fetch(
+      `${process.env.REACT_APP_BACKEND_HOST}/parties`,
+      {
+        method: 'GET',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(searchOption),
+      },
+    );
+
+    const data = await response.json();
+    setParties(data);
+  };
+
   // for filter
   useEffect(() => {
     axios
@@ -55,6 +90,8 @@ const Main: React.FC = () => {
         // always executed
       });
   }, []);
+
+  console.log(searchOption);
 
   useEffect(() => {
     if (clickedCard !== null) {
@@ -118,6 +155,7 @@ const Main: React.FC = () => {
                               type="radio"
                               name="credit-card"
                               value="watcha"
+                              onClick={() => changeOttType('watcha')}
                             />
                             <div className="radioInfo">watcha</div>
                             <label
@@ -137,6 +175,7 @@ const Main: React.FC = () => {
                               type="radio"
                               name="credit-card"
                               value="netflix"
+                              onClick={() => changeOttType('Netflix')}
                             />
                             <div className="radioInfo">netflix</div>
                             <label
@@ -156,6 +195,7 @@ const Main: React.FC = () => {
                               type="radio"
                               name="credit-card"
                               value="wavve"
+                              onClick={() => changeOttType('wave')}
                             />
                             <div className="radioInfo">wavve</div>
                             <label
@@ -175,6 +215,7 @@ const Main: React.FC = () => {
                               type="radio"
                               name="credit-card"
                               value="prime"
+                              onClick={() => changeOttType('Amazon Prime')}
                             />
                             <div className="radioInfo">amazon prime</div>
                             <label
@@ -197,12 +238,7 @@ const Main: React.FC = () => {
                   <S.FilterSectionLable>기준으로 정렬하기</S.FilterSectionLable>
                   <Divider />
                   <FormControl component="fieldset" className="somethin">
-                    <RadioGroup
-                      aria-label="sort"
-                      name="sort"
-                      // value={value}
-                      // onChange={handleChange}
-                    >
+                    <RadioGroup aria-label="sort" name="sort">
                       <S.Group>
                         <FormControlLabel
                           value="female"
@@ -218,6 +254,7 @@ const Main: React.FC = () => {
                             </Typography>
                           }
                           className="radioInfo"
+                          onClick={() => changeSortType('priority')}
                         />
                         <FormControlLabel
                           value="male"
@@ -233,6 +270,7 @@ const Main: React.FC = () => {
                             </Typography>
                           }
                           className="radioInfo"
+                          onClick={() => changeSortType('latest')}
                         />
                       </S.Group>
                     </RadioGroup>
@@ -241,8 +279,9 @@ const Main: React.FC = () => {
                 <S.FilterSubmitSection>
                   <input
                     className="filterSubmitInput"
-                    type="submit"
+                    type="button"
                     value="선택한 필터 적용하기"
+                    onClick={searchHandler}
                   />
                 </S.FilterSubmitSection>
               </S.FilterContent>
