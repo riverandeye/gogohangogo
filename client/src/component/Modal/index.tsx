@@ -104,8 +104,8 @@ const Modal: React.FC<ModalProps> = ({
             </S.ModalTitle>
             <S.ModalIntroduction></S.ModalIntroduction>
             <ul>
-              <li>이 팟을 만든 팟장 id는 {adminUserId}</li>
-              <li>이 팟에 가입 신청한 사람들은 {personnel}명</li>
+              {/* <li>이 팟을 만든 팟장 id는 {adminUserId}</li>
+              <li>이 팟에 가입 신청한 사람들은 {personnel}명</li> */}
               {slotArr.map(ico => (
                 <PersonOutlineRoundedIcon
                   style={{ color: '#f94e36', fontSize: '4rem' }}

@@ -33,6 +33,7 @@ export const PopupBackground = styled.div`
 
 export const ModalContent = styled.div`
   margin-top: 9rem;
+  padding: 0 20px;
   display: flex;
   flex-direction: column;
   align-items: center;
